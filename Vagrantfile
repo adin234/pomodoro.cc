@@ -22,7 +22,6 @@ Vagrant.configure('2') do |config|
     d.pull_images "nodesource/precise:0.12.7"
     d.pull_images "nginx:1.9.1"
     d.pull_images "jekyll/jekyll:stable"
-    d.pull_images "shanesveller/elixir-lang"
   end
 
   config.vm.provision "shell", run: "always", path: "opt/docker.restart", :args => "DEV"

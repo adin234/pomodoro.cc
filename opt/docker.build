@@ -21,4 +21,3 @@ build_container(){
 
 build_container 'app'
 build_container 'api'
-build_container 'ws'
