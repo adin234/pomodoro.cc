@@ -1,10 +1,11 @@
 {
-	"folders":
-	[
-		{
-			"follow_symlinks": true,
-			"path": ".",
-			"folder_exclude_patterns": ["node_modules", "app/src/lib", "app/www", "ws/deps", "ws/_build"]
-		}
-	]
+  "folders":
+  [
+    {
+      "follow_symlinks": true,
+      "path": ".",
+      "file_exclude_patterns": ["npm-debug.log"]
+      "folder_exclude_patterns": ["node_modules", "app/src/lib", "app/www", "ws/deps", "ws/_build"]
+    }
+  ]
 }
