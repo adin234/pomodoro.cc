@@ -17,7 +17,6 @@ With the help of insightful statistics, you'll be able to better understand how 
 # Setup
 
 ```
-chmod +x opt/*
 opt/bootstrap
 ```
 
