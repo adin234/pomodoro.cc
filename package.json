@@ -4,8 +4,8 @@
   "description": "pomodoro.cc ============",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha shared/*.test.js",
-    "test-watch": "./node_modules/mocha/bin/mocha shared/*.test.js --watch"
+    "test": "mocha shared/*.test.js",
+    "test-watch": "mocha shared/*.test.js --watch"
   },
   "repository": {
     "type": "git",

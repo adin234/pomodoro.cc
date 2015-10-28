@@ -18,9 +18,9 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision "docker" do |d|
     d.pull_images "alpine"
-    d.pull_images "redis"
+    d.pull_images "smebberson/alpine-nginx"
+    d.pull_images "smebberson/alpine-redis"
     d.pull_images "mongo"
-    d.pull_images "nginx:1.9.1"
     d.pull_images "jekyll/jekyll:stable"
   end
 

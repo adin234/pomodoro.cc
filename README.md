@@ -16,6 +16,15 @@ With the help of insightful statistics, you'll be able to better understand how 
 
 # Setup
 
+
+You'll need:
+
+- **vagrant** 1.7.4
+- **virtualbox** 5.0.6
+- **nodejs** 4.2.1
+
+*Note*: setup works with these versions, previous version might also work.
+
 ```
 opt/bootstrap
 ```
