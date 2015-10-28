@@ -12,9 +12,48 @@ It takes advantage of the guidelines described in the [Pomodoro Technique](http:
 
 With the help of insightful statistics, you'll be able to better understand how much time you spent on each task and how focused you were.
 
+
+----
+
+# Contributing
+
+## app
+
+From the `app` folder:
+
+`npm install`.
+
+- to recompile the assets during development, run `npm start`
+
+- run the tests with `npm test`
+
+- run the end-to-end tests with `npm run e2e`
+
+### e2e
+
+By default, `npm run e2e` runs the tests against firefox.
+
+If you want to run the tests against Chrome, Safari and Firefox, you can use `npm run e2e-cross-browser`.
+
+You have to install the correct chrome.webdriver and put it in `bin/`. You can download it from [here](http://chromedriver.storage.googleapis.com/index.html?path=2.16/)
+
+You have to install the Safari webdriver extension from [here](http://selenium-release.storage.googleapis.com/index.html?path=2.45/)
+
+
+### api
+
+`npm install`.
+
+You can run the tests with: (inside vagrant)
+
+```
+/pomodoro.cc/api/opt/test
+```
+
+
 -----
 
-# Setup
+# Development environment setup (vagrant, docker)
 
 To setup a development machine you'll need:
 
@@ -66,10 +105,6 @@ or
 - `opt/docker.rm`
 - `opt/docker.run`
 
-##### Problems with Docker and Vagrant?
-
-Please refer to [this issue](https://github.com/mitchellh/vagrant/issues/5748)
-
 ##### [SSL certificate](https://devcenter.heroku.com/articles/ssl-certificate-self) and credentials
 
 You can override the self-signed certificate with (put the files in the `ssl` directory) :
@@ -81,38 +116,10 @@ openssl req -new -key pomodoro.cc.key -out pomodoro.cc.csr
 openssl x509 -req -days 365 -in pomodoro.cc.csr -signkey pomodoro.cc.key -out bundle.crt
 ```
 
-#### App
-
-From the `app` folder:
-
-- to recompile the assets during development, run `npm start`
-
-- run the tests with `npm test`
-
-- run the end-to-end tests with `npm run e2e`
-
-###### e2e
-
-By default, `npm run e2e` runs the tests against firefox.
-
-If you want to run the tests against Chrome, Safari and Firefox, you can use `npm run e2e-cross-browser`.
-
-You have to install the correct chrome.webdriver and put it in `bin/`. You can download it from [here](http://chromedriver.storage.googleapis.com/index.html?path=2.16/)
-
-You have to install the Safari webdriver extension from [here](http://selenium-release.storage.googleapis.com/index.html?path=2.45/)
-
-
-#### Api
-
-You can run the tests with: (inside vagrant)
-
-```
-/pomodoro.cc/api/opt/test
-```
-
-
 ##### Seed The DB
 
+Inside vagrant
+
 ```
-/pomodoro.cc/opt/docker.seed
+opt/docker.seed
 ```
