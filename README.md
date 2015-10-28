@@ -16,14 +16,15 @@ With the help of insightful statistics, you'll be able to better understand how 
 
 # Setup
 
-
-You'll need:
+To setup a development machine you'll need:
 
 - **vagrant** 1.7.4
 - **virtualbox** 5.0.6
 - **nodejs** 4.2.1
 
 *Note*: setup works with these versions, previous version might also work.
+
+Run the following to bootstrap the environment (install the needed dependencies, setup docker, build the images)
 
 ```
 opt/bootstrap
