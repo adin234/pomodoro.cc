@@ -27,6 +27,6 @@ script:
 
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: opt/deploy
   on:
     branch: master
