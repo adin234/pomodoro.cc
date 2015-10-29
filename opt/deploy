@@ -1,6 +1,11 @@
 #!/bin/bash
 
-PRODUCTION=true app/opt/build
+echo "<== DEPLOY"
+pwd
+echo "<== DEPLOY"
+
+(cd app; PRODUCTION=true npm run build)
+# PRODUCTION=true app/opt/build
 opt/docker.build
 docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 docker push christianfei/pomodoro-app
