@@ -10,7 +10,7 @@ dependencies:
     - api/node_modules
   override:
     - opt/bootstrap
-    - docker rmi $(docker images -q)
+    - opt/docker.clean.all
     - opt/docker.build
 
 test:

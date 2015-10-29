@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker rmi $(docker images -aq)
+
+exit 0
