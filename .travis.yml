@@ -25,9 +25,9 @@ script:
 - opt/docker.seed
 - app/opt/test.e2e
 
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: opt/deploy
-  on:
-    branch: master
+# deploy:
+#   skip_cleanup: true
+#   provider: script
+#   script: opt/deploy
+#   on:
+#     branch: master
