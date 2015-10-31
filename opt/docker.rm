@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 id_for_container(){
   CONTAINER="$1\s*$"
   CONTAINER_ID="$(docker ps -a | grep "$CONTAINER" | awk '{print $1}')"
