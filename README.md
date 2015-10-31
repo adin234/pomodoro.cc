@@ -123,3 +123,19 @@ Inside vagrant
 ```
 opt/docker.seed
 ```
+
+
+
+## docker maintainance scripts and utilities
+
+#### dump mongo
+
+```
+docker run --rm -it --link pomodoro-api-db:mongo_alias -v /backup/pomodoro:/dump mongo mongorestore -d pomodoro --drop --host mongo_alias /dump
+```
+
+#### restore mongo from dump
+
+```
+docker run --rm -it --link pomodoro-api-db:mongo_alias -v /pomodoro-db/pomodoro:/dump mongo mongorestore -d pomodoro --drop --host mongo_alias /dump
+```
