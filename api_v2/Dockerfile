@@ -4,7 +4,6 @@ FROM msaraiva/elixir-dev
 
 ADD mix.exs /app/mix.exs
 WORKDIR /app
-RUN yes | mix local.hex
 RUN yes | mix deps.get
 ADD . /app
 RUN mix compile
