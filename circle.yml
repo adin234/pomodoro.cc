@@ -10,8 +10,7 @@ dependencies:
     - api/node_modules
   override:
     - opt/bootstrap
-    - opt/docker.clean.all
-    - opt/docker.build
+    - opt/docker.build || true
 
 test:
   override:
