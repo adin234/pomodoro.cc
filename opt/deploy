@@ -14,6 +14,8 @@ opt/docker.build
 echo "--> logging in to docker hub"
 docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
+echo "--> pushing main to docker hub"
+docker push christianfei/pomodoro-main
 echo "--> pushing app to docker hub"
 docker push christianfei/pomodoro-app
 echo "--> pushing api to docker hub"
@@ -21,7 +23,10 @@ docker push christianfei/pomodoro-api
 echo "--> pushing api_v2 to docker hub"
 docker push christianfei/pomodoro-api_v2
 
+
+echo "--> exiting"
 exit 0
+
 
 echo "--> server"
 echo "--> getting latest changes"
