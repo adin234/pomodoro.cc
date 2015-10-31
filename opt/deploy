@@ -5,16 +5,34 @@ ROOT=$(pwd)
 echo $ROOT
 echo "<== DEPLOY"
 
-cd app; PRODUCTION=true npm run build
-cd $ROOT
-
+echo "--> building app"
 PRODUCTION=true app/opt/build
+
+echo "--> building containers"
 opt/docker.build
+
+echo "--> logging in to docker hub"
 docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+
+echo "--> pushing app to docker hub"
 docker push christianfei/pomodoro-app
+echo "--> pushing api to docker hub"
 docker push christianfei/pomodoro-api
+echo "--> pushing api_v2 to docker hub"
+docker push christianfei/pomodoro-api_v2
+
+echo "--> server"
+echo "--> getting latest changes"
 ssh pigeon@146.185.167.197 'cd /pomodoro.cc && git fetch --all && git reset --hard origin/master'
+
+echo "--> pulling containers"
 ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.pull'
+
+echo "--> removing containers"
 ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.rm'
+
+echo "--> running containers"
 ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.run'
+
+echo "--> cleaning containers"
 ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.clean || true'
