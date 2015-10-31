@@ -1,13 +1,16 @@
 #!/bin/bash
 
 echo "<== DEPLOY"
-pwd
+ROOT=$(pwd)
+echo $ROOT
 echo "<== DEPLOY"
 
-(cd app; PRODUCTION=true npm run build)
-# PRODUCTION=true app/opt/build
+cd app; PRODUCTION=true npm run build
+cd $ROOT
+
+PRODUCTION=true app/opt/build
 opt/docker.build
-docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
 docker push christianfei/pomodoro-app
 docker push christianfei/pomodoro-api
 ssh pigeon@146.185.167.197 'cd /pomodoro.cc && git fetch --all && git reset --hard origin/master'
