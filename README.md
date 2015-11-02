@@ -131,15 +131,19 @@ opt/docker.seed
 #### dump mongo
 
 ```
-docker run --rm -it --link pomodoro-api-db:mongo_alias -v /backup/pomodoro:/dump mongo mongorestore -d pomodoro --drop --host mongo_alias /dump
-#or
 opt/mongo.dump /path/to/dump
 ```
 
 #### restore mongo from dump
 
 ```
-docker run --rm -it --link pomodoro-api-db:mongo_alias -v /pomodoro-db/pomodoro:/dump mongo mongorestore -d pomodoro --drop --host mongo_alias /dump
-#or
 opt/mongo.restore /path/to/restore
 ```
+
+### enter mongo
+
+```
+opt/mongo.enter
+```
+
+
