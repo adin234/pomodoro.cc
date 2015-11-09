@@ -21,4 +21,5 @@ echo "--> creating opt/docker.env"
 cp opt/docker.template.env opt/docker.env
 
 echo "--> setting up self-signed certificate"
+rm ssl/*
 unzip ssl.zip -d .
