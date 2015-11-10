@@ -12,7 +12,7 @@ defmodule ApiV2.Mixfile do
 
   def application do
     [
-      applications: [:logger, :cowboy, :plug, :postgrex, :ecto],
+      applications: [:logger, :cowboy, :plug, :httpoison, :postgrex, :ecto],
       mod: {ApiV2, []},
     ]
   end
@@ -23,6 +23,7 @@ defmodule ApiV2.Mixfile do
       {:ecto, "~> 1.0.6"},
       {:cowboy, "~> 1.0.3"},
       {:plug, "~> 1.0.2"},
+      {:httpoison, "~> 0.8.0"},
       {:poison, "~> 1.5"},
     ]
   end
