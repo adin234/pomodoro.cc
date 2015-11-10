@@ -41,6 +41,18 @@ In `DEV` mode (when `docker.restart|run` is started with a `DEV` parameter), an 
 is activated for e2e testing. You can login in by visiting [https://pomodoro.dev/auth/fake](https://pomodoro.dev/auth/fake).
 
 
+### e2e
+
+*Note*: Please check out **Development enviromnent setup** and **Seed the db** sections first.
+
+By default, `npm run e2e` runs the tests against firefox.
+
+If you want to run the tests against Chrome, Safari and Firefox, you can use `npm run e2e-cross-browser`.
+
+You have to install the correct chrome.webdriver and put it in `bin/`. You can download it from [here](http://chromed
+
+You have to install the Safari webdriver extension from [here](http://selenium-release.storage.googleapis.com/index.h
+
 -----
 
 # Development environment setup (vagrant, docker)
@@ -74,13 +86,6 @@ Boot up the vagrant with:
 vagrant up
 ```
 
-
-Seed the database (from inside vagrant) with:
-
-```
-opt/docker.seed
-```
-
 -----
 
 The vagrant box keep the following docker containers up and running:
@@ -103,7 +108,7 @@ or
 - `opt/docker.rm`
 - `opt/docker.run`
 
-##### [SSL certificate](https://devcenter.heroku.com/articles/ssl-certificate-self) and credentials
+#### [SSL certificate](https://devcenter.heroku.com/articles/ssl-certificate-self) and credentials
 
 You can override the self-signed certificate with (put the files in the `ssl` directory) :
 
@@ -114,7 +119,7 @@ openssl req -new -key pomodoro.cc.key -out pomodoro.cc.csr
 openssl x509 -req -days 365 -in pomodoro.cc.csr -signkey pomodoro.cc.key -out bundle.crt
 ```
 
-##### Seed The DB
+#### Seed The DB
 
 Inside vagrant
 
