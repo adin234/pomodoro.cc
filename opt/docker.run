@@ -79,6 +79,7 @@ if [ -z "$(id_for_container 'pomodoro-api_v2')" ]; then
     --restart=always \
     --detach=true \
     --env ENV="$ENV" \
+    --env MIX_ENV="$MIX_ENV" \
     --link pomodoro-api:pomodoro-api \
     --link pomodoro-api-db_v2:pomodoro-api-db_v2 \
     christianfei/pomodoro-api_v2
