@@ -1,14 +1,13 @@
-# FROM asaaki/elixir-pure-alpine
-# FROM msaraiva/elixir
 FROM msaraiva/elixir-dev
 
 ADD mix.exs /app/mix.exs
 WORKDIR /app
-RUN yes | mix deps.get
+ENV MIX_ENV prod
+RUN mix deps.get
 ADD . /app
 RUN mix compile
+RUN mix compile.protocols
 
-ENV MIX_ENV prod
 EXPOSE 6000
 
 CMD ["mix","run","--no-halt"]
