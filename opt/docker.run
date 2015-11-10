@@ -41,6 +41,15 @@ if [ -z "$(id_for_container 'pomodoro-api-db')" ]; then
     mongo:latest
 fi
 
+if [ -z "$(id_for_container 'pomodoro-api-db_v2')" ]; then
+  echo "\n----> STARTING 'pomodoro-api-db_v2'"
+  docker run --name pomodoro-api-db_v2 \
+    --restart=always \
+    --detach=true \
+    --volume /db_v2:/var/lib/postgresql/data \
+    kiasaki/alpine-postgres:latest
+fi
+
 if [ -z "$(id_for_container 'pomodoro-blog')" ]; then
   echo "\n----> STARTING 'pomodoro-blog'"
   docker run --name pomodoro-blog \
@@ -71,6 +80,7 @@ if [ -z "$(id_for_container 'pomodoro-api_v2')" ]; then
     --detach=true \
     --env ENV="$ENV" \
     --link pomodoro-api:pomodoro-api \
+    --link pomodoro-api-db_v2:pomodoro-api-db_v2 \
     christianfei/pomodoro-api_v2
 fi
 
