@@ -85,9 +85,9 @@ if [ -z "$(id_for_container 'pomodoro-api_v2')" ]; then
 
 fi
 
-echo "\n----> migrating db"
-docker exec pomodoro-api_v2 mix ecto.create
-docker exec pomodoro-api_v2 mix ecto.migrate
+# echo "\n----> migrating db"
+# docker exec pomodoro-api_v2 mix ecto.create
+# docker exec pomodoro-api_v2 mix ecto.migrate
 
 
 if [ -z "$(id_for_container 'pomodoro-app')" ]; then

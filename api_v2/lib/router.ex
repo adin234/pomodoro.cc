@@ -12,11 +12,9 @@ defmodule ApiV2.Router do
   plug :match
   plug :dispatch
 
-  # get "/tasks" do
-  #   # send_resp(conn, 200, Poison.encode!([]))
-  #   tasks = ApiV2.Repo.all_tasks
-  #   send_resp(conn, 200, Poison.encode!(tasks))
-  # end
+  get "/api/tasks" do
+    send_resp(conn, 200, Poison.encode!([]))
+  end
 
   match _ do
     {method, url, body, headers} = extract(conn)
@@ -38,5 +36,5 @@ defmodule ApiV2.Router do
     {:ok, body, conn} = read_body(conn)
     headers = conn.req_headers
     {method, url, body, headers}
-  end  
+  end
 end
