@@ -27,17 +27,6 @@ From the `app` folder:
 
 - run the end-to-end tests with `npm run e2e`
 
-### e2e
-
-By default, `npm run e2e` runs the tests against firefox.
-
-If you want to run the tests against Chrome, Safari and Firefox, you can use `npm run e2e-cross-browser`.
-
-You have to install the correct chrome.webdriver and put it in `bin/`. You can download it from [here](http://chromedriver.storage.googleapis.com/index.html?path=2.16/)
-
-You have to install the Safari webdriver extension from [here](http://selenium-release.storage.googleapis.com/index.html?path=2.45/)
-
-
 ### api
 
 `npm install`.
@@ -85,6 +74,13 @@ Boot up the vagrant with:
 vagrant up
 ```
 
+
+Seed the database (from inside vagrant) with:
+
+```
+opt/docker.seed
+```
+
 -----
 
 The vagrant box keep the following docker containers up and running:
@@ -92,6 +88,7 @@ The vagrant box keep the following docker containers up and running:
 - `pomodoro-main`: nginx container that routes traffic to one of the following containers
   - `pomodoro-app`: nginx container that serves the static assets
   - `pomodoro-api`: node container that represents the api
+  - `pomodoro-api_v2`: elixir container that represents the (new) api, that's going to replace the new one_
   - `pomodoro-blog`: node container that contains the blog
 - `redis`: for the sessions shared between the two instances of `pomodoro-api`
 - `mongo`: db for the `pomodoro-api` to save pomodori of registered users
