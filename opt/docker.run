@@ -82,7 +82,13 @@ if [ -z "$(id_for_container 'pomodoro-api_v2')" ]; then
     --link pomodoro-api:pomodoro-api \
     --link pomodoro-api-db_v2:pomodoro-api-db_v2 \
     christianfei/pomodoro-api_v2
+
 fi
+
+echo "\n----> migrating db"
+docker exec pomodoro-api_v2 mix ecto.create
+docker exec pomodoro-api_v2 mix ecto.migrate
+
 
 if [ -z "$(id_for_container 'pomodoro-app')" ]; then
   echo "\n----> STARTING 'pomodoro-app'"
