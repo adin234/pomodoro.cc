@@ -1,4 +1,4 @@
-defmodule PlugUtilsTest do
+defmodule ApiV2.PlugUtils.Test do
   use ExUnit.Case, async: true
   use Plug.Test
 

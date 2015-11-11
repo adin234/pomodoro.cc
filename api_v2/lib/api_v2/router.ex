@@ -1,6 +1,8 @@
 defmodule ApiV2.Router do
   use Plug.Router
 
+  alias ApiV2.FallbackProxy
+
   @api_url Application.get_env(:api_v2, :api_url)
 
   plug Plug.Logger
