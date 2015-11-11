@@ -6,10 +6,7 @@ defmodule ApiV2.Router do
   @api_url Application.get_env(:api_v2, :api_url)
 
   plug Plug.Logger
-  if Mix.env == :dev do
-    use Plug.Debugger
-  end
-
+  if Mix.env == :dev, do: use Plug.Debugger
 
   plug :match
   plug :dispatch
@@ -17,6 +14,4 @@ defmodule ApiV2.Router do
   get "/api/tasks" do
     send_resp(conn, 200, Poison.encode!([]))
   end
-
-  forward "/", to: FallbackProxy
 end
