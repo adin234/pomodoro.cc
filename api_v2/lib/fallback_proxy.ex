@@ -7,7 +7,7 @@ defmodule FallbackProxy do
   plug :dispatch
 
   match _ do
-    {method, url, body, headers} = PlugUtils.extract(conn)
+    {method, url, body, headers} = PlugUtils.extract_from(conn)
     url = @api_url <> url
     %HTTPoison.Response{status_code: status_code, body: body, headers: headers} = HTTPoison.request!(method, url, body, headers)
     Enum.each(headers, fn ({key,value}) ->

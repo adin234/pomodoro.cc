@@ -11,12 +11,12 @@ defmodule PlugUtilsTest do
     end
   end
 
-  test "extract" do
+  test "extract_from" do
     conn = conn(:get, "/")
            |> put_req_header("x-custom", "foo")
            |> DummyRouter.call([])
 
-    {method, url, body, headers} = PlugUtils.extract(conn)
+    {method, url, body, headers} = PlugUtils.extract_from(conn)
 
     assert method == :get
     assert url == "/"
