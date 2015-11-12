@@ -8,17 +8,11 @@ defmodule ApiV2.Authorizer.Plug do
 
   def call(conn, opts) do
     authorizer = Keyword.get(opts, :authorizer, ApiV2.Authorizer)
-    cookie = get_req_header(conn, "cookie")
-    IO.puts "cookie #{cookie}"
-    authorized = authorizer.authorize(cookie)
-    IO.puts "authorized #{authorized}"
-    case authorized do
-      true ->
-        conn
-      false ->
-        conn
-          |> send_resp( 401, "Unauthorized")
-          |> halt
-    end
+    get_req_header(conn, "cookie")
+    |> authorizer.authorize
+    |> handle(conn)
   end
+
+  defp handle(true, conn), do: conn
+  defp handle(false, conn), do: conn |> send_resp( 401, "Unauthorized") |> halt
 end
