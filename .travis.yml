@@ -21,6 +21,7 @@ before_install:
 script:
 - app/opt/test
 - api/opt/test
+- api_v2/opt/test
 - opt/docker.run DEV
 - opt/docker.seed
 - app/opt/test.e2e
