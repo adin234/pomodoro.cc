@@ -1,12 +1,10 @@
 defmodule ApiV2.Router do
   use Plug.Router
 
-  alias ApiV2.Authorizer
-
   plug Plug.Logger
   if Mix.env == :dev, do: use Plug.Debugger
 
-  plug Authorizer
+  plug ApiV2.Authorizer.Plug
   plug :match
   plug :dispatch
 
