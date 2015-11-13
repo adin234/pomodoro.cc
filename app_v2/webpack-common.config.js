@@ -37,6 +37,6 @@ module.exports = {
                           inject: true,
                           title: 'webpack starter template 123',
                           filename: 'index.html',
-                          template: './app/index_template.html'
+                          template: './src/index_template.html'
                         })
 }

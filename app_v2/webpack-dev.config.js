@@ -15,7 +15,7 @@ module.exports = {
   'webpack-dev-server/client?http://localhost:9000',
   'webpack/hot/only-dev-server',
   // our entry file
-  './app/index.js'
+  './src/index.js'
   ],
   output: {
     path: './build',
