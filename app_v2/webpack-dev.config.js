@@ -12,7 +12,7 @@ var devLoaders = [
 module.exports = {
   entry: [
   // setup the hot mobule loading
-  'webpack-dev-server/client?http://localhost:9000',
+  'webpack-dev-server/client?http://localhost:8080',
   'webpack/hot/only-dev-server',
   // our entry file
   './src/index.js'

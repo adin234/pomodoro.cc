@@ -1,0 +1,1 @@
+type SimpleState = Array<any>
