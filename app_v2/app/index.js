@@ -1,5 +1,6 @@
 'use strict';
 require("./Assets/style.scss")
 import React from 'react'
+import ReactDOM from 'react-dom'
 import App from './App.js'
-React.render(<App/>, document.getElementById('body'))
+ReactDOM.render(<App/>, document.getElementById('main'))

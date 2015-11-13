@@ -1,10 +1,9 @@
-var React = require('react');
+'use strict'
+import React from 'react'
 
-var Header = require('./Components/Header');
-var Content = require('./Components/Content');
-var Favicon = require('react-favicon');
+import Header from './Components/Header'
+import Content from './Components/Content'
 
-var faviconUrl = require('./Assets/favicon.ico');
 
 module.exports = React.createClass({
   displayName: 'App',
@@ -16,4 +15,4 @@ module.exports = React.createClass({
             </div>)
   }
 
-});
+})
