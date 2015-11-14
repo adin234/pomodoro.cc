@@ -1,7 +1,6 @@
 /*@flow*/
 import {START_TIMER, STOP_TIMER, TICK_TIMER} from './actionTypes'
 export function startTimer(seconds:number):Action {
-  seconds = seconds << 0
   return {
     type:START_TIMER,
     payload:{seconds}

@@ -8,8 +8,8 @@ class Foo extends Component {
     const {timer, actions} = this.props
 
     return  <div>
-              <pre>{timer}</pre>
               <h1>About</h1>
+              <pre>{timer}</pre>
             </div>
   }
 }

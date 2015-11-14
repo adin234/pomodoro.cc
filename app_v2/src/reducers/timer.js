@@ -1,5 +1,6 @@
 /*@flow*/
 import {Timer} from '../modules/Timer'
+import {TimeFormatter} from '../modules/TimeFormatter'
 import {START_TIMER, STOP_TIMER, TICK_TIMER} from '../actions/actionTypes'
 export default function timer(state:TimerState='00:00', action:Action):TimerState{
   switch(action.type){
@@ -12,7 +13,7 @@ export default function timer(state:TimerState='00:00', action:Action):TimerStat
     return '00:00'
   }
   case TICK_TIMER: {
-    return action.payload.remaining
+    return TimeFormatter.formatSeconds(action.payload.remaining)
   }
   default: {
     return state
