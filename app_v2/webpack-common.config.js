@@ -18,8 +18,8 @@ module.exports = {
   },
   // styles
   {
-    test: /\.[s]?css$/,
-    loader: "style!css!autoprefixer-loader?browsers=last 2 version!sass"
+    test: /\.styl$/,
+    loader: "style!css!autoprefixer-loader?browsers=last 2 version!stylus-loader",
   },
   // and font files - embed them if possible
   {
