@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as Actions from './actions'
+import * as actions from './actions'
 import Sub from './Sub'
 
 class App extends Component {
@@ -23,7 +23,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    actions: bindActionCreators(Actions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   }
 }
 
