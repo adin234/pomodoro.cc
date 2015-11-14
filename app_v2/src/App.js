@@ -1,16 +1,15 @@
 'use strict'
-import React, {Component} from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import Timer        from './components/Timer'
 import * as actions from './actions'
-import Sub from './Sub'
+import React, {Component} from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 class App extends Component {
   render () {
     const {timer, actions} = this.props
     return  <div>
-              <pre>{timer}</pre>
-              <Sub timer={timer} actions={actions}/>
+              <Timer timer={timer} actions={actions}/>
             </div>
   }
 }

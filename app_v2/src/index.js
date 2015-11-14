@@ -1,6 +1,6 @@
 'use strict'
 import App        from './App.js'
-import {Timer}      from './modules/Timer'
+import {Timer}    from './modules/Timer'
 import {store}    from './store'
 import React      from 'react'
 import {render}   from 'react-dom'
