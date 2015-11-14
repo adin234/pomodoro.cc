@@ -2,15 +2,20 @@
 import React from 'react'
 import {render} from 'react-dom'
 import App from './App.js'
-import { combineReducers, createStore } from 'redux'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import dummy from './reducers/dummy'
+import createLogger from 'redux-logger'
 
-const reducers = combineReducers({
+const logger = createLogger()
+const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore)
+
+const reducer = combineReducers({
   dummy
 })
 
-const store = createStore(reducers)
+const store = createStoreWithMiddleware(reducer)
 
 render(
   <Provider store={store}>
