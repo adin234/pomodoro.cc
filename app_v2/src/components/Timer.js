@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-export default class Sub extends Component {
+export default class Timer extends Component {
   render () {
     const {timer, actions} = this.props
     return  <div>
