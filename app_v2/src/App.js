@@ -1,8 +1,33 @@
 'use strict'
 import React, {Component} from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as Actions from './actionCreators'
+import Sub from './Sub'
 
-export default class App extends Component {
+class App extends Component {
   render () {
-    return null
+    const {dummy, actions} = this.props
+    return  <div>
+              <pre>{dummy}</pre>
+              <Sub dummy={dummy} actions={actions}/>
+            </div>
   }
 }
+
+function mapStateToProps(state){
+  return {
+    dummy: state.dummy
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
