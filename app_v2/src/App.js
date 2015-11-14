@@ -7,17 +7,17 @@ import Sub from './Sub'
 
 class App extends Component {
   render () {
-    const {dummy, actions} = this.props
+    const {timer, actions} = this.props
     return  <div>
-              <pre>{dummy}</pre>
-              <Sub dummy={dummy} actions={actions}/>
+              <pre>{timer}</pre>
+              <Sub timer={timer} actions={actions}/>
             </div>
   }
 }
 
 function mapStateToProps(state){
   return {
-    dummy: state.dummy
+    timer: state.timer
   }
 }
 

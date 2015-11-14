@@ -1,4 +1,4 @@
-import dummy from './reducers/dummy'
+import timer from './reducers/timer'
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
@@ -9,7 +9,7 @@ export const store = (function() {
   const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore)
 
   const reducer = combineReducers({
-    dummy
+    timer,
   })
 
   return createStoreWithMiddleware(reducer)
