@@ -8,5 +8,6 @@ export function dummyAsync() {
     setInterval(function(){
       dispatch(dummy())
     }, 1000)
+    // setInterval(dispatch.bind(this, dummy()), 1000)
   }
 }

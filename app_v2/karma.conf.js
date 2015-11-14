@@ -3,9 +3,9 @@ var webpack = require('webpack');
 
 module.exports = function (config) {
   config.set({
-    browsers: [ 'Chrome' ], //run in Chrome
+    browsers: [ 'PhantomJS' ], //run in Chrome
     singleRun: true, //just run once by default
-    frameworks: [ 'mocha', 'sinon' ], //use the mocha test framework
+    frameworks: [ 'mocha', 'sinon','sinon-chai', 'chai','phantomjs-shim'],
     files: [
       'test.webpack.js' //just load this file
     ],

@@ -41,5 +41,18 @@
     "stylus-loader": "^1.4.2",
     "webpack": "^1.9.11",
     "webpack-dev-server": "^1.9.0"
+  },
+  "devDependencies": {
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.1",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-phantomjs-shim": "^1.1.2",
+    "karma-sinon": "^1.0.4",
+    "karma-sinon-chai": "^1.1.0",
+    "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.8.0"
   }
 }
