@@ -15,6 +15,7 @@ class Index extends Component {
             </div>
   }
 }
+
 function mapStateToProps(state){
   return {
     timer: state.timer
