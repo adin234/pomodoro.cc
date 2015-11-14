@@ -1,4 +1,4 @@
-export const TimeFormatter = {
+export default {
   formatSeconds: formatSeconds
 }
 

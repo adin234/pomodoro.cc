@@ -1,4 +1,4 @@
-import {TimeFormatter} from './TimeFormatter'
+import TimeFormatter from './TimeFormatter'
 
 describe('TimeFormatter', () => {
   it('formats seconds to timer display', () => {

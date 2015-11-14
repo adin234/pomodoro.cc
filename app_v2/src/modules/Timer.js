@@ -1,4 +1,4 @@
-export const Timer = {
+export default {
   start: start,
   stop: stop,
   getRemaining: getRemaining,
@@ -58,7 +58,6 @@ function on(event, fn){
   if( events[event] !== undefined && fn instanceof Function ){
     events[event].push(fn)
   }
-  return Timer
 }
 
 function off(event, fn){
@@ -69,7 +68,6 @@ function off(event, fn){
       }
     })
   }
-  return Timer
 }
 
 

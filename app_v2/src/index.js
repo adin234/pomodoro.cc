@@ -1,5 +1,5 @@
-import {Timer}       from './modules/Timer'
-import {store}       from './store'
+import Timer       from './modules/Timer'
+import store       from './store'
 import React         from 'react'
 import {render}      from 'react-dom'
 import {tickTimer}   from './actions'
