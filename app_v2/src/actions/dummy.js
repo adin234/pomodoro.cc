@@ -1,4 +1,4 @@
-import {DUMMY} from './actions'
+import {DUMMY} from './actionTypes'
 export function dummy() {
   return {type: DUMMY, payload: {}}
 }
