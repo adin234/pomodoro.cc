@@ -1,7 +1,7 @@
 import Timer         from './modules/Timer'
 import reduxStore    from './reduxStore'
 import {tickTimer, resumeTimer}   from './actions'
-import Main          from './Main'
+import Router          from './Router'
 import React         from 'react'
 import {render}      from 'react-dom'
 import store         from 'store'
@@ -13,4 +13,4 @@ Timer.on('tick', (remaining) => {
   reduxStore.dispatch(tickTimer(remaining))
 })
 
-render(<Main/>, document.getElementById('main'))
+render(<Router/>, document.getElementById('main'))
