@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
 const TODO_INPUT = 'TODO_INPUT'
+import React, {Component} from 'react'
+
 export default class TodoList extends Component {
   addTodo () {
     const {actions} = this.props
