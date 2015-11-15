@@ -16,7 +16,7 @@ export function resumeTimer(pomodoro:Object):Action {
   let remaining = 0
   if(pomodoro && pomodoro.minutes && pomodoro.startedAt ){
     let elapsed = (Date.now() -  new Date(pomodoro.startedAt).getTime())
-    elapsed = parseInt(elapsed/1000, 10)
+    elapsed = elapsed/1000 << 0
     remaining = pomodoro.minutes*60 - elapsed
   }
   remaining = remaining << 0

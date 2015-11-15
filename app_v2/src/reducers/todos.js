@@ -10,7 +10,7 @@ export default function todos(state:TodoState=[], action:Action):TodoState {
     ]
   }
   case DELETE_TODO: {
-    return state.filter((todo) => {
+    return state.filter((todo) => {
       return todo.text !== action.payload.text
     })
   }
