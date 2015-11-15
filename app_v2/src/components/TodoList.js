@@ -9,12 +9,18 @@ export default class TodoList extends Component {
       text
     })
   }
+
+  deleteTodo (todo) {
+    const {actions} = this.props
+    actions.deleteTodo(todo)
+  }
+
   render () {
     const {todos, actions} = this.props
     return  <div>
               <ul>
                 {todos.map((todo) => {
-                  return <li>{todo.text}</li>
+                  return <li onClick={()=>this.deleteTodo(todo)}>{todo.text}</li>
                 })}
               </ul>
               <input ref={TODO_INPUT}/>
