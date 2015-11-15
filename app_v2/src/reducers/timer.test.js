@@ -1,5 +1,4 @@
 import timer from './timer'
-import store from 'store'
 import {startTimer, resumeTimer, stopTimer, tickTimer} from '../actions'
 describe('timer reducer', () => {
   const dummyAction = {type:'DUMMY', payload:{}}
@@ -7,21 +6,10 @@ describe('timer reducer', () => {
     expect( timer(undefined, dummyAction) )
       .to.eql( '00:00' )
   })
-  describe('starts timer', () => {
-    it('is timer state', () => {
-      const action = startTimer(25,'pomodoro')
-      expect( timer(undefined, action) )
-        .to.eql( '25:00' )
-    })
-    it('persists timer data', () => {
-      const action = startTimer(25,'pomodoro')
-      const MockStore = sinon.mock(store)
-      MockStore.expects('set').withArgs('pomodoro', action.payload)
-
-      timer(undefined, action)
-
-      MockStore.verify()
-    })
+  it('starts timer', () => {
+    const action = startTimer(25,'pomodoro')
+    expect( timer(undefined, action) )
+      .to.eql( '25:00' )
   })
 
   it.skip('resumes timer', () => {

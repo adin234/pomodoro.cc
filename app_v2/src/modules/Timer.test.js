@@ -57,6 +57,7 @@ describe('Timer', () => {
     it('#on "tick"', () => {
       Timer.on('tick', callback)
       Timer.start(25*60)
+      clock.tick(100)
       expect( callback.called ).to.be.true
     })
 
@@ -70,8 +71,10 @@ describe('Timer', () => {
     it('#on "tick" stops when timer is stopped', () => {
       Timer.on('tick', callback)
       Timer.start(25*60)
-      callback.reset()
+      clock.tick(1000)
+      expect( callback.called ).to.be.true
       Timer.stop()
+      callback.reset()
       clock.tick(1000)
       expect( callback.called ).not.to.be.true
     })

@@ -23,7 +23,7 @@ function start(_seconds){
   startedAt = Date.now()
   seconds = _seconds
   interval = setInterval(tick, 500)
-  tick()
+  setTimeout(tick, 50)
   events.start.forEach(function(callback){
     callback(seconds)
   })

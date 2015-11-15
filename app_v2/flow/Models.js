@@ -3,4 +3,10 @@ type Todo = {
   completed: boolean
 }
 
+type Pomodoro = {
+  startedAt: string,
+  type: string,
+  minutes: number,
+}
+
 type PomodoroType = string
