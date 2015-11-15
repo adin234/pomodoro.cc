@@ -2,7 +2,7 @@
 import Pomodoro from '../components/Pomodoro'
 import TodoList from '../components/TodoList'
 import * as actions from '../actions'
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
@@ -14,6 +14,12 @@ class Index extends Component {
               <TodoList todos={todos} actions={actions}/>
             </div>
   }
+}
+
+Index.propTypes = {
+  actions: PropTypes.object.isRequired,
+  todos: PropTypes.array.isRequired,
+  timer: PropTypes.array.isRequired,
 }
 
 function mapStateToProps(state){
