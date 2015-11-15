@@ -87,7 +87,8 @@ function intValue(number){
 }
 
 function validateSeconds(seconds){
-  return seconds === parseInt(seconds, 10 ) && seconds >= 0
+  const parsedSeconds = parseInt(seconds, 10)
+  return seconds === parsedSeconds && seconds >= 0 && seconds <= 25*60
 }
 
 function isTicking(){
