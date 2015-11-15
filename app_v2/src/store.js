@@ -1,20 +1,24 @@
 import timer from './reducers/timer'
 import todos from './reducers/todos'
-import {applyMiddleware, combineReducers, createStore} from 'redux'
+import {applyMiddleware, combineReducers, createStore, compose} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import createLogger from 'redux-logger'
+import persistState from 'redux-localstorage'
 
 const store = (function() {
   const logger = createLogger()
-  const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore)
+  const storeWithMiddleware = applyMiddleware(thunk, logger)(createStore)
+  const storeWithPersistence = compose(
+    persistState(['todos'])
+  )(storeWithMiddleware)
 
   const reducer = combineReducers({
     timer,
     todos,
   })
 
-  return createStoreWithMiddleware(reducer)
+  return storeWithPersistence(reducer)
 })()
 
 
