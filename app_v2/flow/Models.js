@@ -10,3 +10,8 @@ type Pomodoro = {
 }
 
 type PomodoroType = string
+
+type Settings = {
+  tickSoundEnabled: boolean,
+  ringSoundEnabled: boolean,
+}
