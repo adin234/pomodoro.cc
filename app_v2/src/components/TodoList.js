@@ -28,7 +28,7 @@ export default class TodoList extends Component {
     return  <div>
               <div>
                 {todos.map((todo) => {
-                  return <Todo todo={todo} actions={actions}/>
+                  return <Todo key={todo.text} todo={todo} actions={actions}/>
                 })}
               </div>
               <input ref={TODO_INPUT} onKeyDown={this.onKeyDown.bind(this)}/>
