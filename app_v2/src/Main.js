@@ -8,8 +8,9 @@ import Foo from './routes/Foo'
 
 export default class Root extends Component {
   render() {
+    const path = /pomodoro/.test(window.location.host) ? '/base' : ''
     return  <Provider store={reduxStore}>
-              <Router history={createBrowserHistory()}>
+              <Router path="/beta" history={createBrowserHistory()}>
                 <Route path='/' component={Index} />
                 <Route path='/foo' component={Foo} />
               </Router>

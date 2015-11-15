@@ -16,5 +16,6 @@ build_container(){
 
 build_container 'main'
 build_container 'app'
+build_container 'app_v2'
 build_container 'api'
 build_container 'api_v2'

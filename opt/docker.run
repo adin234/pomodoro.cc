@@ -105,6 +105,19 @@ if [ -z "$(id_for_container 'pomodoro-app')" ]; then
     christianfei/pomodoro-app
 fi
 
+if [ -z "$(id_for_container 'pomodoro-app_v2')" ]; then
+  echo "\n----> STARTING 'pomodoro-app_v2'"
+  VOLUME=""
+  if [ "$ENV" = "DEV" ]; then
+    VOLUME="--volume $PROJECT_DIR/app_v2/build:/var/www/pomodoro.cc/"
+  fi
+  docker run --name pomodoro-app_v2 \
+    --restart=always \
+    --detach=true \
+    $VOLUME \
+    christianfei/pomodoro-app_v2
+fi
+
 if [ -z "$(id_for_container 'pomodoro-main')" ]; then
   echo "\n----> STARTING 'pomodoro-main'"
   docker run --name pomodoro-main \
@@ -113,6 +126,7 @@ if [ -z "$(id_for_container 'pomodoro-main')" ]; then
     --publish 80:80 \
     --publish 443:443 \
     --link pomodoro-app:pomodoro-app \
+    --link pomodoro-app_v2:pomodoro-app_v2 \
     --link pomodoro-api:pomodoro-api \
     --link pomodoro-blog:pomodoro-blog \
     --link pomodoro-api_v2:pomodoro-api_v2 \
