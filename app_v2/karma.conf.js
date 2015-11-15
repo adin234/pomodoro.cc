@@ -1,4 +1,4 @@
-var commonConfig = require('./webpack-common.config.js');
+var commonConfig = require('./webpack-common.config.js')();
 var webpack = require('webpack');
 
 module.exports = function (config) {
@@ -21,6 +21,7 @@ module.exports = function (config) {
     },
     webpackServer: {
       noInfo: true //please don't spam the console when running in karma!
-    }
+    },
+    logLevel: config.LOG_INFO,
   });
 };
