@@ -12,6 +12,12 @@ module.exports = function(production){
       'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
       ]
     },
+    {
+      test: /\.(mp3|ogg)$/i,
+      loaders: [
+        'file?name=[name].[ext]&context=./src',
+      ]
+    },
     // javascript/jsx loader - https://www.npmjs.com/package/babel-loader
     {
       test: /\.jsx?$/,
