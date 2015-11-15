@@ -27,6 +27,6 @@ export function stopTimer():Action {
   return {type:STOP_TIMER, payload:{}}
 }
 
-export function tickTimer(remaining:string):Action {
+export function tickTimer(remaining:number):Action {
   return {type:TICK_TIMER, payload:{remaining}}
 }
