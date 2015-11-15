@@ -20,7 +20,8 @@ class Index extends Component {
 
 function mapStateToProps(state){
   return {
-    timer: state.timer
+    timer: state.timer,
+    todos: state.todos,
   }
 }
 

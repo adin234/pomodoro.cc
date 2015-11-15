@@ -5,8 +5,8 @@ import {START_TIMER, STOP_TIMER, TICK_TIMER} from '../actions/timer'
 export default function timer(state:TimerState='00:00', action:Action):TimerState{
   switch(action.type){
   case START_TIMER: {
-    Timer.start(action.payload.seconds)
-    return state
+    const seconds = Timer.start(action.payload.seconds)
+    return TimeFormatter.formatSeconds(seconds)
   }
   case STOP_TIMER: {
     Timer.stop()
@@ -15,8 +15,6 @@ export default function timer(state:TimerState='00:00', action:Action):TimerStat
   case TICK_TIMER: {
     return TimeFormatter.formatSeconds(action.payload.remaining)
   }
-  default: {
-    return state
   }
-  }
+  return state
 }
