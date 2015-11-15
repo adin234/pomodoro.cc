@@ -1,4 +1,4 @@
-var commonConfig = require('./webpack-common.config.js');
+var commonConfig = require('./webpack-common.config.js')(false);
 
 var devLoaders = [
   // javascript/jsx loader - https://www.npmjs.com/package/babel-loader - with the react-hot loader

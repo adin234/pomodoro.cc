@@ -1,4 +1,4 @@
-var commonConfig = require('./webpack-common.config.js');
+var commonConfig = require('./webpack-common.config.js')(true);
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack = require('webpack');
 
