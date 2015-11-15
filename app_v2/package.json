@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "stop",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack-dev.config.js --hot --progress --colors --content-base build",
+    "start": "webpack-dev-server --port 9000 --config ./webpack-dev.config.js --hot --progress --colors --history-api-fallback --content-base build",
     "build": "rm build/*; webpack --config ./webpack-prod.config.js --progress --colors",
     "test": "karma start",
     "tdd": "karma start --single-run=false"
