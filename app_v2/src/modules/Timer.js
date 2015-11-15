@@ -17,8 +17,9 @@ const events = {
 }
 
 function start(_seconds){
-  if( !validateSeconds(_seconds) || isTicking() )
+  if( !validateSeconds(_seconds) || isTicking() || _seconds <= 0 ) {
     return
+  }
 
   startedAt = Date.now()
   seconds = _seconds
