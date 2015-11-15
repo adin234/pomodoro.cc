@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 export default class TimerButtons extends Component {
   render () {
     const {actions} = this.props

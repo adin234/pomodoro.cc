@@ -1,5 +1,8 @@
 /*@flow*/
-import {START_TIMER, STOP_TIMER, TICK_TIMER} from './actionTypes'
+export const START_TIMER = 'START_TIMER'
+export const STOP_TIMER = 'STOP_TIMER'
+export const TICK_TIMER = 'TICK_TIMER'
+
 export function startTimer(seconds:number):Action {
   return {
     type:START_TIMER,
