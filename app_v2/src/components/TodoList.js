@@ -1,31 +1,37 @@
 const TODO_INPUT = 'TODO_INPUT'
 import React, {Component} from 'react'
+import Todo from './Todo'
 
 export default class TodoList extends Component {
   addTodo () {
     const {actions} = this.props
     const text = this.refs[TODO_INPUT].value
+    if( !text ) {
+      return
+    }
+    this.refs[TODO_INPUT].value = ''
     actions.addTodo({
       completed:false,
       text
     })
   }
 
-  deleteTodo (todo) {
-    const {actions} = this.props
-    actions.deleteTodo(todo)
+  onKeyDown (event) {
+    if(event.keyCode!==13){
+      return
+    }
+    this.addTodo()
   }
 
   render () {
     const {todos, actions} = this.props
     return  <div>
-              <ul>
+              <div>
                 {todos.map((todo) => {
-                  return <li onClick={()=>this.deleteTodo(todo)}>{todo.text}</li>
+                  return <Todo todo={todo} actions={actions}/>
                 })}
-              </ul>
-              <input ref={TODO_INPUT}/>
-              <button onClick={()=>this.addTodo()}>add todo</button>
+              </div>
+              <input ref={TODO_INPUT} onKeyDown={this.onKeyDown.bind(this)}/>
             </div>
   }
 }

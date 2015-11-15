@@ -19,7 +19,7 @@ class Index extends Component {
 Index.propTypes = {
   actions: PropTypes.object.isRequired,
   todos: PropTypes.array.isRequired,
-  timer: PropTypes.array.isRequired,
+  timer: PropTypes.string.isRequired,
 }
 
 function mapStateToProps(state){
