@@ -6,55 +6,57 @@ require('../assets/audio/tick.ogg')
 import Buzz from './Buzz'
 
 export default {
-  isMutedTickingSound: isMutedTickingSound,
-  isMutedRingingSound: isMutedRingingSound,
+  tickSoundEnabled: tickSoundEnabled,
+  ringSoundEnabled: ringSoundEnabled,
   startTickingSound: startTickingSound,
   stopTickingSound: stopTickingSound,
   startRingingSound: startRingingSound,
-  toggleMuteTickingSound: toggleMuteTickingSound,
-  toggleMuteRingingSound: toggleMuteRingingSound,
+  toggleTickSound: toggleTickSound,
+  toggleRingSound: toggleRingSound,
 }
 
 
-var ringingSound = new Buzz.sound('ring', {
+var ringSound = new Buzz.sound('ring', {
   preload: true,
   loop: false,
   webAudioApi: true,
   formats: ['ogg','mp3']
 })
-var tickingSound = new Buzz.sound('tick', {
+var tickSound = new Buzz.sound('tick', {
   preload: true,
   loop: true,
   webAudioApi: true,
   formats: ['ogg','mp3']
 })
 
-function isMutedTickingSound(){
-  return tickingSound.isMuted()
+window.tickSound = tickSound
+
+function tickSoundEnabled(){
+  return !tickSound.isMuted()
 }
 
-function isMutedRingingSound(){
-  return ringingSound.isMuted()
+function ringSoundEnabled(){
+  return !ringSound.isMuted()
 }
 
 function startTickingSound(){
-  if( tickingSound.isPaused() ) {
-    tickingSound.play()
+  if( tickSound.isPaused() ) {
+    tickSound.play()
   }
 }
 
 function stopTickingSound(){
-  tickingSound.stop()
+  tickSound.stop()
 }
 
 function startRingingSound(){
-  ringingSound.play()
+  ringSound.play()
 }
 
-function toggleMuteTickingSound(){
-  tickingSound.toggleMute()
+function toggleTickSound(){
+  tickSound.toggleMute()
 }
 
-function toggleMuteRingingSound(){
-  ringingSound.toggleMute()
+function toggleRingSound(){
+  ringSound.toggleMute()
 }
