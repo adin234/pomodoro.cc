@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react'
-import Timer from '../components/Timer'
+import Pomodoro from '../components/Pomodoro'
 import * as actions from '../actions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -11,7 +11,7 @@ class Index extends Component {
     const {timer, actions} = this.props
     return  <div>
               <Link to="foo">foo</Link>
-              <Timer timer={timer} actions={actions}/>
+              <Pomodoro timer={timer} actions={actions}/>
             </div>
   }
 }
