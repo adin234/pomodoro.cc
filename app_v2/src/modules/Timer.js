@@ -39,8 +39,8 @@ function stop(){
     startedAt = undefined
     seconds = undefined
     clearInterval(interval)
-    return Date.now()
   }
+  return 0
 }
 
 function getRemaining(){

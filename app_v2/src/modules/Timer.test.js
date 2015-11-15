@@ -23,9 +23,9 @@ describe('Timer', () => {
     })
 
     it('#isInProgress', () => {
-      expect( Timer.start(25*60) ).to.be.ok
+      Timer.start(25*60)
       expect( Timer.isInProgress() ).to.be.true
-      expect( Timer.stop() ).to.be.ok
+      Timer.stop()
       expect( Timer.isInProgress() ).to.be.false
     })
 
@@ -36,7 +36,7 @@ describe('Timer', () => {
 
     it('#stop', () => {
       Timer.start(25*60)
-      expect( Timer.stop() ).to.be.ok
+      expect( Timer.stop() ).to.eql( 0 )
     })
 
     it('#getRemaining', () => {
