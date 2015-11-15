@@ -1,8 +1,8 @@
 'use strict'
-import React, {Component} from 'react'
 import Pomodoro from '../components/Pomodoro'
 import TodoList from '../components/TodoList'
 import * as actions from '../actions'
+import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
