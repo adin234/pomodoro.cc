@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class Timer extends Component {
   render () {
@@ -7,4 +7,7 @@ export default class Timer extends Component {
               <pre>{timer}</pre>
             </div>
   }
+}
+Timer.propTypes = {
+  timer: PropTypes.string.isRequired
 }

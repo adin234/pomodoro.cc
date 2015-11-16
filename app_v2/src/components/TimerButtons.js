@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class TimerButtons extends Component {
   render () {
@@ -10,4 +10,7 @@ export default class TimerButtons extends Component {
               <pre onClick={() => actions.stopTimer()}>stopTimer</pre>
             </div>
   }
+}
+TimerButtons.propTypes = {
+  actions: PropTypes.object.isRequired
 }

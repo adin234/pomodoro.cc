@@ -1,6 +1,6 @@
 require('./Profile.styl')
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class Profile extends Component {
   render () {
@@ -13,4 +13,7 @@ export default class Profile extends Component {
               <img src={avatar}/> <span>{username}</span>
             </div>
   }
+}
+Profile.propTypes = {
+  user: PropTypes.object.isRequired
 }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class SoundSettings extends Component {
   render () {
@@ -10,4 +10,8 @@ export default class SoundSettings extends Component {
               <button onClick={()=>actions.toggleRingSound()}>ring</button>
             </div>
   }
+}
+SoundSettings.propTypes = {
+  actions: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
 }

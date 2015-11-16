@@ -1,5 +1,5 @@
 const TODO_INPUT = 'TODO_INPUT'
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Todo from './Todo'
 
 export default class TodoList extends Component {
@@ -34,4 +34,8 @@ export default class TodoList extends Component {
               <input ref={TODO_INPUT} onKeyDown={this.onKeyDown.bind(this)}/>
             </div>
   }
+}
+TodoList.propTypes = {
+  todos: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
 }
