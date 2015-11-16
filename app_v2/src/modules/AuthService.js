@@ -1,5 +1,11 @@
 var axios = require('axios')
 
-export function authenticate(){
+const AuthService = {
+  authenticate: authenticate
+}
+
+export default AuthService
+
+function authenticate(){
   return axios.get('/auth/info')
 }
