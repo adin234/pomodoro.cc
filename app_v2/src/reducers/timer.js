@@ -8,10 +8,12 @@ const title = 'Pomodoro.cc - Time tracking with the Pomodoro technique'
 export default function timer(state:TimerState='00:00', action:Action):TimerState{
   switch(action.type){
   case START_TIMER: {
+    if( Timer.isInProgress() ){ return state }
     const remaining = Timer.start(action.payload.minutes*60)
     return format(remaining)
   }
   case RESUME_TIMER: {
+    if( Timer.isInProgress() ){ return state }
     const remaining = Timer.start(action.payload.remaining)
     return format(remaining)
   }
