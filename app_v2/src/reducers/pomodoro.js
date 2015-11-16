@@ -6,6 +6,9 @@ export const defaultState = {}
 export default function pomodoro(state:PomodoroState=defaultState, action:Action):PomodoroState {
   switch(action.type) {
   case START_TIMER: {
+    if( state.minutes !== undefined ){
+      return state
+    }
     return action.payload
   }
   case STOP_TIMER: {
