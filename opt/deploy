@@ -18,6 +18,8 @@ echo "--> pushing main to docker hub"
 docker push christianfei/pomodoro-main
 echo "--> pushing app to docker hub"
 docker push christianfei/pomodoro-app
+echo "--> pushing app_v2 to docker hub"
+docker push christianfei/pomodoro-app_v2
 echo "--> pushing api to docker hub"
 docker push christianfei/pomodoro-api
 echo "--> pushing api_v2 to docker hub"

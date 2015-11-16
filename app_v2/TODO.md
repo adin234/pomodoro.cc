@@ -1,0 +1,1 @@
+- [ ] refactor timer and pomodoro reducer into one
