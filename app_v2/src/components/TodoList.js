@@ -1,3 +1,4 @@
+require('./TodoList.styl')
 const TODO_INPUT = 'TODO_INPUT'
 import React, {Component, PropTypes} from 'react'
 import Todo from './Todo'
@@ -25,8 +26,8 @@ export default class TodoList extends Component {
 
   render () {
     const {todos, actions} = this.props
-    return  <div>
-              <div>
+    return  <div className="todolist-container">
+              <div className="todolist">
                 {todos.map((todo) => {
                   return <Todo key={todo.text} todo={todo} actions={actions}/>
                 })}

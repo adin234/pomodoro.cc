@@ -1,3 +1,4 @@
+require('./Todo.styl')
 import React, {Component, PropTypes} from 'react'
 
 export default class Todo extends Component {
@@ -8,9 +9,9 @@ export default class Todo extends Component {
 
   render () {
     const {todo} = this.props
-    return  <div>
+    return  <div className="todo">
+              <i onClick={()=>this.deleteTodo(todo)} className="ion-checkmark-round"/>
               {todo.text}
-              <span onClick={()=>this.deleteTodo(todo)}>&nbsp;X</span>
             </div>
   }
 }
