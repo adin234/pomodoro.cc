@@ -36,6 +36,6 @@ export default class TodoList extends Component {
   }
 }
 TodoList.propTypes = {
-  todos: PropTypes.object.isRequired,
+  todos: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
 }
