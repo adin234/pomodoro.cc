@@ -44,6 +44,7 @@ module.exports = function(production){
     indexPagePlugin: new HtmlWebpackPlugin({
                             inject: true,
                             base: base,
+                            title: 'Pomodoro.cc - Time tracking with the Pomodoro technique',
                             filename: 'index.html',
                             template: './src/index_template.html'
                           })

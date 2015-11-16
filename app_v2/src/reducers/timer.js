@@ -3,6 +3,8 @@ import Timer from '../modules/Timer'
 import TimeFormatter from '../modules/TimeFormatter'
 import {START_TIMER, RESUME_TIMER, STOP_TIMER, TICK_TIMER} from '../actions/timer'
 
+const title = 'Pomodoro.cc - Time tracking with the Pomodoro technique'
+
 export default function timer(state:TimerState='00:00', action:Action):TimerState{
   switch(action.type){
   case START_TIMER: {
@@ -15,10 +17,13 @@ export default function timer(state:TimerState='00:00', action:Action):TimerStat
   }
   case STOP_TIMER: {
     const remaining = Timer.stop()
+    document.title = title
     return format(remaining)
   }
   case TICK_TIMER: {
-    return format(action.payload.remaining)
+    const remaining = format(action.payload.remaining)
+    document.title = `${remaining} - ${title}`
+    return remaining
   }
   }
   return state
