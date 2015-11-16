@@ -1,4 +1,3 @@
-'use strict'
 import Pomodoro from '../components/Pomodoro'
 import TodoList from '../components/TodoList'
 import SoundSettings from '../components/SoundSettings'
