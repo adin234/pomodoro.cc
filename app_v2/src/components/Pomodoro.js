@@ -4,14 +4,15 @@ import TimerButtons from './TimerButtons'
 
 export default class Pomodoro extends Component {
   render () {
-    const {timer, actions} = this.props
+    const {timer, pomodoro, actions} = this.props
     return  <div>
               <Timer timer={timer}/>
-              <TimerButtons actions={actions}/>
+              <TimerButtons pomodoro={pomodoro} actions={actions}/>
             </div>
   }
 }
 Pomodoro.propTypes = {
   timer: PropTypes.string.isRequired,
+  pomodoro: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 }

@@ -1,16 +1,24 @@
+require('./TimerButtons.styl')
 import React, {Component, PropTypes} from 'react'
 
 export default class TimerButtons extends Component {
+  startStopTimer (minutes, type) {
+    const {actions, pomodoro} = this.props
+    actions.stopTimer()
+    if( pomodoro.minutes !== minutes ) {
+      actions.startTimer(minutes, type)
+    }
+  }
+
   render () {
-    const {actions} = this.props
-    return  <div>
-              <pre onClick={() => actions.startTimer(25,'pomodoro')}>25min</pre>
-              <pre onClick={() => actions.startTimer(5,'break')}>5min</pre>
-              <pre onClick={() => actions.startTimer(15,'break')}>15min</pre>
-              <pre onClick={() => actions.stopTimer()}>stopTimer</pre>
+    return  <div className="timer-buttons-container">
+              <button onClick={() => this.startStopTimer(25,'pomodoro')}>25min</button>
+              <button onClick={() => this.startStopTimer(5,'break')}>5min</button>
+              <button onClick={() => this.startStopTimer(15,'break')}>15min</button>
             </div>
   }
 }
 TimerButtons.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  pomodoro: PropTypes.object.isRequired,
 }
