@@ -15,3 +15,11 @@ type Settings = {
   tickSoundEnabled: boolean,
   ringSoundEnabled: boolean,
 }
+
+type User = {
+  _id: string,
+  apikey: string,
+  id: number,
+  avatar: string,
+  username: string
+}

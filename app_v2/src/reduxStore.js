@@ -2,6 +2,7 @@ import timer from './reducers/timer'
 import todos from './reducers/todos'
 import pomodoro from './reducers/pomodoro'
 import settings from './reducers/settings'
+import user from './reducers/user'
 import {applyMiddleware, combineReducers, createStore, compose} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
@@ -20,6 +21,7 @@ const store = (function() {
     todos,
     pomodoro,
     settings,
+    user,
   })
 
   return storeWithPersistence(reducer)
