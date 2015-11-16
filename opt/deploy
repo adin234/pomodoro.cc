@@ -7,6 +7,7 @@ echo "<== DEPLOY"
 
 echo "--> building app"
 PRODUCTION=true app/opt/build
+PRODUCTION=true app_v2/opt/build
 
 echo "--> building containers"
 opt/docker.build
