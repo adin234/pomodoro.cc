@@ -10,7 +10,7 @@ export default class Profile extends Component {
       return  null
     }
     return  <div className="profile">
-              <img src={avatar}/>
+              <img className="item" src={avatar}/>
             </div>
   }
 }

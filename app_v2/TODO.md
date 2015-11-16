@@ -1,2 +1,4 @@
+- [ ] Fix overwriting of pomodoro data
 - [ ] refactor timer and pomodoro reducer into one
 - [ ] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
+- [ ] remove state reset when startTimer action is fired but timer is in progress.

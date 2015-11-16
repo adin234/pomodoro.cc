@@ -26,7 +26,7 @@ module.exports = function(production){
     },
     // styles
     {
-      test: /\.styl$/,
+      test: /\.(styl|css)$/,
       loader: "style!css!autoprefixer-loader?browsers=last 2 version!stylus-loader",
     },
     // and font files - embed them if possible

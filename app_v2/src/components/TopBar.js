@@ -1,18 +1,22 @@
+require('./TopBar.styl')
+
 import Profile from './Profile'
+import NavigationBar from './NavigationBar'
 import LoginLogout from './LoginLogout'
 import React, {Component, PropTypes} from 'react'
 
-export default class Header extends Component {
+export default class TopBar extends Component {
   render () {
     const {user, actions} = this.props
-    return  <div>
+    return  <div className="top-bar">
+              <NavigationBar/>
               <LoginLogout user={user}/>
               <Profile user={user}/>
             </div>
   }
 }
 
-Header.propTypes = {
+TopBar.propTypes = {
   user: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 }

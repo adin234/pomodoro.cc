@@ -5,9 +5,11 @@ export default class LoginLogout extends Component {
     const {user} = this.props
     const {avatar} = user
     if( avatar ) {
-      return  <a href="/auth/logout">Logout</a>
+      return  <div className="login-logout">
+                <a href="/auth/logout">Logout</a>
+              </div>
     }
-    return  <div>
+    return  <div className="login-logout">
               <a href="/auth/twitter" target="_self">
                 <i className="icon ion-social-twitter"></i>
               </a>
