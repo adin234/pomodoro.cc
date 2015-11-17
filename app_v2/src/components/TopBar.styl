@@ -1,6 +1,11 @@
+@import '../styles/vars'
+@import '../styles/layout'
+
 .top-bar
-  background color_white
+  @extends .container
+  background white
   overflow hidden
+  border-bottom 1px solid rgba(49,78,95,0.075)
 
   .login-logout, .profile
     float right
@@ -9,32 +14,3 @@
     text-align center
     display inline-block
     padding 1.3rem
-
-//   .menu
-//     display inline-block
-//     list-style-type none
-//     font-size 0.8em
-//     margin 0
-//     padding 0
-//     li
-//       display inline-block
-//   a
-//     padding 1.1rem 0.5rem
-//     min-width 2.5rem
-//     text-align center
-//     border-bottom 3px solid transparent
-//     &:hover, &:focus, &.active
-//       text-decoration none
-//       border-bottom 3px solid white
-//       background-color transparent
-
-//   .brand
-//     margin-left -0.5rem
-
-// #main-header
-//   *
-//     color white
-
-//   header[role=header]
-//     background none
-//     border-bottom none

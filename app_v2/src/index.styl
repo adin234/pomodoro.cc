@@ -1,15 +1,18 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
 /* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+html
+  box-sizing border-box
+
+*, *:before, *:after
+  box-sizing inherit
 
 body
-  font 14px 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font 14px 'Lato', helvetica, arial, sans-serif
+
   line-height 1.4em
   color #4d4d4d
   font-smoothing antialiased
   font-weight 300
+
+@import 'styles/typography'
+@import 'styles/layout'

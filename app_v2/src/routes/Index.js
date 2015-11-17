@@ -12,9 +12,11 @@ class Index extends Component {
     const {timer, todos, settings, user, pomodoro, actions} = this.props
     return  <div>
               <TopBar user={user} actions={actions}/>
-              <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
-              <TodoList todos={todos} actions={actions}/>
-              <SoundSettings settings={settings} actions={actions}/>
+              <div className="content">
+                <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
+                <SoundSettings settings={settings} actions={actions}/>
+                <TodoList todos={todos} actions={actions}/>
+              </div>
             </div>
   }
 }
