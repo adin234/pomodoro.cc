@@ -7,16 +7,16 @@ export default class Todo extends Component {
     actions.deleteTodo(todo)
   }
 
-  completeTodo (todo) {
+  toggleCompleteTodo (todo) {
     const {actions} = this.props
-    actions.completeTodo(todo)
+    actions.toggleCompleteTodo(todo)
   }
 
   render () {
     const {todo} = this.props
     const className = "todo " + (todo.completed?"completed":"")
     return  <li className={className}>
-              <input className="toggle" type="checkbox" onClick={()=>this.completeTodo(todo)}/>
+              <input className="toggle" type="checkbox" onClick={()=>this.toggleCompleteTodo(todo)}/>
               <label>{todo.text}</label>
               <button onClick={()=>this.deleteTodo(todo)} className="destroy"></button>
             </li>

@@ -1,5 +1,5 @@
 /*@flow*/
-import {ADD_TODO, DELETE_TODO, COMPLETE_TODO} from '../actions/todos'
+import {ADD_TODO, DELETE_TODO, TOGGLE_COMPLETE_TODO} from '../actions/todos'
 
 export default function todos(state:TodoState=[], action:Action):TodoState {
   switch(action.type){
@@ -14,14 +14,14 @@ export default function todos(state:TodoState=[], action:Action):TodoState {
       return todo.text !== action.payload.text
     })
   }
-  case COMPLETE_TODO: {
+  case TOGGLE_COMPLETE_TODO: {
     return state.map((todo) => {
       if( todo !== action.payload ) {
         return todo
       }
       return {
         ...todo,
-        completed: true
+        completed: !todo.completed
       }
     })
   }
