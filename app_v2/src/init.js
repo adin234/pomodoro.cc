@@ -11,7 +11,9 @@ export default function init() {
   reduxStore.dispatch(authenticateUser())
 
   Timer.on('tick', (remaining) => {
-    Sounds.startTickingSound()
+    if( reduxStore.getState().settings.tickSoundEnabled ){
+      Sounds.startTickingSound()
+    }
     reduxStore.dispatch(tickTimer(remaining))
   })
 

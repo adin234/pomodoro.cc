@@ -29,8 +29,6 @@ var tickSound = new Buzz.sound('tick', {
   formats: ['ogg','mp3']
 })
 
-window.tickSound = tickSound
-
 function tickSoundEnabled(){
   return !tickSound.isMuted()
 }
@@ -41,6 +39,7 @@ function ringSoundEnabled(){
 
 function startTickingSound(){
   if( tickSound.isPaused() ) {
+    tickSound.unmute()
     tickSound.play()
   }
 }
