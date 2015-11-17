@@ -1,5 +1,5 @@
 import todos from './todos'
-import {addTodo, deleteTodo} from '../actions'
+import {addTodo, deleteTodo, completeTodo} from '../actions'
 
 const todo = {completed:false,text:'i am todo'}
 const todo2 = {completed:true,text:'i am todo2'}
@@ -23,5 +23,15 @@ describe('todos reducer', () => {
     expect(
       todos([todo2], deleteTodo(todo2))
     ).to.deep.eql( [] )
+  })
+
+  it('completes todo', () => {
+    const todoCompleted = {
+      ...todo,
+      completed: true
+    }
+    expect(
+      todos([todo], completeTodo(todo))
+    ).to.deep.eql( [todoCompleted] )
   })
 })
