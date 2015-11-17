@@ -26,13 +26,13 @@ export default class TodoList extends Component {
 
   render () {
     const {todos, actions} = this.props
-    return  <div className="todolist-container">
-              <div className="todolist">
+    return  <div className="todo-list-container">
+              <input className="todo-input" placeholder="What do you need to do?" ref={TODO_INPUT} onKeyDown={this.onKeyDown.bind(this)}/>
+              <ul className="todo-list">
                 {todos.map((todo) => {
                   return <Todo key={todo.text} todo={todo} actions={actions}/>
                 })}
-              </div>
-              <input ref={TODO_INPUT} onKeyDown={this.onKeyDown.bind(this)}/>
+              </ul>
             </div>
   }
 }

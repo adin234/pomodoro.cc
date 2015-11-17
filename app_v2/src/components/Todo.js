@@ -9,10 +9,11 @@ export default class Todo extends Component {
 
   render () {
     const {todo} = this.props
-    return  <div className="todo">
-              <i onClick={()=>this.deleteTodo(todo)} className="ion-checkmark-round"/>
-              {todo.text}
-            </div>
+    return  <li className="todo">
+              <input className="toggle" type="checkbox"/>
+              <label>{todo.text}</label>
+              <button onClick={()=>this.deleteTodo(todo)} className="destroy"></button>
+            </li>
   }
 }
 Todo.propTypes = {
