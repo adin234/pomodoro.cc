@@ -1,5 +1,6 @@
 /*@flow*/
 import Timer from '../modules/Timer'
+import TimeFormatter from '../modules/TimeFormatter'
 import NOOP from './'
 export const START_TIMER = 'START_TIMER'
 export const RESUME_TIMER = 'RESUME_TIMER'
@@ -48,6 +49,7 @@ export function stopTimer():Action {
 }
 
 export function tickTimer(remaining:number):Action {
-  document.title = `${remaining} - ${title}`
+  const formatted = TimeFormatter.formatSeconds(remaining)
+  document.title = `${formatted} - ${title}`
   return {type:TICK_TIMER, payload:{remaining}}
 }
