@@ -1,5 +1,5 @@
 - [x] fix inconsistency with completed todo state
-- [ ] fix document title when timer ended
-- [ ] integrate api
-- [ ] refactor timer and pomodoro reducer into one
+- [-] remove side-effects from timer store
+- [ ] thunk for Sound effects to keep state consistent
+- [x] fix document title when timer ended
 - [ ] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
