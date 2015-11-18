@@ -8,7 +8,7 @@ layout: post
 
 Using ES6, I create a file `fixtures/stubs/ngWindow.js` with the following content:
 
-```
+<pre>
 import angular from 'angular'
 
 export const ngWindow = {
@@ -16,13 +16,13 @@ export const ngWindow = {
     href: ''
   }
 }
-```
+</pre>
 
 This provides us the basic structure of the `$window` object, you can of course adapt it to your needs.
 
 Then, for example in a unit test, I include and use it in the following way:
 
-```
+<pre>
 import {ngWindow} from '../../fixtures/stubs/ngWindow'
 
 ...
@@ -51,6 +51,6 @@ describe('PurchaseProduct', () => {
   })
 
 
-  
+
 })
-```
+</pre>
