@@ -15,7 +15,7 @@ export default {
   login:   {name:'login',url:'/login',templateUrl:'LoginCtrl.html',controller:'LoginCtrl as vm'},
   ...
 }
-```
+</pre>
 
 And in the config phase of your Angular application you would configure the router like so:
 
