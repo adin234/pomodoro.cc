@@ -3,5 +3,6 @@
 - [x] fix inconsistency with settings state and sounds
 - [ ] fix inconsistency with completed todo state
 - [ ] fix document title when timer ended
+- [ ] integrate api
 - [ ] refactor timer and pomodoro reducer into one
 - [ ] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
