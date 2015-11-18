@@ -7,7 +7,7 @@ export default class Todo extends Component {
     const className = "todo " + (todo.completed?"completed":"")
     return  <li className={className}>
               <input className="toggle" type="checkbox"
-                checked={todo.completed}
+                defaultChecked={todo.completed}
                 onClick={()=>actions.toggleCompleteTodo(todo)}/>
               <label>{todo.text}</label>
               <button
