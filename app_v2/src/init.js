@@ -1,7 +1,11 @@
 import Timer       from './modules/Timer'
 import Sounds      from './modules/Sounds'
 import reduxStore  from './reduxStore'
-import {tickTimer, resumeTimer, stopTimer, authenticateUser}   from './actions'
+import {startTimer, tickTimer, resumeTimer, stopTimer, endTimer, authenticateUser}   from './actions'
+
+window.reduxStore = reduxStore
+window.startTimer = startTimer
+window.resumeTimer = resumeTimer
 
 export default function init() {
   const pomodoro = reduxStore.getState().pomodoro
@@ -16,7 +20,7 @@ export default function init() {
   })
 
   Timer.on('end', () => {
-    reduxStore.dispatch(stopTimer())
+    reduxStore.dispatch(endTimer())
     Sounds.stopTickingSound()
     Sounds.startRingingSound()
   })

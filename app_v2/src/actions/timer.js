@@ -1,6 +1,7 @@
 /*@flow*/
 export const START_TIMER = 'START_TIMER'
 export const RESUME_TIMER = 'RESUME_TIMER'
+export const END_TIMER = 'END_TIMER'
 export const STOP_TIMER = 'STOP_TIMER'
 export const TICK_TIMER = 'TICK_TIMER'
 
@@ -21,6 +22,10 @@ export function resumeTimer(pomodoro:Object):Action {
   }
   remaining = remaining << 0
   return {type:RESUME_TIMER, payload:{remaining}}
+}
+
+export function endTimer():Action {
+  return {type:END_TIMER, payload:{}}
 }
 
 export function stopTimer():Action {

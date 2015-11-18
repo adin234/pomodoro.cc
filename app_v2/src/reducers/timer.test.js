@@ -1,5 +1,5 @@
 import timer from './timer'
-import {startTimer, resumeTimer, stopTimer, tickTimer} from '../actions'
+import {startTimer, resumeTimer, endTimer, tickTimer} from '../actions'
 
 const dummyAction = {type:'DUMMY', payload:{}}
 
@@ -26,7 +26,7 @@ describe('timer reducer', () => {
 
   it('stops timer', () => {
     expect(
-      timer('12:34', stopTimer())
+      timer('12:34', endTimer())
     ).to.eql( '00:00' )
   })
 

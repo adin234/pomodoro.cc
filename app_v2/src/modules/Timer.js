@@ -23,7 +23,7 @@ function start(_seconds){
 
   startedAt = Date.now()
   seconds = _seconds
-  interval = setInterval(tick, 500)
+  interval = setInterval(tick, 1000)
   setTimeout(tick, 50)
   events.start.forEach(function(callback){
     callback(seconds)
@@ -74,13 +74,14 @@ function off(event, fn){
 
 function tick(){
   var remaining = getRemaining()
-  events.tick.forEach((cb) => {
-    if( cb instanceof Function )
-      cb(remaining)
-  })
   if( remaining <= 0 ){
-    stop()
+    return stop()
   }
+  events.tick.forEach((cb) => {
+    if( cb instanceof Function ){
+      cb(remaining)
+    }
+  })
 }
 
 function intValue(number){

@@ -1,4 +1,4 @@
-import {startTimer, resumeTimer, stopTimer, tickTimer} from './timer'
+import {startTimer, resumeTimer, endTimer, tickTimer} from './timer'
 describe('actions timer', () => {
   let clock
   beforeEach(() => {

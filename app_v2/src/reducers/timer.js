@@ -1,7 +1,7 @@
 /*@flow*/
 import Timer from '../modules/Timer'
 import TimeFormatter from '../modules/TimeFormatter'
-import {START_TIMER, RESUME_TIMER, STOP_TIMER, TICK_TIMER} from '../actions/timer'
+import {START_TIMER, RESUME_TIMER, STOP_TIMER, END_TIMER, TICK_TIMER} from '../actions/timer'
 
 const title = 'Pomodoro.cc - Time tracking with the Pomodoro technique'
 
@@ -15,6 +15,11 @@ export default function timer(state:TimerState='00:00', action:Action):TimerStat
   case RESUME_TIMER: {
     if( Timer.isInProgress() ){ return state }
     const remaining = Timer.start(action.payload.remaining)
+    return format(remaining)
+  }
+  case END_TIMER: {
+    const remaining = 0
+    document.title = title
     return format(remaining)
   }
   case STOP_TIMER: {
