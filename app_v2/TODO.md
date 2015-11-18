@@ -1,7 +1,4 @@
-- [x] Fix overwriting of pomodoro data
-- [x] remove state reset when startTimer action is fired but timer is in progress.
-- [x] fix inconsistency with settings state and sounds
-- [ ] fix inconsistency with completed todo state
+- [x] fix inconsistency with completed todo state
 - [ ] fix document title when timer ended
 - [ ] integrate api
 - [ ] refactor timer and pomodoro reducer into one
