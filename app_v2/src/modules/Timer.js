@@ -13,6 +13,7 @@ let interval = undefined
 const events = {
   tick: [],
   end: [],
+  stop: [],
   start: [],
 }
 
@@ -31,11 +32,12 @@ function start(_seconds){
   return seconds
 }
 
-function stop(){
+function stop(natural){
   if( startedAt ){
-    events.end.forEach((cb) => {
-      if( cb instanceof Function )
+    events[natural?'end':'stop'].forEach((cb) => {
+      if( cb instanceof Function ){
         cb(0)
+      }
     })
     startedAt = undefined
     seconds = undefined
@@ -75,7 +77,7 @@ function off(event, fn){
 function tick(){
   var remaining = getRemaining()
   if( remaining <= 0 ){
-    return stop()
+    return stop(true)
   }
   events.tick.forEach((cb) => {
     if( cb instanceof Function ){

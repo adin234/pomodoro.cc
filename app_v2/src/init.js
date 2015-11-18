@@ -24,4 +24,8 @@ export default function init() {
     Sounds.stopTickingSound()
     Sounds.startRingingSound()
   })
+  Timer.on('stop', () => {
+    Sounds.stopTickingSound()
+    Sounds.startRingingSound()
+  })
 }

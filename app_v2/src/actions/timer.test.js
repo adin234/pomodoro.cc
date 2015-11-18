@@ -1,5 +1,13 @@
 import {startTimer, resumeTimer} from './timer'
 describe('actions timer', () => {
+  let clock
+  beforeEach(() => {
+    clock = sinon.useFakeTimers()
+  })
+  after(function () {
+    clock.restore()
+  })
+
   it('startTimer - sets "started" property to payload', () => {
     const minutes = 25, type = 'pomodoro'
     const expectedStartedAt = new Date()
