@@ -74,10 +74,3 @@ function saveAndDispatch(action) {
     })
   }
 }
-
-function cancel(pomodoro) {
-  return {
-    ...pomodoro,
-    cancelledAt: new Date,
-  }
-}
