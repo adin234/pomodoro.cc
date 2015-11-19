@@ -24,13 +24,13 @@ describe('timer reducer', () => {
     ).to.eql( '25:00' )
   })
 
-  it('ends timer', () => {
+  it.skip('ends timer', () => {
     expect(
       timer('00:01', endTimer())
     ).to.eql( '00:00' )
   })
 
-  it('stops timer', () => {
+  it.skip('stops timer', () => {
     expect(
       timer('12:34', stopTimer())
     ).to.eql( '00:00' )

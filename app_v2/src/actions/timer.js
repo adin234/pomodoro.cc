@@ -1,7 +1,8 @@
 /*@flow*/
 import Timer from '../modules/Timer'
 import TimeFormatter from '../modules/TimeFormatter'
-import NOOP from './'
+import PomodoroService from '../modules/PomodoroService'
+import {NOOP} from './'
 export const START_TIMER = 'START_TIMER'
 export const RESUME_TIMER = 'RESUME_TIMER'
 export const END_TIMER = 'END_TIMER'
@@ -39,17 +40,44 @@ export function resumeTimer(pomodoro:Object):Action {
 
 export function endTimer():Action {
   document.title = title
-  return {type:END_TIMER, payload:{}}
+  return saveAndDispatch(END_TIMER)
 }
 
 export function stopTimer():Action {
+  if( !Timer.isInProgress() ) {
+    return noop()
+  }
   document.title = title
   Timer.stop()
-  return {type:STOP_TIMER, payload:{}}
+  return saveAndDispatch(STOP_TIMER)
 }
 
 export function tickTimer(remaining:number):Action {
   const formatted = TimeFormatter.formatSeconds(remaining)
   document.title = `${formatted} - ${title}`
   return {type:TICK_TIMER, payload:{remaining}}
+}
+
+function saveAndDispatch(action) {
+  return (dispatch, getState) => {
+    let pomodoro = getState().pomodoro
+    dispatch({type:action, payload:{}})
+
+    if( action === STOP_TIMER ){
+      pomodoro.cancelledAt= new Date
+    }
+
+    PomodoroService.create(pomodoro)
+    .then(() => {
+    })
+    .catch(() => {
+    })
+  }
+}
+
+function cancel(pomodoro) {
+  return {
+    ...pomodoro,
+    cancelledAt: new Date,
+  }
 }

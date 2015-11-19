@@ -1,5 +1,6 @@
 - [x] fix inconsistency with completed todo state
-- [-] remove side-effects from timer store
-- [ ] thunk for Sound effects to keep state consistent
+- [x] remove side-effects from timer store
 - [x] fix document title when timer ended
+- [ ] rename stopTimer to forceEndTimer
+- [ ] thunk for Sound effects to keep state consistent
 - [ ] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
