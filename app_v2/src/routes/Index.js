@@ -30,23 +30,15 @@ Index.propTypes = {
   user: PropTypes.object.isRequired,
 }
 
-function mapStateToProps(state){
-  return {
-    todos: state.todos,
-    settings: state.settings,
-    pomodoro: state.pomodoro,
-    timer: state.timer,
-    user: state.user,
-  }
-}
-
-function mapDispatchToProps(dispatch){
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  (state) => {
+    return {
+      todos: state.todos,
+      settings: state.settings,
+      pomodoro: state.pomodoro,
+      timer: state.timer,
+      user: state.user,
+    }
+  },
+  (dispatch) => {return {actions:bindActionCreators(actions,dispatch)}}
 )(Index)
