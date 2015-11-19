@@ -6,7 +6,7 @@ describe('Timer', () => {
     clock = sinon.useFakeTimers(1000*60*60)
   })
   afterEach(() => {
-    Timer.stop()
+    Timer.forceEnd()
     clock.restore()
   })
 
@@ -25,7 +25,7 @@ describe('Timer', () => {
     it('#isInProgress', () => {
       Timer.start(25*60)
       expect( Timer.isInProgress() ).to.be.true
-      Timer.stop()
+      Timer.forceEnd()
       expect( Timer.isInProgress() ).to.be.false
     })
 
@@ -34,9 +34,9 @@ describe('Timer', () => {
       expect( Timer.start(25*60) ).not.to.be.ok
     })
 
-    it('#stop', () => {
+    it('#forceEnd', () => {
       Timer.start(25*60)
-      expect( Timer.stop() ).to.eql( 0 )
+      expect( Timer.forceEnd() ).to.eql( 0 )
     })
 
     it('#getRemaining', () => {
@@ -69,12 +69,12 @@ describe('Timer', () => {
       expect( callback.calledWith(25*60) ).to.be.true
     })
 
-    it('#on "tick" stops when timer is stopped', () => {
+    it('#on "tick" forceEnds when timer is forceEndped', () => {
       Timer.on('tick', callback)
       Timer.start(25*60)
       clock.tick(1000)
       expect( callback.called ).to.be.true
-      Timer.stop()
+      Timer.forceEnd()
       callback.reset()
       clock.tick(1000)
       expect( callback.called ).not.to.be.true

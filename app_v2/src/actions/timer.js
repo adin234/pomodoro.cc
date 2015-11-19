@@ -43,12 +43,12 @@ export function endTimer():Action {
   return saveAndDispatch(END_TIMER)
 }
 
-export function stopTimer():Action {
+export function forceEndTimer():Action {
   if( !Timer.isInProgress() ) {
     return noop()
   }
   document.title = title
-  Timer.stop()
+  Timer.forceEnd()
   return saveAndDispatch(STOP_TIMER)
 }
 

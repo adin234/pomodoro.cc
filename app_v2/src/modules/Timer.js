@@ -1,6 +1,6 @@
 export default {
   start: start,
-  stop: stop,
+  forceEnd: forceEnd,
   getRemaining: getRemaining,
   isInProgress: isInProgress,
   on: on,
@@ -13,7 +13,7 @@ let interval = undefined
 const events = {
   tick: [],
   end: [],
-  stop: [],
+  forceEnd: [],
   start: [],
 }
 
@@ -32,9 +32,9 @@ function start(_seconds){
   return seconds
 }
 
-function stop(natural){
+function forceEnd(natural){
   if( startedAt ){
-    events[natural?'end':'stop'].forEach((cb) => {
+    events[natural?'end':'forceEnd'].forEach((cb) => {
       if( cb instanceof Function ){
         cb(0)
       }
@@ -77,7 +77,7 @@ function off(event, fn){
 function tick(){
   var remaining = getRemaining()
   if( remaining <= 0 ){
-    return stop(true)
+    return forceEnd(true)
   }
   events.tick.forEach((cb) => {
     if( cb instanceof Function ){

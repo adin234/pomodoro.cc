@@ -30,7 +30,7 @@ export default function init() {
     NProgress.set(1 - remaining/(state.pomodoro.minutes*60))
   })
 
-  Timer.on('stop', cleanupTimer)
+  Timer.on('forceEnd', cleanupTimer)
   Timer.on('end', () => {
     reduxStore.dispatch(endTimer())
     cleanupTimer()

@@ -1,5 +1,5 @@
 import pomodoro, {defaultState} from './pomodoro'
-import {startTimer, stopTimer} from '../actions'
+import {startTimer, forceEndTimer} from '../actions'
 
 describe('pomodoro reducer', () => {
   it('sets state only if not set', () => {
@@ -16,8 +16,8 @@ describe('pomodoro reducer', () => {
     ).to.deep.eql(currentState)
   })
 
-  it('when timer is stopped or ends resets store', () => {
-    let action = stopTimer()
+  it('when timer is forceEnded or ends resets store', () => {
+    let action = forceEndTimer()
     expect(
       pomodoro({}, action)
     ).to.deep.eql(defaultState)
