@@ -58,7 +58,8 @@ describe('Timer', () => {
       Timer.on('tick', callback)
       Timer.start(25*60)
       clock.tick(100)
-      expect( callback.called ).to.be.true
+      expect( callback ).to.have.been.called
+      expect( callback ).to.have.been.calledWith(25*60,25*60)
     })
 
     it('#on "start"', () => {

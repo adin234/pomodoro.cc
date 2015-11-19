@@ -81,7 +81,7 @@ function tick(){
   }
   events.tick.forEach((cb) => {
     if( cb instanceof Function ){
-      cb(remaining)
+      cb(remaining, seconds)
     }
   })
 }
