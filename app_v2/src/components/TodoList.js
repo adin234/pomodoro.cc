@@ -18,19 +18,14 @@ export default class TodoList extends Component {
     })
   }
 
-  onEnterKeyDown (event) {
-    this.addTodo()
-  }
-
   render () {
     const {todos, actions} = this.props
     return  <div className="todo-list-container">
-              {/*<input className="todo-input" placeholder="What do you need to do?" ref={TODO_INPUT} onKeyDown={this.onKeyDown.bind(this)}/>*/}
               <TextField
                 ref={TODO_INPUT}
-                onEnterKeyDown={this.onEnterKeyDown.bind(this)}
+                onEnterKeyDown={this.addTodo.bind(this)}
                 hintText="What do you need to do?"
-                hintStyle={{fontSize:"1.3em", textAlign:"center"}}
+                hintStyle={{left: "60px",fontSize:"1.3em", textAlign:"center"}}
                 fullWidth={true}
                 inputStyle={{fontSize:"1.3em", textAlign:"center"}}
                 underlineFocusStyle={{borderColor:"grey", textAlign:"center"}}/>
