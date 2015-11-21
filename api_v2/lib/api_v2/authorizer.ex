@@ -1,5 +1,5 @@
 defmodule ApiV2.Authorizer do
-  @authorizer_url Application.get_env(:api_v2, :authorizer_url) <> "/auth/info"
+  @authorizer_url Application.get_env(:api_v2, :authorizer_url)
 
   def authorize(cookie) do
     case HTTPoison.get!(@authorizer_url, [{"cookie", cookie}]) do

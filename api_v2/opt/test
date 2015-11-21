@@ -14,9 +14,9 @@ id_for_container(){
   echo $CONTAINER_ID
 }
 
-docker run --name pomodoro-api-db-test -d mongo:latest
+docker run --name pomodoro-api-db-test --detach=true mongo:latest
 
-docker run --name pomodoro-api-sessions-test -d redis:latest redis-server
+docker run --name pomodoro-api-sessions-test --detach=true redis:latest redis-server
 
 docker run --name pomodoro-api-test \
   --detach=true \
@@ -27,12 +27,21 @@ docker run --name pomodoro-api-test \
   christianfei/pomodoro-api
 
 
+TEST_COMMAND="mix test"
+
+if [ "$TRAVIS" == "true" ]; then
+  TEST_COMMAND="mix deps.get; $TEST_COMMAND"
+fi
+
+env
+echo "--> executing: $TEST_COMMAND"
+
 docker run --rm \
   --name pomodoro-api_v2-test \
   --env MIX_ENV="test" \
   --link pomodoro-api-test:pomodoro-api \
-  -v $PROJECT_DIR/api_v2:/app \
-  christianfei/pomodoro-api_v2 sh -c 'mix test'
+  --volume $PROJECT_DIR/api_v2:/app \
+  christianfei/pomodoro-api_v2 sh -c "$TEST_COMMAND"
 
 TEST_RESULT_CODE=$?
 
