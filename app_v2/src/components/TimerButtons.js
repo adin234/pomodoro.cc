@@ -4,7 +4,9 @@ import React, {Component, PropTypes} from 'react'
 export default class TimerButtons extends Component {
   startStopTimer (minutes, type) {
     const {actions, pomodoro} = this.props
-    actions.forceEndTimer()
+    if( pomodoro.minutes ){
+      actions.forceEndTimer()
+    }
     if( pomodoro.minutes !== minutes ) {
       actions.startTimer(minutes, type)
     }

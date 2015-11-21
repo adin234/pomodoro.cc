@@ -3,11 +3,14 @@ import Timer from '../modules/Timer'
 import TimeFormatter from '../modules/TimeFormatter'
 import PomodoroService from '../modules/PomodoroService'
 import {NOOP} from './'
+import NotificationService from '../modules/NotificationService'
 export const START_TIMER = 'START_TIMER'
 export const RESUME_TIMER = 'RESUME_TIMER'
 export const END_TIMER = 'END_TIMER'
 export const STOP_TIMER = 'STOP_TIMER'
 export const TICK_TIMER = 'TICK_TIMER'
+
+window.NotificationService = NotificationService
 
 const title = 'Pomodoro.cc - Time tracking with the Pomodoro technique'
 

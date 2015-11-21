@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import reduxStore from './reduxStore'
 import Layout from './Layout'
 import Index from './routes/Index'
-import Foo from './routes/Foo'
+import Login from './routes/Login'
 
 export default class Root extends Component {
   render() {
@@ -14,7 +14,7 @@ export default class Root extends Component {
               <Router history={createBrowserHistory()}>
                 <Route path={path} component={Layout}>
                   <IndexRoute component={Index}/>
-                  <Route path='foo' component={Foo} />
+                  <Route path='login' component={Login} />
                 </Route>
               </Router>
             </Provider>

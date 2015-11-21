@@ -1,15 +1,13 @@
 require('./NavigationBar.styl')
 import React, {Component} from 'react'
+import {Link} from 'react-router'
 
 export default class NavigationBar extends Component {
   render () {
-    const links = [{
-        link:'/',element:<span className="brand">Pomodoro<span className="tld">.cc</span></span>
-      }]
     return  <div className="navigation-bar">
-              {links.map(({link,element})=> {
-                return  <a href={link}>{element}</a>
-              })}
+              <Link to="/">
+                <span className="brand">Pomodoro<span className="tld">.cc</span></span>
+              </Link>
             </div>
   }
 }
