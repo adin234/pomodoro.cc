@@ -26,7 +26,7 @@ defmodule ApiV2.Mixfile do
       {:httpoison, "~> 0.8.0"},
       {:poison, "~> 1.5"},
       {:mock, "~> 0.1.1"},
-      {:exrm, "~> 0.19.9"},
+      {:exrm, "~> 0.19.9"}
     ]
   end
 end

@@ -1,8 +1,8 @@
 defmodule FakeAuthorizer do
   def authorize(cookie) do
     case "#{cookie}" do
-      "authorized" -> true
-      _            -> false
+      "authorized" -> {:authorized, %{username: "test"}}
+      _            -> :unauthorized
     end
   end
 end

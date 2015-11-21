@@ -3,8 +3,8 @@ defmodule ApiV2.Authorizer do
 
   def authorize(cookie) do
     case HTTPoison.get!(@authorizer_url, [{"cookie", cookie}]) do
-      %HTTPoison.Response{status_code: 200, body: _, headers: _} -> true
-      %HTTPoison.Response{status_code: 401, body: _, headers: _} -> false
+      %HTTPoison.Response{status_code: 200, body: body, headers: _} -> {:authorized, body}
+      %HTTPoison.Response{status_code: 401, body: _, headers: _} -> :unauthorized
     end
   end
 end
