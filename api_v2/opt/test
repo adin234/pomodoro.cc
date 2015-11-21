@@ -17,6 +17,7 @@ id_for_container(){
 docker run --rm \
   --name pomodoro-api_v2-test \
   --env MIX_ENV="test" \
+  -v $PROJECT_DIR/api_v2:/app \
   christianfei/pomodoro-api_v2 sh -c 'mix test'
 
 TEST_RESULT_CODE=$?
