@@ -14,12 +14,26 @@ id_for_container(){
   echo $CONTAINER_ID
 }
 
+docker run --name pomodoro-api-test \
+  --restart=always \
+  --detach=true \
+  --env ENV="$ENV" \
+  --volume $PROJECT_DIR/credentials.json:/credentials.json \
+  --volume $PROJECT_DIR/shared:/shared \
+  --link pomodoro-api-sessions:pomodoro-api-sessions \
+  --link pomodoro-api-db:pomodoro-api-db \
+  christianfei/pomodoro-api
+
+
 docker run --rm \
   --name pomodoro-api_v2-test \
   --env MIX_ENV="test" \
+  --link pomodoro-api-test:pomodoro-api \
   -v $PROJECT_DIR/api_v2:/app \
   christianfei/pomodoro-api_v2 sh -c 'mix test'
 
 TEST_RESULT_CODE=$?
+
+docker rm -f pomodoro-api-test
 
 exit $TEST_RESULT_CODE
