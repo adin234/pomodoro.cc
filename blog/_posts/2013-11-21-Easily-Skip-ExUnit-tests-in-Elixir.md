@@ -22,7 +22,7 @@ This will allow us to use the `@tag :skip` annotation before a specific test you
 
 For example:
 
-```
+<pre>
 defmodule Api.Router.Test do
   use ExUnit.Case, async: true
   use Plug.Test
@@ -35,8 +35,7 @@ defmodule Api.Router.Test do
 
     assert conn.status == 401
   end
-
 end
-```
+</pre>
 
 For any question don't hesitate to tweet me [@pomodoro_cc](https://twitter.com/pomodoro_cc)
