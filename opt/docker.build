@@ -8,8 +8,6 @@ PROJECT_DIR=$(dirname $SCRIPT_DIR)
 build_container(){
   NAME=$1
   echo ""
-  echo ""
-  echo ""
   echo "----> BUILDING pomodoro-$NAME"
   docker build -t christianfei/pomodoro-$NAME $PROJECT_DIR/$NAME
 }

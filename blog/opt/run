@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT_DIR=$(dirname `readlink -f $0`)
+PROJECT_DIR=$(readlink -f $SCRIPT_DIR/../../)
+if [ "$PROJECT_DIR" = "/" ]; then
+  PROJECT_DIR="/pomodoro.cc"
+fi
+
+docker run --name pomodoro-blog \
+  --restart=always \
+  --detach=true \
+  --volume $PROJECT_DIR/blog:/srv/jekyll \
+  jekyll/jekyll:stable \
+  jekyll server

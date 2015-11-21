@@ -15,9 +15,7 @@ id_for_container(){
 }
 
 docker run --name pomodoro-api-test \
-  --restart=always \
   --detach=true \
-  --env ENV="$ENV" \
   --volume $PROJECT_DIR/credentials.json:/credentials.json \
   --volume $PROJECT_DIR/shared:/shared \
   --link pomodoro-api-sessions:pomodoro-api-sessions \
