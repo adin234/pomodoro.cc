@@ -43,12 +43,11 @@ export function resumeTimer(pomodoro:Object):Action {
 export function endTimer():Action {
   document.title = title
   NotificationCenter.emit('pomodoroEnded')
+  NotificationService.show('Timer ended', {body:'',icon:'https://pbs.twimg.com/profile_images/632545856428883968/hStIaGPQ_400x400.png'})
   return saveAndDispatch(END_TIMER)
 }
 
 export function forceEndTimer():Action {
-  NotificationCenter.emit('pomodoroEnded')
-  NotificationService.show('Timer ended', {body:'',icon:'https://pbs.twimg.com/profile_images/632545856428883968/hStIaGPQ_400x400.png'})
   if( !Timer.isInProgress() ) {
     return noop()
   }
