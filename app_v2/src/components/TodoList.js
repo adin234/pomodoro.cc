@@ -29,11 +29,10 @@ export default class TodoList extends Component {
               <TextField
                 ref={TODO_INPUT}
                 onEnterKeyDown={this.onEnterKeyDown.bind(this)}
-                hintText=""
+                hintText="What do you need to do?"
+                hintStyle={{fontSize:"1.3em", textAlign:"center"}}
                 fullWidth={true}
                 inputStyle={{fontSize:"1.3em", textAlign:"center"}}
-                floatingLabelStyle={{color: "grey", fontSize:"1.3em", textAlign:"center"}}
-                floatingLabelText="What do you need to do?"
                 underlineFocusStyle={{borderColor:"grey", textAlign:"center"}}/>
 
               <ul className="todo-list">
