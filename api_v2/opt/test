@@ -33,5 +33,6 @@ docker run --rm \
 TEST_RESULT_CODE=$?
 
 docker rm -f pomodoro-api-test
+docker rm -f pomodoro-api_v2-test
 
 exit $TEST_RESULT_CODE
