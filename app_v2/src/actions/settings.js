@@ -15,6 +15,6 @@ export function toggleRingSound():Action {
   return {type:TOGGLE_RING_SOUND, payload:{}}
 }
 
-export function grantNotificationPermission(grant):Action {
+export function grantNotificationPermission(grant:boolean):Action {
   return {type:NOTIFICATION_PERMISSION_GRANT, payload:{grant}}
 }
