@@ -3,34 +3,24 @@ machine:
     - docker
   hosts:
     pomodoro.dev: 127.0.0.1
-
 dependencies:
   cache_directories:
     - app/node_modules
     - api/node_modules
   override:
     - opt/bootstrap
-    - opt/docker.build || true
-
 test:
   override:
     - app/opt/test
+    - app_v2/opt/test
+    - opt/docker.build
     - api/opt/test
+    - api_v2/opt/test
     - opt/docker.run DEV
     - opt/docker.seed
     - app/opt/test.e2e
-
 deployment:
   production:
     branch: master
     commands:
-      - PRODUCTION=true app/opt/build
-      - opt/docker.build
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push christianfei/pomodoro-app
-      - docker push christianfei/pomodoro-api
-      - ssh pigeon@146.185.167.197 'cd /pomodoro.cc && git fetch --all && git reset --hard origin/master'
-      - ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.pull'
-      - ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.rm'
-      - ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.run'
-      - ssh pigeon@146.185.167.197 '/pomodoro.cc/opt/docker.clean || true'
+      - opt/deploy
