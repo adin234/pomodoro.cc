@@ -1,4 +1,5 @@
-import TopBar from '../components/TopBar'
+require('./Login.styl')
+import LoginLogout from '../components/LoginLogout'
 import * as actions from '../actions'
 import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
@@ -7,11 +8,8 @@ import {connect} from 'react-redux'
 class Login extends Component {
   render () {
     const {timer, todos, settings, user, pomodoro, actions} = this.props
-    return  <div>
-              <TopBar user={user} actions={actions}/>
-              <div className="content">
-                <h1>This is just a test</h1>
-              </div>
+    return  <div className="content">
+              <LoginLogout user={user}/>
             </div>
   }
 }

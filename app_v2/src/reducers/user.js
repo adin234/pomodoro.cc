@@ -4,7 +4,18 @@ import { AUTHENTICATE_USER_REQUEST,
   AUTHENTICATE_USER_FAILURE,
   authenticateUser } from '../actions'
 
-const initialState = {}
+let initialState = {}
+
+if( /^localhost/.test(window.location.host) ){
+  initialState = {
+    __v: 0,
+    _id: "56311e508a0a76010090366f",
+    apikey: "something secret, you fool",
+    avatar: "https://avatars.githubusercontent.com/u/2662706?v=3",
+    id: 2662706,
+    username: "christian-fei",
+  }
+}
 
 export default function user(state:UserState=initialState, action:Action):UserState {
   switch(action.type){

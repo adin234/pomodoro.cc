@@ -8,6 +8,6 @@ export default {
 function show(title, options){
   return new Notify(title, options).show()
 }
-function requestPermission(){
-  return Notify.requestPermission()
+function requestPermission(...args){
+  return Notify.requestPermission(...args)
 }

@@ -1,7 +1,6 @@
 import Pomodoro from '../components/Pomodoro'
 import TodoList from '../components/TodoList'
 import SoundSettings from '../components/SoundSettings'
-import TopBar from '../components/TopBar'
 import * as actions from '../actions'
 import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
@@ -10,13 +9,10 @@ import {connect} from 'react-redux'
 class Index extends Component {
   render () {
     const {timer, todos, settings, user, pomodoro, actions} = this.props
-    return  <div>
-              <TopBar user={user} actions={actions}/>
-              <div className="content">
-                <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
-                <SoundSettings settings={settings} actions={actions}/>
-                <TodoList todos={todos} actions={actions}/>
-              </div>
+    return  <div className="content">
+              <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
+              <SoundSettings settings={settings} actions={actions}/>
+              <TodoList todos={todos} actions={actions}/>
             </div>
   }
 }
