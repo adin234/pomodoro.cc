@@ -9,6 +9,7 @@ defmodule ApiV2.Supervisor do
     IO.puts "-- Supervisor started"
     children = [
       worker(ApiV2.Worker,[]),
+      worker(ApiV2.Repo, []),
     ]
     supervise(children, strategy: :one_for_one)
   end
