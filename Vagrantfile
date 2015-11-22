@@ -26,6 +26,6 @@ Vagrant.configure('2') do |config|
     d.pull_images "mongo"
     d.pull_images "jekyll/jekyll:stable"
   end
-  config.vm.provision "shell",
+  config.vm.provision "shell", run: "always",
     inline: "cd /pomodoro.cc; opt/docker.restart DEV"
 end
