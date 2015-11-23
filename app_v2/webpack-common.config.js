@@ -3,22 +3,9 @@ var StringReplacePlugin = require("string-replace-webpack-plugin");
 
 module.exports = function(production){
   var base = production ? '/beta/' : '/'
+  var segment_write_key = production ? 'DI4YQLtpCkiyMnlITlg8o3pO6UDrnmbx' : 'u8FtwJOHxRRYAfIhZOv78SGzcQta1Yty'
   return {
     loaders: [
-    {
-      test: /.*\.html$/,
-      loader: StringReplacePlugin.replace({
-        replacements: [
-          {
-            pattern: /\{SEGMENT_WRITE_KEY\}/ig,
-            replacement: function (match, p1, offset, string) {
-              console.log( '-- matched' )
-              return production ? 'DI4YQLtpCkiyMnlITlg8o3pO6UDrnmbx' : 'u8FtwJOHxRRYAfIhZOv78SGzcQta1Yty'
-            }
-          }
-        ]
-      })
-    },
     // image loader - https://www.npmjs.com/package/image-webpack-loader
     {
       test: /\.(jpe?g|png|gif|svg|ico)$/i,
@@ -59,6 +46,7 @@ module.exports = function(production){
     indexPagePlugin: new HtmlWebpackPlugin({
                             inject: true,
                             base: base,
+                            segment_write_key: segment_write_key,
                             title: 'Pomodoro.cc - Time tracking with the Pomodoro technique',
                             filename: 'index.html',
                             template: './src/index_template.html'

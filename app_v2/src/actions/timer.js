@@ -2,6 +2,7 @@
 import Timer from '../modules/Timer'
 import TimeFormatter from '../modules/TimeFormatter'
 import PomodoroService from '../modules/PomodoroService'
+import AnalyticsService from '../modules/AnalyticsService'
 import {NOOP} from './'
 import NotificationCenter from '../modules/NotificationCenter'
 import NotificationService from '../modules/NotificationService'
@@ -21,9 +22,11 @@ export function startTimer(minutes:number, type:PomodoroType):Action {
   if( Timer.isInProgress() ){ return noop() }
   Timer.start(minutes*60)
   const startedAt = new Date
+  const pomodoro = {minutes, type, startedAt}
+  AnalyticsService.track('timer-start', pomodoro)
   return {
     type:START_TIMER,
-    payload:{minutes, type, startedAt}
+    payload:pomodoro
   }
 }
 
@@ -71,6 +74,7 @@ function saveAndDispatch(action) {
       pomodoro.cancelledAt= new Date
     }
 
+    AnalyticsService.track('timer-stop', pomodoro)
     PomodoroService.create(pomodoro)
     .then(() => {
     })
