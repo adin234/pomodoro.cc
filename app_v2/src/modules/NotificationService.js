@@ -6,7 +6,10 @@ export default {
 }
 
 function show(title, options){
-  return new Notify(title, options).show()
+  return new Notify(title, {
+    timeout: 3,
+    ...options,
+  }).show()
 }
 function requestPermission(...args){
   return Notify.requestPermission(...args)
