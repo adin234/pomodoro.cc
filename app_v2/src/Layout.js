@@ -11,10 +11,13 @@ import {connect} from 'react-redux'
 class Layout extends Component {
   componentDidMount() {
     NotificationCenter.on('pomodoroEnded', this._showPomodoroEndedNotification.bind(this))
-    const {settings} = this.props
-    if( !settings.notificationPermissionGranted ) {
+    if( this.shouldShowNotificationGrant() ) {
       this.refs.requestNotificationPermissionSnackbar.show()
     }
+  }
+  shouldShowNotificationGrant() {
+    const {settings} = this.props
+    return NotificationService.needsPermission && !settings.notificationPermissionGranted
   }
   componentWillUnmount() {
     NotificationCenter.off('pomodoroEnded', this._showPomodoroEndedNotification.bind(this))

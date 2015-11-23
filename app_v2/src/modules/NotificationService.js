@@ -2,7 +2,9 @@ import Notify from 'notifyjs'
 
 export default {
   show,
-  requestPermission
+  requestPermission: Notify.requestPermission,
+  isSupported: Notify.isSupported,
+  needsPermission: Notify.needsPermission,
 }
 
 function show(title, options){
@@ -11,6 +13,4 @@ function show(title, options){
     ...options,
   }).show()
 }
-function requestPermission(...args){
-  return Notify.requestPermission(...args)
-}
+
