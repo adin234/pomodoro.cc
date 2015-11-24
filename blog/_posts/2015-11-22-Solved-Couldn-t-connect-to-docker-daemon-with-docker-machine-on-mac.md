@@ -1,5 +1,5 @@
 ---
-title: Solved: Couldn`t connect to docker daemon with docker machine on mac
+title: "Solved: Couldn`t connect to docker daemon with docker machine on mac"
 date: 2015-11-22
 layout: post
 ---
