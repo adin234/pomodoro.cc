@@ -1,12 +1,12 @@
 ---
-title: "Solved: Couldn`t connect to docker daemon with docker machine on mac"
+title: "Solved: Couldn't connect to docker daemon with docker machine on mac"
 date: 2015-11-22
 layout: post
 ---
 
 So, docker-machine is a nice tool, but it was a pain to connect to docker daemon since the necessary environment variables are not set by default.
 
-But it was an easy fix. If you don`t have a custom configuration for docker machine, the default machine name is `default`.
+But it was an easy fix. If you don't have a custom configuration for docker machine, the default machine name is `default`.
 
 Run `docker-machine start` to boot the machine first.
 

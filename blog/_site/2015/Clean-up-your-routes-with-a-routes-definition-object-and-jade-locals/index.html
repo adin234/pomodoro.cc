@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pomodoro.cc Tech Blog - Clean up your routes with a routes definition object and jade locals</title>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/blog/assets/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="/rss.xml">
+  <link rel="stylesheet" href="/blog/assets/css/highlight.css">
+</head>
+<body>
+
+  <nav class="main-nav">
+  <a class="cta" href="/blog/feed.xml">Subscribe</a>
+</nav>
+
+
+  <div class="profile">
+  <section id="wrapper">
+    <header id="header">
+      <a href="/">
+        <img id="avatar" class="2x" src="/favicon.ico"/>
+      </a>
+      <h1>Pomodoro.cc Tech Blog</h1>
+      <h2>Pomodori all the way down</h2>
+    </header>
+  </section>
+</div>
+
+
+  <section id="wrapper" class="">
+    <article class="post">
+    <header>
+        <h1>Clean up your routes with a routes definition object and jade locals</h1>
+        <h2 class="headline">November 18, 2015</h2>
+    </header>
+    <section id="post-body">
+        <p>First of all let&#39;s get out of the way the pretentious sounding word &quot;routes definition object&quot;. What I mean by it is simply a plain JavaScript object that contains all information needed by the router (specifically <strong>ui-router</strong>), thus can be importe and used in other JavaScript files.</p>
+
+<p>Here a simple route definition object:</p>
+
+<pre>
+export default {
+  root:    {name:'root',url:'/',templateUrl:'RootCtrl.html',controller:'RootCtrl as vm'},
+  singup:  {name:'signup',url:'/signup',templateUrl:'SignupCtrl.html',controller:'SignupCtrl as vm'},
+  login:   {name:'login',url:'/login',templateUrl:'LoginCtrl.html',controller:'LoginCtrl as vm'},
+  ...
+}
+</pre>
+
+<p>And in the config phase of your Angular application you would configure the router like so:</p>
+
+<pre>
+...
+  $stateProvider
+    .state(routes.root)
+    .state(routes.login)
+    .state(routes.signup)
+...
+</pre>
+
+<p>You get the idea.</p>
+
+<p>Probably you already see how this is powerful at cleaning up your routes, especially for new-comers that have to grasp the codebase, this can be a nice present for them. It shows without much clutter what your application represents and how the user can navigate it.</p>
+
+<hr>
+
+<p>But it gets better. With jade locals.</p>
+
+<p>You have probably already used the <code>ui-sref</code> directive, it would look like this:</p>
+
+<pre>
+  a.btn.btn-default(ui-sref="#{routes.login.name}") Login
+  a.btn.btn-default(ui-sref="#{routes.signup.name}") Signup
+</pre>
+
+<p>And in your JavaScript modules you can use it like a plain object, injected as a Angular constant or required on the fly with a transpiler (this is a degenerate example..):</p>
+
+<pre>
+.service('RegisterUser', ($state, routes) {
+  this.execute = () => {
+    $state.go(routes.signup.name)
+  }
+})
+</pre>
+
+<p>Or just as a plain import:</p>
+
+<pre>
+import routes from "./routes"
+
+...
+console.log( '-- routes', routes )
+</pre>
+
+<hr>
+
+<p>As a closing point I want to show you an example integration with <code>gulp</code> ang <code>gulp-jade</code>:</p>
+
+<p>The gulp task to handle jade templates could look like this</p>
+
+<pre>
+'use strict'
+var config = require('../config')
+var gulp = require('gulp')
+  , jade = require('gulp-jade')
+  , browserSync = require('browser-sync')
+
+var routes = require('../src/router/routes')
+
+gulp.task('jade', function(){
+  gulp.src(config.FILES.jade)
+    .pipe(jade({
+      data: {
+        routes: routes
+      }
+    }))
+    .pipe(gulp.dest('build/'))
+    .pipe(browserSync.reload({stream:true}))
+})
+</pre>
+
+<p>Please <a href="https://twitter.com/christian_fei">tweet me</a> what you think about this approach!</p>
+
+    </section>
+</article>
+<footer id="post-meta" class="clearfix">
+    <a href="http://twitter.com/pomodoro_cc">
+        <img class="avatar" src="/blog/assets/images/cf.jpeg">
+        <div>
+            <span class="dark">Pomodoro.cc Tech Blog</span>
+            <span>Pomodori all the way down</span>
+        </div>
+    </a>
+
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=Clean up your routes with a routes definition object and jade locals - https://pomodoro.cc/blog/2015/Clean-up-your-routes-with-a-routes-definition-object-and-jade-locals/ by @pomodoro_cc"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+<!-- Disqus comments -->
+
+    <div class="archive readmore">
+        <h3>Comments</h3>
+        <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'christianfei';
+        var disqus_developer = 0; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+    </div>
+
+
+<!-- Archive post list -->
+
+    <ul id="post-list" class="archive readmore">
+        <h3>Read more</h3>
+        
+            <li>
+                <a href="/blog/2015/Solved-Couldn-t-connect-to-docker-daemon-with-docker-machine-on-mac/">Solved: Couldn't connect to docker daemon with docker machine on mac<aside class="dates">Nov 22</aside></a>
+            </li>
+        
+            <li>
+                <a href="/blog/2015/Easily-Skip-ExUnit-tests-in-Elixir/">Easily skip ExUnit tests in Elixir<aside class="dates">Nov 21</aside></a>
+            </li>
+        
+            <li>
+                <a href="/blog/2015/How-to-stub-Angular-$window/">How to stub Angular $window<aside class="dates">Nov 18</aside></a>
+            </li>
+        
+            <li>
+                <a href="/blog/2015/Clean-up-your-routes-with-a-routes-definition-object-and-jade-locals/">Clean up your routes with a routes definition object and jade locals<aside class="dates">Nov 18</aside></a>
+            </li>
+        
+            <li>
+                <a href="/blog/2015/How-to-fake-any-authentication-strategy-with-passportjs/">How to fake any authentication strategy with Passport.js<aside class="dates">Aug 31</aside></a>
+            </li>
+        
+            <li>
+                <a href="/blog/2015/The-Numbers/">The numbers<aside class="dates">Jul 11</aside></a>
+            </li>
+        
+            <li>
+                <a href="/blog/2015/The-pomodoro.cc-stack/">The pomodoro.cc stack<aside class="dates">Jul 11</aside></a>
+            </li>
+        
+    </ul>
+
+
+
+
+
+  </section>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/blog/assets/js/main.js"></script>
+  <script src="/blog/assets/js/highlight.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-54555614-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
+
+
+

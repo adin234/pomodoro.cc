@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Pomodoro.cc Tech Blog</title>
+    <description>Pomodori all the way down</description>
+    <link>https://pomodoro.cc/blog</link>
+    <atom:link href="https://pomodoro.cc/blog/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Solved: Couldn&#39;t connect to docker daemon with docker machine on mac</title>
+        
+        
+          <description>&lt;p&gt;So, docker-machine is a nice tool, but it was a pain to connect to docker daemon since the necessary environment variables are not set by default.&lt;/p&gt;
+</description>
+        
+        <pubDate>Sun, 22 Nov 2015 00:00:00 +0100</pubDate>
+        <link>https://pomodoro.cc/blog/2015/Solved-Couldn-t-connect-to-docker-daemon-with-docker-machine-on-mac/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/Solved-Couldn-t-connect-to-docker-daemon-with-docker-machine-on-mac/</guid>
+      </item>
+    
+      <item>
+        <title>Easily skip ExUnit tests in Elixir</title>
+        
+        
+          <description>&lt;p&gt;I found that in Elixir it was a huge pain to temporarily skip tests.&lt;/p&gt;
+</description>
+        
+        <pubDate>Sat, 21 Nov 2015 00:00:00 +0100</pubDate>
+        <link>https://pomodoro.cc/blog/2015/Easily-Skip-ExUnit-tests-in-Elixir/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/Easily-Skip-ExUnit-tests-in-Elixir/</guid>
+      </item>
+    
+      <item>
+        <title>How to stub Angular $window</title>
+        
+        
+          <description>&lt;p&gt;&lt;a href=&quot;https://docs.angularjs.org/guide/$location&quot;&gt;As stated in the docs&lt;/a&gt;, &lt;code&gt;$window.location.href&lt;/code&gt; should be used to redirect the user to a new page, and this can be easily tested. Here is how I found it to make most sense for me.&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 18 Nov 2015 00:00:00 +0100</pubDate>
+        <link>https://pomodoro.cc/blog/2015/How-to-stub-Angular-$window/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/How-to-stub-Angular-$window/</guid>
+      </item>
+    
+      <item>
+        <title>Clean up your routes with a routes definition object and jade locals</title>
+        
+        
+          <description>&lt;p&gt;First of all let&amp;#39;s get out of the way the pretentious sounding word &amp;quot;routes definition object&amp;quot;. What I mean by it is simply a plain JavaScript object that contains all information needed by the router (specifically &lt;strong&gt;ui-router&lt;/strong&gt;), thus can be importe and used in other JavaScript files.&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 18 Nov 2015 00:00:00 +0100</pubDate>
+        <link>https://pomodoro.cc/blog/2015/Clean-up-your-routes-with-a-routes-definition-object-and-jade-locals/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/Clean-up-your-routes-with-a-routes-definition-object-and-jade-locals/</guid>
+      </item>
+    
+      <item>
+        <title>How to fake any authentication strategy with Passport.js</title>
+        
+        
+          <description>&lt;p&gt;Oftentimes to enable end-to-end testing with authentication you will setup a specific route to fake an authenticated user session.
+Something like a route &lt;code&gt;/auth/fake&lt;/code&gt;, that is of course only enabled in the development environment.&lt;/p&gt;
+</description>
+        
+        <pubDate>Mon, 31 Aug 2015 00:00:00 +0200</pubDate>
+        <link>https://pomodoro.cc/blog/2015/How-to-fake-any-authentication-strategy-with-passportjs/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/How-to-fake-any-authentication-strategy-with-passportjs/</guid>
+      </item>
+    
+      <item>
+        <title>The numbers</title>
+        
+        
+          <description>&lt;p&gt;In this post I would like to share some numbers about statistics, users, pomodori, deploys etc in the short life of &lt;a href=&quot;https://pomodoro.cc&quot;&gt;Pomodoro.cc&lt;/a&gt;.&lt;/p&gt;
+</description>
+        
+        <pubDate>Sat, 11 Jul 2015 14:00:00 +0200</pubDate>
+        <link>https://pomodoro.cc/blog/2015/The-Numbers/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/The-Numbers/</guid>
+      </item>
+    
+      <item>
+        <title>The pomodoro.cc stack</title>
+        
+        
+          <description>&lt;p&gt;&lt;a href=&quot;https://pomodoro.cc/&quot;&gt;Pomodoro.cc&lt;/a&gt; went through a lot of mutations of the stack, from a simple static web application to a solid infrastructure with docker.
+In this post I would like to share how it all started and give you some info about the current stack.&lt;/p&gt;
+</description>
+        
+        <pubDate>Sat, 11 Jul 2015 12:00:00 +0200</pubDate>
+        <link>https://pomodoro.cc/blog/2015/The-pomodoro.cc-stack/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/The-pomodoro.cc-stack/</guid>
+      </item>
+    
+  </channel>
+</rss>
