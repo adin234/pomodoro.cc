@@ -25,6 +25,8 @@ echo "--> pushing api to docker hub"
 docker push christianfei/pomodoro-api
 echo "--> pushing api_v2 to docker hub"
 docker push christianfei/pomodoro-api_v2
+echo "--> pushing api_v2 to docker hub"
+docker push christianfei/pomodoro-blog
 
 
 if [[ "$TRAVIS" == "true" ]]; then

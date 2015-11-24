@@ -7,3 +7,4 @@ docker pull christianfei/pomodoro-app
 docker pull christianfei/pomodoro-app_v2
 docker pull christianfei/pomodoro-api
 docker pull christianfei/pomodoro-api_v2
+docker pull christianfei/pomodoro-blog
