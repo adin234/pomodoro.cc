@@ -1,5 +1,14 @@
 @import 'vars'
 
+html
+  height 100%
+
+body
+  position relative
+  margin 0
+  padding 0
+  min-height 100%
+
 .container
   max-width container_width
   margin-right auto
@@ -7,5 +16,11 @@
 
 #main .content
   @extend .container
+  // display flex
+  // flex-direction column
+  // flex 1
   padding-top 4rem
   padding-bottom @padding-top
+
+.tac
+  text-align center

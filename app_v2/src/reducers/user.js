@@ -6,7 +6,7 @@ import { AUTHENTICATE_USER_REQUEST,
 
 let initialState = {}
 
-if( /^localhost/.test(window.location.host) ){
+if(false&& /^localhost/.test(window.location.host) ){
   initialState = {
     __v: 0,
     _id: "56311e508a0a76010090366f",

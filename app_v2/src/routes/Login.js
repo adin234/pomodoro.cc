@@ -9,7 +9,17 @@ class Login extends Component {
   render () {
     const {timer, todos, settings, user, pomodoro, actions} = this.props
     return  <div className="content">
+              <div className="tac">
+                <h1>Howdy!</h1>
+                <p>Pomodoro.cc is a free service,<br/> that assists you to get things done.</p>
+                <p>By logging in we can provide you <br/> statistics based on your progress</p>
+              </div>
+              <div className="tac">
+                <h4 style={{"margin-bottom":"0"}}>You can login/signup with</h4>
+              </div>
               <LoginLogout user={user}/>
+              <div className="tac">
+              </div>
             </div>
   }
 }
