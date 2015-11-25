@@ -13,6 +13,20 @@ With the help of insightful statistics, you'll be able to better understand how 
 
 ----
 
+# Todo
+
+- [x] fix inconsistency with completed todo state
+- [x] remove side-effects from timer store
+- [x] fix document title when timer ended
+- [x] rename stopTimer to forceEndTimer
+- [ ] merge timer and pomodoro reducers and actions
+- [ ] thunk for Sound effects to keep state consistent
+- [ ] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
+- [ ] track domain events in db table
+- [ ] Introduce the concept of "Pinning" a task to a pomodoro
+
+---
+
 # Contributing
 
 Check the readme of the service you would like to contribute to :)
