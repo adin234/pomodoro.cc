@@ -1,4 +1,5 @@
 import TopBar from './components/TopBar'
+import MainFooter from './components/MainFooter'
 import NotificationCenter from './modules/NotificationCenter'
 import NotificationService from './modules/NotificationService'
 import * as actions from './actions'
@@ -40,6 +41,7 @@ class Layout extends Component {
     return  <div className="layout">
               <TopBar user={user} actions={actions}/>
               {this.props.children}
+              <MainFooter/>
               <Snackbar
                 ref="pomodoroEndedSnackbar"
                 message="Pomodoro ended!"
