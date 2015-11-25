@@ -19,7 +19,7 @@ script:
   - api_v2/opt/test
   - opt/docker.run DEV
   - opt/docker.seed
-  - app/opt/test.e2e
+  # - app/opt/test.e2e
 deploy:
   skip_cleanup: true
   provider: script
