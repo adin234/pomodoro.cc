@@ -9,7 +9,7 @@ import Login from './routes/Login'
 
 export default class Root extends Component {
   render() {
-    const path = /pomodoro/.test(window.location.host) ? '/beta' : '/'
+    const path = '/'
     return  <Provider store={reduxStore}>
               <Router history={createBrowserHistory()}>
                 <Route path={path} component={Layout}>

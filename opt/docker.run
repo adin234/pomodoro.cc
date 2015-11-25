@@ -60,11 +60,6 @@ if [ -z "$(id_for_container 'pomodoro-api_v2')" ]; then
   $PROJECT_DIR/api_v2/opt/run $MIX_ENV
 fi
 
-if [ -z "$(id_for_container 'pomodoro-app')" ]; then
-  echo "\n----> STARTING 'pomodoro-app'"
-  $PROJECT_DIR/app/opt/run $ENV
-fi
-
 if [ -z "$(id_for_container 'pomodoro-app_v2')" ]; then
   echo "\n----> STARTING 'pomodoro-app_v2'"
   $PROJECT_DIR/app_v2/opt/run $ENV

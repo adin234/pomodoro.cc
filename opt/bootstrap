@@ -14,9 +14,6 @@ echo "--> installing app_v2 dependencies"
 echo "--> installing api dependencies"
 (cd api; npm install)
 
-echo "--> building app"
-(cd app; npm run build)
-
 echo "--> building app_v2"
 (cd app_v2; npm run build)
 

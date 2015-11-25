@@ -8,20 +8,17 @@ machine:
     pomodoro.dev: 127.0.0.1
 dependencies:
   cache_directories:
-    - app/node_modules
     - api/node_modules
   override:
     - opt/bootstrap
 test:
   override:
-    - app/opt/test
     - app_v2/opt/test
     - opt/docker.build
     - api/opt/test
     - api_v2/opt/test
     - opt/docker.run DEV
     - opt/docker.seed
-    - app/opt/test.e2e
 deployment:
   production:
     branch: master
