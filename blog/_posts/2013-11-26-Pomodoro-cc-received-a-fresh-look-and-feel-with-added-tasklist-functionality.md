@@ -1,5 +1,5 @@
 ---
-title:       Pomodoro cc received a fresh look and feel with added tasklist functionality
+title:       Pomodoro.cc received a fresh look and feel with added tasklist functionality
 date:        2015-11-26
 description: We are sure that a tasklist will help you a lot to get things done.
 ---
