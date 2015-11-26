@@ -1,4 +1,5 @@
 import TopBar from './components/TopBar'
+import WelcomeBar from './components/WelcomeBar'
 import MainFooter from './components/MainFooter'
 import NotificationCenter from './modules/NotificationCenter'
 import NotificationService from './modules/NotificationService'
@@ -37,9 +38,11 @@ class Layout extends Component {
     })
   }
   render () {
-    const {user, actions} = this.props
+    const {user, settings, actions} = this.props
     return  <div className="layout">
               <TopBar user={user} actions={actions}/>
+              <WelcomeBar user={user} settings={settings} actions={actions}/>
+
               {this.props.children}
               <MainFooter/>
               <Snackbar

@@ -1,5 +1,5 @@
 import settings, {defaultState} from './settings'
-import {toggleTickSound, toggleRingSound, grantNotificationPermission} from '../actions'
+import {toggleTickSound, toggleRingSound, grantNotificationPermission, acknowledgeWelcome} from '../actions'
 
 const dummyAction = {type:'',payload:{}}
 
@@ -14,27 +14,29 @@ describe('settings reducer', () => {
     expect(
       settings(defaultState, toggleTickSound())
     ).to.deep.eql({
+      ...defaultState,
       tickSoundEnabled: false,
-      ringSoundEnabled: true,
-      notificationPermissionGranted: false,
     })
 
     expect(
       settings(defaultState, toggleRingSound())
     ).to.deep.eql({
-      tickSoundEnabled: true,
+      ...defaultState,
       ringSoundEnabled: false,
-      notificationPermissionGranted: false,
     })
-  })
 
-  it('persists notificationPermissionGranted', () => {
     expect(
       settings(defaultState, grantNotificationPermission(true))
     ).to.deep.eql({
-      tickSoundEnabled: true,
-      ringSoundEnabled: true,
+      ...defaultState,
       notificationPermissionGranted: true
+    })
+
+    expect(
+      settings(defaultState, acknowledgeWelcome())
+    ).to.deep.eql({
+      ...defaultState,
+      acknlowedgedWelcome: true,
     })
   })
 })
