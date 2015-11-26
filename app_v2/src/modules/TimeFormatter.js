@@ -1,13 +1,13 @@
 export default {
-  formatSeconds: formatSeconds
+  formatSeconds
 }
 
 function formatSeconds(seconds){
   if(!seconds || seconds < 0){
     return '00:00'
   }
-  var minutes = parseInt(seconds/60,10)
-  var secondsRemainder = parseInt(seconds%60,10)
+  const minutes = parseInt(seconds/60,10)
+  const secondsRemainder = parseInt(seconds%60,10)
   return pad(minutes) + ':' + pad(secondsRemainder)
 }
 

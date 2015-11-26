@@ -1,10 +1,9 @@
+require('nprogress/nprogress.css')
 import Timer       from './modules/Timer'
 import Sounds      from './modules/Sounds'
 import reduxStore  from './reduxStore'
 import {tickTimer, resumeTimer, endTimer, authenticateUser} from './actions'
-
 import NProgress from 'nprogress'
-require('nprogress/nprogress.css')
 
 export default function init() {
   const pomodoro = reduxStore.getState().pomodoro

@@ -49,7 +49,7 @@ function forceEnd(natural){
 function getRemaining(){
   if( !startedAt )
     return 0
-  var now = Date.now()
+  const now = Date.now()
   return intValue(startedAt/1000) - intValue(now/1000) + seconds
 }
 
@@ -75,7 +75,7 @@ function off(event, fn){
 
 
 function tick(){
-  var remaining = getRemaining()
+  const remaining = getRemaining()
   if( remaining <= 0 ){
     return forceEnd(true)
   }

@@ -16,13 +16,13 @@ export default {
 }
 
 
-var ringSound = new Buzz.sound('ring', {
+const ringSound = new Buzz.sound('ring', {
   preload: true,
   loop: false,
   webAudioApi: true,
   formats: ['ogg','mp3']
 })
-var tickSound = new Buzz.sound('tick', {
+const tickSound = new Buzz.sound('tick', {
   preload: true,
   loop: true,
   webAudioApi: true,

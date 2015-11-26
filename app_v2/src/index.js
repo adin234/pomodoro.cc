@@ -6,9 +6,6 @@ import React         from 'react'
 import {render}      from 'react-dom'
 import init          from './init'
 
-const injectTapEventPlugin = require("react-tap-event-plugin")
-injectTapEventPlugin()
-
+require("react-tap-event-plugin")()
 init()
-
 render(<Router/>, document.getElementById('main'))
