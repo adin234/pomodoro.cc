@@ -20,6 +20,18 @@ focussing on the bare minimum elements and functionality to keep your focus.&lt;
       </item>
     
       <item>
+        <title>Build a DSL in JavaScript with functions</title>
+        
+        
+          <description>&lt;p&gt;I found a reasonable and sane management of the routes with &lt;a href=&quot;https://github.com/angular-ui/ui-router&quot;&gt;Angular ui-router&lt;/a&gt;.&lt;/p&gt;
+</description>
+        
+        <pubDate>Thu, 26 Nov 2015 00:00:00 +0100</pubDate>
+        <link>https://pomodoro.cc/blog/2015/Build-a-DSL-in-JavaScript-with-functions/</link>
+        <guid isPermaLink="true">https://pomodoro.cc/blog/2015/Build-a-DSL-in-JavaScript-with-functions/</guid>
+      </item>
+    
+      <item>
         <title>Solved: Couldn&#39;t connect to docker daemon with docker machine on mac</title>
         
         
