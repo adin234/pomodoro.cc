@@ -9,8 +9,7 @@ defmodule ApiV2.Router do
   plug :dispatch
 
   get "/api/tasks" do
-    {:authorized, user} = get_req_header(conn, "cookie")
-                          |> ApiV2.Authorizer.authorize
+    user = conn.assigns[:user]
     IO.puts "--> authorized.."
     IO.inspect user
 
