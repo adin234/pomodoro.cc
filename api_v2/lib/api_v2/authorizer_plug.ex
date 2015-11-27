@@ -13,7 +13,10 @@ defmodule ApiV2.Authorizer.Plug do
     |> handle_authorization(conn)
   end
 
-  defp handle_authorization({:authorized, _}, conn), do: conn
+  defp handle_authorization({:authorized, user}, conn) do
+    conn
+    |> assign(:user, user)
+  end
   defp handle_authorization(:unauthorized, conn) do
     conn
     |> send_resp(401, "Unauthorized")

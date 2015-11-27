@@ -29,5 +29,6 @@ defmodule ApiV2.Authorizer.Plug.Test do
 
     assert conn.state == :unset
     assert conn.status == nil
+    assert conn.assigns[:user] == %{username: "test"}
   end
 end
