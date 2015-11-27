@@ -5,9 +5,9 @@ export default {
 }
 
 function registerEvent(eventName){
-  return function(){
+  return function(...args){
     if( window.analytics && window.analytics[eventName] && window.analytics[eventName] instanceof Function ){
-      window.analytics[eventName].apply(window.analytics, arguments)
+      window.analytics[eventName](...args)
     }
   }
 }
