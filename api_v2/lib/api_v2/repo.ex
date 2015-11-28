@@ -23,4 +23,9 @@ defmodule ApiV2.Repo do
         {:error, changeset}
     end
   end
+
+  def update_pomodoro_task_for(user_id, task) do
+    # check authorization
+    update task
+  end
 end
