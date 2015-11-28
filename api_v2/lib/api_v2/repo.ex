@@ -6,20 +6,16 @@ defmodule ApiV2.Repo do
 
   def tasks_for(user_id) do
     all(
-      from pt in PomodoroTask,
-        join: upt in UserPomodoroTask, on: pt.id == upt.pomodoro_task_id,
-        where: upt.user_id == ^user_id,
-        where: pt.deleted == false,
+      from pt in user_tasks(user_id),
+      where: pt.deleted == false,
       select: pt
     )
   end
 
   def task_for(user_id, task_id) do
     one(
-      from pt in PomodoroTask,
-        join: upt in UserPomodoroTask, on: pt.id == upt.pomodoro_task_id,
-        where: upt.user_id == ^user_id,
-        where: pt.id == ^task_id,
+      from pt in user_tasks(user_id),
+      where: pt.id == ^task_id,
       select: pt
     )
   end
@@ -37,5 +33,11 @@ defmodule ApiV2.Repo do
   def update_pomodoro_task_for(user_id, task) do
     # check authorization
     update task
+  end
+
+  defp user_tasks(user_id) do
+    from pt in PomodoroTask,
+    join: upt in UserPomodoroTask, on: pt.id == upt.pomodoro_task_id,
+    where: upt.user_id == ^user_id
   end
 end
