@@ -15,5 +15,12 @@ defmodule ApiV2.Repo do
   end
 
   def create_pomodoro_task_for(user_id, task) do
+    case insert task do
+      {:ok, pomodoro_task} ->
+        insert %UserPomodoroTask{user_id: user_id, pomodoro_task_id: pomodoro_task.id}
+        {:ok, pomodoro_task}
+      {:error, changeset}  ->
+        {:error, changeset}
+    end
   end
 end
