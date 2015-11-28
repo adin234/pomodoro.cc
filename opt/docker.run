@@ -39,10 +39,18 @@ if [ -z "$(id_for_container 'pomodoro-api_v2-db')" ]; then
   $PROJECT_DIR/api_v2-db/opt/run
 fi
 
-echo "\n=============================="
-echo "migrating db"
-echo "=============================="
-$PROJECT_DIR/opt/docker.migrate
+MAX_RETRIES=10
+RETRIES_COUNT=1
+LAST_EXIT_CODE=1
+while [[ $RETRIES_COUNT -le $MAX_RETRIES && $LAST_EXIT_CODE -eq 1 ]]
+do
+  echo "\n=============================="
+  echo "migrating db"
+  echo "=============================="
+  $PROJECT_DIR/opt/docker.migrate
+  LAST_EXIT_CODE=$?
+  ((RETRIES_COUNT++))
+done
 
 if [ -z "$(id_for_container 'pomodoro-blog')" ]; then
   echo "\n----> STARTING 'pomodoro-blog'"
