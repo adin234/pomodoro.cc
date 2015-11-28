@@ -21,15 +21,18 @@ defmodule ApiV2.Router do
     send_resp(conn, 200, Poison.encode!(tasks))
   end
 
-  get "/api/tasks/:id" do
-    conn
+  get "/api/tasks/:task_id" do
+    user = conn.assigns[:user]
+    user_id = Dict.get(user, "id")
+    task = Repo.task_for(user_id, task_id)
+    send_resp(conn, 200, Poison.encode!(task))
   end
 
   post "/api/tasks" do
     user = conn.assigns[:user]
     user_id = Dict.get(user, "id")
     pomodoro_task_body = conn.params
-    changeset = Ecto.Changeset.cast(%PomodoroTask{}, pomodoro_task_body, ~w(text), ~w())
+    changeset = PomodoroTask.changeset(%PomodoroTask{}, pomodoro_task_body)
     {:ok, pomodoro_task} = Repo.create_pomodoro_task_for(user_id, changeset)
     send_resp(conn, 201, Poison.encode!(pomodoro_task))
   end

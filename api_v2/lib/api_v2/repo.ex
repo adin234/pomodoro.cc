@@ -14,6 +14,16 @@ defmodule ApiV2.Repo do
     )
   end
 
+  def task_for(user_id, task_id) do
+    one(
+      from pt in PomodoroTask,
+        join: upt in UserPomodoroTask, on: pt.id == upt.pomodoro_task_id,
+        where: upt.user_id == ^user_id,
+        where: pt.id == ^task_id,
+      select: pt
+    )
+  end
+
   def create_pomodoro_task_for(user_id, task) do
     case insert task do
       {:ok, pomodoro_task} ->
