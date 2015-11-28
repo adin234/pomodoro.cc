@@ -24,12 +24,6 @@ echo "|ENV=$ENV|"
 echo "========="
 
 
-echo "\n=============================="
-echo "migrating db"
-echo "=============================="
-$PROJECT_DIR/opt/docker.migrate
-
-
 if [ -z "$(id_for_container 'pomodoro-api-sessions')" ]; then
   echo "\n----> STARTING 'pomodoro-api-sessions'"
   $PROJECT_DIR/api-sessions/opt/run
@@ -44,6 +38,11 @@ if [ -z "$(id_for_container 'pomodoro-api_v2-db')" ]; then
   echo "\n----> STARTING 'pomodoro-api_v2-db'"
   $PROJECT_DIR/api_v2-db/opt/run
 fi
+
+echo "\n=============================="
+echo "migrating db"
+echo "=============================="
+$PROJECT_DIR/opt/docker.migrate
 
 if [ -z "$(id_for_container 'pomodoro-blog')" ]; then
   echo "\n----> STARTING 'pomodoro-blog'"

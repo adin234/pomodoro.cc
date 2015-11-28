@@ -14,8 +14,9 @@ defmodule ApiV2.Authorizer.Plug do
   end
 
   defp handle_authorization({:authorized, user}, conn) do
+    user_struct = Poison.decode!(user)
     conn
-    |> assign(:user, user)
+    |> assign(:user, user_struct)
   end
   defp handle_authorization(:unauthorized, conn) do
     conn

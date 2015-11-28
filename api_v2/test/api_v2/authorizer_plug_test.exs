@@ -1,7 +1,7 @@
 defmodule FakeAuthorizer do
   def authorize(cookie) do
     case "#{cookie}" do
-      "authorized" -> {:authorized, %{username: "test"}}
+      "authorized" -> {:authorized, "{\"username\": \"test\"}"}
       _            -> :unauthorized
     end
   end
@@ -29,6 +29,6 @@ defmodule ApiV2.Authorizer.Plug.Test do
 
     assert conn.state == :unset
     assert conn.status == nil
-    assert conn.assigns[:user] == %{username: "test"}
+    assert conn.assigns[:user] == %{"username" => "test"}
   end
 end
