@@ -13,4 +13,7 @@ defmodule ApiV2.Repo do
       select: pt
     )
   end
+
+  def create_pomodoro_task_for(user_id, task) do
+  end
 end

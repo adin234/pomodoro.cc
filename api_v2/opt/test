@@ -13,9 +13,8 @@ id_for_container(){
 }
 
 docker run --name pomodoro-api-db-test --detach=true mongo:latest
-
-docker run --name pomodoro-api-sessions-test --detach=true redis:latest redis-server
-
+docker run --name pomodoro-api_v2-db-test  --detach=true --volume /db_v2-test:/var/lib/postgresql/data kiasaki/alpine-postgres:latest
+docker run --name pomodoro-api-sessions-test --detach=true smebberson/alpine-redis
 docker run --name pomodoro-api-test \
   --detach=true \
   --volume $PROJECT_DIR/credentials.json:/credentials.json \
@@ -25,19 +24,25 @@ docker run --name pomodoro-api-test \
   christianfei/pomodoro-api
 
 
+docker run --rm \
+  --env MIX_ENV="test" \
+  --link pomodoro-api_v2-db-test:pomodoro-api_v2-db \
+  christianfei/pomodoro-api_v2 \
+  sh -c "mix ecto.create; mix ecto.migrate"
+
 TEST_COMMAND="mix test"
 
 if [ "$TRAVIS" == "true" ]; then
   TEST_COMMAND="mix deps.get; $TEST_COMMAND"
 fi
 
-env
 echo "--> executing: $TEST_COMMAND"
 
 docker run --rm \
   --name pomodoro-api_v2-test \
   --env MIX_ENV="test" \
   --link pomodoro-api-test:pomodoro-api \
+  --link pomodoro-api_v2-db-test:pomodoro-api_v2-db \
   --volume $PROJECT_DIR/api_v2:/app \
   christianfei/pomodoro-api_v2 sh -c "$TEST_COMMAND"
 
@@ -45,6 +50,7 @@ TEST_RESULT_CODE=$?
 
 docker rm -f pomodoro-api-test
 docker rm -f pomodoro-api-db-test
+docker rm -f pomodoro-api_v2-db-test
 docker rm -f pomodoro-api-sessions-test
 
 exit $TEST_RESULT_CODE
