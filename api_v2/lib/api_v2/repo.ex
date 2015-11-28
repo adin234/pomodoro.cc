@@ -31,7 +31,6 @@ defmodule ApiV2.Repo do
   end
 
   def update_pomodoro_task_for(user_id, task) do
-    # check authorization
     update task
   end
 
