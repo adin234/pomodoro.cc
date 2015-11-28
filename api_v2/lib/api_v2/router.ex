@@ -1,14 +1,14 @@
 defmodule ApiV2.Router do
   use Plug.Router
 
-  # todo: alias ApiV2..
+  alias ApiV2.Authorizer.Plug, as: Authorizer
   alias ApiV2.Repo
   alias ApiV2.Models.PomodoroTask
 
   plug Plug.Logger
   if Mix.env == :dev, do: use Plug.Debugger
 
-  plug ApiV2.Authorizer.Plug
+  plug Authorizer
   plug Plug.Parsers, parsers: [:json],
                      json_decoder: Poison
   plug :match
