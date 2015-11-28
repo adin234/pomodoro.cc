@@ -39,6 +39,8 @@ if [ -z "$(id_for_container 'pomodoro-api_v2-db')" ]; then
   $PROJECT_DIR/api_v2-db/opt/run
 fi
 
+
+sleep 1
 MAX_RETRIES=10
 RETRIES_COUNT=1
 LAST_EXIT_CODE=1
