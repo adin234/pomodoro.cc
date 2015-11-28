@@ -11,7 +11,7 @@ defmodule ApiV2.Router do
   get "/api/tasks" do
     user = conn.assigns[:user]
     user_id = Dict.get(user, "id")
-    pomodoro_tasks = ApiV2.Repo.uncompleted_todo_for(user_id)
+    pomodoro_tasks = ApiV2.Repo.tasks_for(user_id)
     IO.inspect pomodoro_tasks
     send_resp(conn, 200, Poison.encode!(pomodoro_tasks))
   end
