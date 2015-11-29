@@ -17,6 +17,7 @@ defmodule ApiV2.Models.Pomodoro do
     |> validate_inclusion(:minutes, [5,15,25])
     |> validate_type
     |> validate_minutes
+    |> validate_cancelled_at
   end
 
   defp validate_type(changeset) do
@@ -38,6 +39,19 @@ defmodule ApiV2.Models.Pomodoro do
         "pomodoro" ->
           if minutes == 25, do: [], else: [:minutes, "invalid minutes for type 'pomodoro'"]
         _ -> [:minutes, "invalid type"]
+      end
+    end)
+  end
+
+  defp validate_cancelled_at(changeset) do
+    validate_change(changeset, :cancelled_at, fn (_, cancelled_at) ->
+      started_at = changeset.model.started_at
+      IO.inspect started_at
+      IO.inspect cancelled_at
+      case cancelled_at do
+        nil -> []
+        _   ->
+          if :lt == Ecto.DateTime.compare(started_at, cancelled_at), do: [], else: [:cancelled_at, "cancelled_at must be a timestamp after started_at"]
       end
     end)
   end

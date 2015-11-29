@@ -10,7 +10,6 @@ defmodule ApiV2.Repo.Test do
   @pomodoro %Pomodoro{minutes: 5, type: "break", started_at: Ecto.DateTime.local}
   @pomodoro_task %PomodoroTask{text: "test pomodoro_task"}
   @updated_text "Rephrasing the task text"
-  @cancelled_at Ecto.DateTime.local
 
   setup do
     Repo.delete_all(UserPomodoroTask)
@@ -54,10 +53,11 @@ defmodule ApiV2.Repo.Test do
 
   test "#update_pomodoros_for" do
     {:ok, pomodoro} = create_pomodoro
-    updated_pomodoro = Pomodoro.changeset(pomodoro, %{cancelled_at: @cancelled_at})
+    cancelled_at = Ecto.DateTime.local
+    updated_pomodoro = Pomodoro.changeset(pomodoro, %{cancelled_at: cancelled_at})
     Repo.update_pomodoros_for(@user_id, updated_pomodoro)
     updated_pomodoro_in_db = Repo.pomodoro_for(@user_id, pomodoro.id)
-    assert updated_pomodoro_in_db.cancelled_at == @cancelled_at
+    assert updated_pomodoro_in_db.cancelled_at == cancelled_at
   end
 
   defp create_pomodoro do
