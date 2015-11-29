@@ -5,6 +5,11 @@ defmodule ApiV2.Models.Pomodoro.Test do
   @base_break %Pomodoro{type: "break", started_at: Ecto.DateTime.local}
   @base_pomodoro %Pomodoro{type: "pomodoro", started_at: Ecto.DateTime.local}
 
+  test "validates type" do
+    pomodoro = Pomodoro.changeset(%Pomodoro{}, %{type: "invalid_type", minutes: 5, started_at: Ecto.DateTime.local})
+    refute pomodoro.valid?
+  end
+
   test "validates minutes based for break" do
     Enum.each([5,15], fn(minutes) ->
       pomodoro = Pomodoro.changeset(@base_break, %{minutes: minutes})
