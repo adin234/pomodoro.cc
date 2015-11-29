@@ -6,15 +6,21 @@ import * as actions from '../actions'
 import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 
 class Index extends Component {
   render () {
     const {timer, todos, settings, user, pomodoro, actions} = this.props
     return  <div className="content">
               <TwitterShare/>
+              {!user.username ?
+                <p className="tac">
+                  <Link to="login">Login</Link> to track your tasks and pomodoros,<br/> its totally free!
+                </p>
+                : null}
               <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
               <SoundSettings settings={settings} actions={actions}/>
-              <TodoList todos={todos} actions={actions}/>
+              {user.username ? <TodoList todos={todos} actions={actions}/> : null}
             </div>
   }
 }
