@@ -5,14 +5,8 @@ set -e
 echo "--> installing global dependencies"
 npm install
 
-echo "--> installing app dependencies"
-(cd app; npm install)
-
 echo "--> installing app_v2 dependencies"
 (cd app_v2; npm install)
-
-echo "--> installing api dependencies"
-(cd api; npm install)
 
 echo "--> building app_v2"
 (cd app_v2; npm run build)
