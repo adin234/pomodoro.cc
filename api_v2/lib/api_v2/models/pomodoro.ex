@@ -14,5 +14,6 @@ defmodule ApiV2.Models.Pomodoro do
 
   def changeset(model, params \\ :empty) do
     cast(model, params, @required_fields, @optional_fields)
+    |> validate_inclusion(:minutes, [5,15,25])
   end
 end
