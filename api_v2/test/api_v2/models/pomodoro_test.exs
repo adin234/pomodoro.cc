@@ -29,18 +29,18 @@ defmodule ApiV2.Models.Pomodoro.Test do
   end
 
 
-  defp check_minutes_for(minutes, pomodoro, cb) do
+  defp create_changeset_for(minutes, pomodoro, cb) do
     Enum.each(minutes, fn(minutes) ->
       cb.(Pomodoro.changeset(pomodoro, %{minutes: minutes}))
     end)
   end
   defp assert_minutes_for(minutes, pomodoro) do
-    check_minutes_for(minutes, pomodoro, fn(pomodoro) ->
+    create_changeset_for(minutes, pomodoro, fn(pomodoro) ->
       assert pomodoro.valid?
     end)
   end
   defp refute_minutes_for(minutes, pomodoro) do
-    check_minutes_for(minutes, pomodoro, fn(pomodoro) ->
+    create_changeset_for(minutes, pomodoro, fn(pomodoro) ->
       refute pomodoro.valid?
     end)
   end
