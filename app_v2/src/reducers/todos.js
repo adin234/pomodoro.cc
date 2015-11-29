@@ -1,8 +1,11 @@
 /*@flow*/
-import {ADD_TODO, DELETE_TODO, TOGGLE_COMPLETE_TODO} from '../actions/todos'
+import {ADD_TODO, DELETE_TODO, TOGGLE_COMPLETE_TODO, GET_TODO_SUCCESS} from '../actions/todos'
 
 export default function todos(state:TodoState=[], action:Action):TodoState {
   switch(action.type){
+  case GET_TODO_SUCCESS: {
+    return action.payload.todos
+  }
   case ADD_TODO: {
     return [
       ...state,

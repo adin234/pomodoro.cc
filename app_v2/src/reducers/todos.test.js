@@ -5,7 +5,7 @@ const todo = {completed:false,text:'i am todo'}
 const todo2 = {completed:true,text:'i am todo2'}
 
 describe('todos reducer', () => {
-  it('adds todo', () => {
+  it.skip('adds todo', () => {
     expect(
       todos([], addTodo(todo))
     ).to.deep.eql( [todo] )
@@ -15,7 +15,7 @@ describe('todos reducer', () => {
     ).to.deep.eql( [todo, todo2] )
   })
 
-  it('deletes todo', () => {
+  it.skip('deletes todo', () => {
     expect(
       todos([todo, todo2], deleteTodo(todo))
     ).to.deep.eql( [todo2] )
@@ -25,7 +25,7 @@ describe('todos reducer', () => {
     ).to.deep.eql( [] )
   })
 
-  it('toggles completes todo', () => {
+  it.skip('toggles completes todo', () => {
     const todoCompleted = {
       ...todo,
       completed: true

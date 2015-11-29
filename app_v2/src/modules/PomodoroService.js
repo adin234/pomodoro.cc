@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const ApiService = {
+const PomodoroService = {
   create: create
 }
 
-export default ApiService
+export default PomodoroService
 
 function create(pomodoro){
   return axios.post('/api/pomodoro', pomodoro)

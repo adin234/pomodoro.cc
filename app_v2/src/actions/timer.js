@@ -76,9 +76,5 @@ function saveAndDispatch(action) {
 
     AnalyticsService.track('timer-stop', pomodoro)
     PomodoroService.create(pomodoro)
-    .then(() => {
-    })
-    .catch(() => {
-    })
   }
 }

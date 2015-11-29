@@ -2,7 +2,7 @@ require('nprogress/nprogress.css')
 import Timer       from './modules/Timer'
 import Sounds      from './modules/Sounds'
 import reduxStore  from './reduxStore'
-import {tickTimer, resumeTimer, endTimer, authenticateUser} from './actions'
+import {tickTimer, resumeTimer, endTimer, authenticateUser, getTodo} from './actions'
 import NProgress from 'nprogress'
 
 export default function init() {
