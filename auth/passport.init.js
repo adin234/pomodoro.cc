@@ -12,7 +12,7 @@ module.exports = function(app){
   app.use(
     session({
       store: new RedisStore({
-        host: 'pomodoro-api-sessions',
+        host: 'pomodoro-auth-sessions',
         port: 6379
       }),
       cookie: {

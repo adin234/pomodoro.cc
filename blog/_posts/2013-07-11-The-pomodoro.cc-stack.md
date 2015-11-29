@@ -33,8 +33,8 @@ pomodoro-main               0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp
 pomodoro-app                80/tcp, 443/tcp
 pomodoro-api
 pomodoro-blog               4000/tcp
-pomodoro-api-db             27017/tcp
-pomodoro-api-sessions       6379/tcp
+pomodoro-auth-db             27017/tcp
+pomodoro-auth-sessions       6379/tcp
 </pre>
 
 
@@ -50,10 +50,10 @@ Put simply:
 
 The `pomodoro-api` container cannot do all the session handling and database stuff all by itself, so here come into play
 
-- `pomodoro-api-db`
-- `pomodoro-api-sessions`
+- `pomodoro-auth-db`
+- `pomodoro-auth-sessions`
 
-Both are pretty much self-explanatory: `pomodoro-api-db` contains a simple mongo instance, and `pomodoro-api-sessions` a redis that keeps track of the logged in user sessions.
+Both are pretty much self-explanatory: `pomodoro-auth-db` contains a simple mongo instance, and `pomodoro-auth-sessions` a redis that keeps track of the logged in user sessions.
 
 
 

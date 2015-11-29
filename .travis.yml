@@ -15,7 +15,7 @@ before_install:
 script:
   - app_v2/opt/test
   - opt/docker.build
-  - api/opt/test
+  - auth/opt/test
   - api_v2/opt/test
   - opt/docker.run DEV
   - opt/docker.seed

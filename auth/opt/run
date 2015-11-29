@@ -10,12 +10,12 @@ fi
 
 ENV="$1"
 
-docker run --name pomodoro-api \
+docker run --name pomodoro-auth \
   --restart=always \
   --detach=true \
   --env ENV="$ENV" \
   --volume $PROJECT_DIR/credentials.json:/credentials.json \
   --volume $PROJECT_DIR/shared:/shared \
-  --link pomodoro-api-sessions:pomodoro-api-sessions \
-  --link pomodoro-api-db:pomodoro-api-db \
-  christianfei/pomodoro-api
+  --link pomodoro-auth-sessions:pomodoro-auth-sessions \
+  --link pomodoro-auth-db:pomodoro-auth-db \
+  christianfei/pomodoro-auth

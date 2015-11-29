@@ -13,7 +13,7 @@ build_container(){
 }
 
 build_container 'api_v2'
-build_container 'api'
+build_container 'auth'
 build_container 'app_v2'
 build_container 'blog'
 build_container 'main'

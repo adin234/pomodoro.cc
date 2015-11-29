@@ -12,16 +12,16 @@ id_for_container(){
   echo $CONTAINER_ID
 }
 
-docker run --name pomodoro-api-db-test --detach=true mongo:latest
 docker run --name pomodoro-api_v2-db-test  --detach=true kiasaki/alpine-postgres:latest
-docker run --name pomodoro-api-sessions-test --detach=true smebberson/alpine-redis
-docker run --name pomodoro-api-test \
+docker run --name pomodoro-auth-db-test --detach=true mongo:latest
+docker run --name pomodoro-auth-sessions-test --detach=true smebberson/alpine-redis
+docker run --name pomodoro-auth-test \
   --detach=true \
   --volume $PROJECT_DIR/credentials.json:/credentials.json \
   --volume $PROJECT_DIR/shared:/shared \
-  --link pomodoro-api-sessions-test:pomodoro-api-sessions \
-  --link pomodoro-api-db-test:pomodoro-api-db \
-  christianfei/pomodoro-api
+  --link pomodoro-auth-sessions-test:pomodoro-auth-sessions \
+  --link pomodoro-auth-db-test:pomodoro-auth-db \
+  christianfei/pomodoro-auth
 
 sleep 2
 docker run --rm \
@@ -41,16 +41,16 @@ echo "--> executing: $TEST_COMMAND"
 docker run --rm \
   --name pomodoro-api_v2-test \
   --env MIX_ENV="test" \
-  --link pomodoro-api-test:pomodoro-api \
+  --link pomodoro-auth-test:pomodoro-auth \
   --link pomodoro-api_v2-db-test:pomodoro-api_v2-db \
   --volume $PROJECT_DIR/api_v2:/app \
   christianfei/pomodoro-api_v2 sh -c "$TEST_COMMAND"
 
 TEST_RESULT_CODE=$?
 
-docker rm -f pomodoro-api-test
-docker rm -f pomodoro-api-db-test
+docker rm -f pomodoro-auth-test
+docker rm -f pomodoro-auth-db-test
+docker rm -f pomodoro-auth-sessions-test
 docker rm -f pomodoro-api_v2-db-test
-docker rm -f pomodoro-api-sessions-test
 
 exit $TEST_RESULT_CODE

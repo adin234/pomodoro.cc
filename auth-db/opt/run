@@ -8,7 +8,8 @@ if [ "$PROJECT_DIR" = "/" ]; then
   PROJECT_DIR="/pomodoro.cc"
 fi
 
-docker run --name pomodoro-api-sessions \
+docker run --name pomodoro-auth-db \
   --restart=always \
   --detach=true \
-  smebberson/alpine-redis
+  --volume /db:/data/db \
+  mongo:latest

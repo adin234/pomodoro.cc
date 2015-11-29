@@ -3,7 +3,7 @@
 You can run the tests with: (inside vagrant)
 
 ```
-/pomodoro.cc/api/opt/test
+/pomodoro.cc/auth/opt/test
 ```
 
 In `DEV` mode (when `docker.restart|run` is started with a `DEV` parameter), an authentication backdoor

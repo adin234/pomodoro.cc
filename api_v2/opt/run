@@ -14,6 +14,6 @@ docker run --name pomodoro-api_v2 \
   --restart=always \
   --detach=true \
   --env MIX_ENV="$MIX_ENV" \
-  --link pomodoro-api:pomodoro-api \
+  --link pomodoro-auth:pomodoro-auth \
   --link pomodoro-api_v2-db:pomodoro-api_v2-db \
   christianfei/pomodoro-api_v2

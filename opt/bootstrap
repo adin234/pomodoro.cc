@@ -8,8 +8,8 @@ npm install
 echo "--> installing app_v2 dependencies"
 (cd app_v2; npm install)
 
-echo "--> installing api dependencies"
-(cd api; npm install)
+echo "--> installing auth dependencies"
+(cd auth; npm install)
 
 echo "--> building app_v2"
 (cd app_v2; npm run build)

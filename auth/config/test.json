@@ -1,7 +1,7 @@
 {
   "mongodb":{
-    "url": "mongodb://pomodoro-api-db/pomodoro",
-    "host":"pomodoro-api-db",
+    "url": "mongodb://pomodoro-auth-db/pomodoro",
+    "host":"pomodoro-auth-db",
     "port":27017
   },
   "server":{

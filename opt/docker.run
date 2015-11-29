@@ -24,14 +24,14 @@ echo "|ENV=$ENV|"
 echo "========="
 
 
-if [ -z "$(id_for_container 'pomodoro-api-sessions')" ]; then
-  echo "\n----> STARTING 'pomodoro-api-sessions'"
-  $PROJECT_DIR/api-sessions/opt/run
+if [ -z "$(id_for_container 'pomodoro-auth-sessions')" ]; then
+  echo "\n----> STARTING 'pomodoro-auth-sessions'"
+  $PROJECT_DIR/auth-sessions/opt/run
 fi
 
-if [ -z "$(id_for_container 'pomodoro-api-db')" ]; then
-  echo "\n----> STARTING 'pomodoro-api-db'"
-  $PROJECT_DIR/api-db/opt/run
+if [ -z "$(id_for_container 'pomodoro-auth-db')" ]; then
+  echo "\n----> STARTING 'pomodoro-auth-db'"
+  $PROJECT_DIR/auth-db/opt/run
 fi
 
 if [ -z "$(id_for_container 'pomodoro-api_v2-db')" ]; then
@@ -59,9 +59,9 @@ if [ -z "$(id_for_container 'pomodoro-blog')" ]; then
   $PROJECT_DIR/blog/opt/run
 fi
 
-if [ -z "$(id_for_container 'pomodoro-api')" ]; then
-  echo "\n----> STARTING 'pomodoro-api'"
-  $PROJECT_DIR/api/opt/run $ENV
+if [ -z "$(id_for_container 'pomodoro-auth')" ]; then
+  echo "\n----> STARTING 'pomodoro-auth'"
+  $PROJECT_DIR/auth/opt/run $ENV
 fi
 
 if [ -z "$(id_for_container 'pomodoro-api_v2')" ]; then
