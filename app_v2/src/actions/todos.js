@@ -26,24 +26,37 @@ export function getTodo() {
 
 export function addTodo(todo:Todo):Action{
   AnalyticsService.track('add-todo', todo)
-  TasksService.create(todo)
-  return {type:ADD_TODO,payload:todo}
+  return (dispatch, getState) => {
+    TasksService.create(todo)
+    .then((response) => {
+      const todo = response.data
+      dispatch({type:ADD_TODO,payload:todo})
+    })
+  }
 }
 
 export function deleteTodo(todo:Todo):Action {
   AnalyticsService.track('delete-todo', todo)
-  TasksService.update(todo.id, {
-    ...todo,
-    deleted: true,
-  })
-  return {type:DELETE_TODO,payload:todo}
+  return (dispatch, getState) => {
+    TasksService.update(todo.id, {
+      ...todo,
+      deleted: true,
+    })
+    .then(() => {
+      dispatch({type:DELETE_TODO,payload:todo})
+    })
+  }
 }
 
 export function toggleCompleteTodo(todo:Todo):Action {
   AnalyticsService.track('toggle-complete-todo', todo)
-  TasksService.update(todo.id, {
-    ...todo,
-    completed: !todo.completed
-  })
-  return {type:TOGGLE_COMPLETE_TODO,payload:todo}
+  return (dispatch, getState) => {
+    TasksService.update(todo.id, {
+      ...todo,
+      completed: !todo.completed
+    })
+    .then(() => {
+      dispatch({type:TOGGLE_COMPLETE_TODO,payload:todo})
+    })
+  }
 }
