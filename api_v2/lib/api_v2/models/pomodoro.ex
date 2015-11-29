@@ -15,5 +15,17 @@ defmodule ApiV2.Models.Pomodoro do
   def changeset(model, params \\ :empty) do
     cast(model, params, @required_fields, @optional_fields)
     |> validate_inclusion(:minutes, [5,15,25])
+    |> validate_minutes
+  end
+
+  defp validate_minutes(changeset) do
+    validate_change(changeset, :minutes, fn (x, minutes) ->
+      case changeset.model.type do
+        "break" ->
+          if Enum.member?([5,15], minutes), do: [], else: [:minutes, "invalid minutes for type 'break'"]
+        "pomodoro" ->
+          if minutes == 25, do: [], else: [:minutes, "invalid minutes for type 'pomodoro'"]
+      end
+    end)
   end
 end

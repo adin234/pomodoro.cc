@@ -12,4 +12,6 @@ config :api_v2,
   http_port: 6000,
   authorizer_url: "http://pomodoro-auth:6000/auth/info"
 
+config :logger, level: :info
+
 import_config "#{Mix.env}.exs"
