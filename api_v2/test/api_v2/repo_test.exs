@@ -53,7 +53,7 @@ defmodule ApiV2.Repo.Test do
 
   test "#update_pomodoros_for" do
     {:ok, pomodoro} = create_pomodoro
-    cancelled_at = Ecto.DateTime.local
+    cancelled_at = TimeHelpers.datetime_for("23:59:59Z")
     updated_pomodoro = Pomodoro.changeset(pomodoro, %{cancelled_at: cancelled_at})
     Repo.update_pomodoros_for(@user_id, updated_pomodoro)
     updated_pomodoro_in_db = Repo.pomodoro_for(@user_id, pomodoro.id)

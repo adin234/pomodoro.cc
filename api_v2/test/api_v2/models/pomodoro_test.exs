@@ -10,37 +10,38 @@ defmodule ApiV2.Models.Pomodoro.Test do
     refute pomodoro.valid?
   end
 
-  test "validates minutes based for break" do
-    Enum.each([5,15], fn(minutes) ->
-      pomodoro = Pomodoro.changeset(@base_break, %{minutes: minutes})
-      assert pomodoro.valid?
-    end)
-    Enum.each([25], fn(minutes) ->
-      pomodoro = Pomodoro.changeset(@base_break, %{minutes: minutes})
-      refute pomodoro.valid?
-    end)
+  test "validates minutes for break" do
+    assert_minutes_for([5, 15], @base_break)
+    refute_minutes_for([25], @base_break)
   end
 
-  test "validates minutes based for pomodoro" do
-    Enum.each([25], fn(minutes) ->
-      pomodoro = Pomodoro.changeset(@base_pomodoro, %{minutes: minutes})
-      assert pomodoro.valid?
-    end)
-    Enum.each([5, 15], fn(minutes) ->
-      pomodoro = Pomodoro.changeset(@base_pomodoro, %{minutes: minutes})
-      refute pomodoro.valid?
-    end)
+  test "validates minutes for pomodoro" do
+    assert_minutes_for([25], @base_pomodoro)
+    refute_minutes_for([5,15], @base_pomodoro)
   end
 
   test "validates cancelled_at is after started_at timestamp" do
-    {:ok, time} = Ecto.Time.cast("23:59:59Z")
-    afterwards = Ecto.DateTime.from_date_and_time(Ecto.Date.local, time)
-    valid_pomodoro = Pomodoro.changeset(@base_pomodoro, %{cancelled_at: afterwards})
+    valid_pomodoro = Pomodoro.changeset(@base_pomodoro, %{cancelled_at: TimeHelpers.datetime_for("23:59:59Z")})
     assert valid_pomodoro.valid?
 
-    {:ok, time} = Ecto.Time.cast("00:00:00Z")
-    before = Ecto.DateTime.from_date_and_time(Ecto.Date.local, time)
-    invalid_pomodoro = Pomodoro.changeset(@base_pomodoro, %{cancelled_at: before})
+    invalid_pomodoro = Pomodoro.changeset(@base_pomodoro, %{cancelled_at: TimeHelpers.datetime_for("00:00:00Z")})
     refute invalid_pomodoro.valid?
+  end
+
+
+  defp check_minutes_for(minutes, pomodoro, cb) do
+    Enum.each(minutes, fn(minutes) ->
+      cb.(Pomodoro.changeset(pomodoro, %{minutes: minutes}))
+    end)
+  end
+  defp assert_minutes_for(minutes, pomodoro) do
+    check_minutes_for(minutes, pomodoro, fn(pomodoro) ->
+      assert pomodoro.valid?
+    end)
+  end
+  defp refute_minutes_for(minutes, pomodoro) do
+    check_minutes_for(minutes, pomodoro, fn(pomodoro) ->
+      refute pomodoro.valid?
+    end)
   end
 end
