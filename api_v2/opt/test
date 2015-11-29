@@ -13,7 +13,7 @@ id_for_container(){
 }
 
 docker run --name pomodoro-api-db-test --detach=true mongo:latest
-docker run --name pomodoro-api_v2-db-test  --detach=true --volume /db_v2-test:/var/lib/postgresql/data kiasaki/alpine-postgres:latest
+docker run --name pomodoro-api_v2-db-test  --detach=true kiasaki/alpine-postgres:latest
 docker run --name pomodoro-api-sessions-test --detach=true smebberson/alpine-redis
 docker run --name pomodoro-api-test \
   --detach=true \
@@ -23,7 +23,7 @@ docker run --name pomodoro-api-test \
   --link pomodoro-api-db-test:pomodoro-api-db \
   christianfei/pomodoro-api
 
-
+sleep 2
 docker run --rm \
   --env MIX_ENV="test" \
   --link pomodoro-api_v2-db-test:pomodoro-api_v2-db \

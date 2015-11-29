@@ -42,7 +42,7 @@ defmodule ApiV2.Router do
     user_id = Dict.get(user, "id")
     old_task = Repo.task_for(user_id, task_id)
     updated_task = PomodoroTask.changeset(old_task, conn.params)
-    {:ok, pomodoro_task} = Repo.update_pomodoro_task_for(@user_id, updated_task)
+    {:ok, pomodoro_task} = Repo.update_pomodoro_task_for(user_id, updated_task)
     send_resp(conn, 201, Poison.encode!(pomodoro_task))
   end
 end
