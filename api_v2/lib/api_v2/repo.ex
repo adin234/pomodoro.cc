@@ -46,6 +46,13 @@ defmodule ApiV2.Repo do
     end
   end
 
+  def pomodoros_for(user_id) do
+    all(
+      from p in user_pomodoros(user_id),
+      select: p
+    )
+  end
+
   def pomodoro_for(user_id, pomodoro_id) do
     one(
       from p in user_pomodoros(user_id),
@@ -54,11 +61,9 @@ defmodule ApiV2.Repo do
     )
   end
 
-  def update_pomodoro_for(user_id, pomodoro) do
+  def update_pomodoros_for(user_id, pomodoro) do
     update pomodoro
   end
-
-
 
 
 

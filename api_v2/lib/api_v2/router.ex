@@ -3,6 +3,7 @@ defmodule ApiV2.Router do
 
   alias ApiV2.Authorizer.Plug, as: Authorizer
   alias ApiV2.Repo
+  alias ApiV2.Models.Pomodoro
   alias ApiV2.Models.PomodoroTask
 
   plug Plug.Logger
@@ -13,6 +14,24 @@ defmodule ApiV2.Router do
                      json_decoder: Poison
   plug :match
   plug :dispatch
+
+  get "/api/pomodoros" do
+    user = conn.assigns[:user]
+    user_id = Dict.get(user, "id")
+    pomodoros = Repo.pomodoros_for(user_id)
+    send_resp(conn, 200, Poison.encode!(pomodoros))
+  end
+
+  post "/api/pomodoros" do
+    user = conn.assigns[:user]
+    user_id = Dict.get(user, "id")
+    pomodoro_body = conn.params
+    changeset = Pomodoro.changeset(%Pomodoro{}, pomodoro_body)
+    {:ok, pomodoro} = Repo.create_pomodoro_for(user_id, changeset)
+    send_resp(conn, 201, Poison.encode!(pomodoro))
+  end
+
+
 
   get "/api/tasks" do
     user = conn.assigns[:user]

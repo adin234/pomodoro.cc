@@ -21,8 +21,8 @@ function noop():Action {
 export function startTimer(minutes:number, type:PomodoroType):Action {
   if( Timer.isInProgress() ){ return noop() }
   Timer.start(minutes*60)
-  const startedAt = new Date
-  const pomodoro = {minutes, type, startedAt}
+  const started_at = new Date
+  const pomodoro = {minutes, type, started_at}
   AnalyticsService.track('timer-start', pomodoro)
   return {
     type:START_TIMER,
@@ -33,8 +33,8 @@ export function startTimer(minutes:number, type:PomodoroType):Action {
 export function resumeTimer(pomodoro:Object):Action {
   if( Timer.isInProgress() ){ return noop() }
   let remaining = 0
-  if(pomodoro && pomodoro.minutes && pomodoro.startedAt ){
-    let elapsed = (Date.now() -  new Date(pomodoro.startedAt).getTime())
+  if(pomodoro && pomodoro.minutes && pomodoro.started_at ){
+    let elapsed = (Date.now() -  new Date(pomodoro.started_at).getTime())
     elapsed = elapsed/1000 << 0
     remaining = pomodoro.minutes*60 - elapsed
   }
@@ -71,7 +71,7 @@ function saveAndDispatch(action) {
     dispatch({type:action, payload:{}})
 
     if( action === STOP_TIMER ){
-      pomodoro.cancelledAt= new Date
+      pomodoro.cancelled_at= new Date
     }
 
     AnalyticsService.track('timer-stop', pomodoro)

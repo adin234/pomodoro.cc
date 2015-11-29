@@ -4,7 +4,7 @@ type Todo = {
 }
 
 type Pomodoro = {
-  startedAt: string,
+  started_at: string,
   type: string,
   minutes: number,
 }

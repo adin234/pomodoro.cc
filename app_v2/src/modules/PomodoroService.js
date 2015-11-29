@@ -7,5 +7,5 @@ const PomodoroService = {
 export default PomodoroService
 
 function create(pomodoro){
-  return axios.post('/api/pomodoro', pomodoro)
+  return axios.post('/api/pomodoros', pomodoro)
 }

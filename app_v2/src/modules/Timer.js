@@ -7,7 +7,7 @@ export default {
   off: off,
 }
 
-let startedAt = undefined
+let started_at = undefined
 let seconds = undefined
 let interval = undefined
 const events = {
@@ -22,7 +22,7 @@ function start(_seconds){
     return
   }
 
-  startedAt = Date.now()
+  started_at = Date.now()
   seconds = _seconds
   interval = setInterval(tick, 1000)
   setTimeout(tick, 50)
@@ -33,13 +33,13 @@ function start(_seconds){
 }
 
 function forceEnd(natural){
-  if( startedAt ){
+  if( started_at ){
     events[natural?'end':'forceEnd'].forEach((cb) => {
       if( cb instanceof Function ){
         cb(0)
       }
     })
-    startedAt = undefined
+    started_at = undefined
     seconds = undefined
     clearInterval(interval)
   }
@@ -47,14 +47,14 @@ function forceEnd(natural){
 }
 
 function getRemaining(){
-  if( !startedAt )
+  if( !started_at )
     return 0
   const now = Date.now()
-  return intValue(startedAt/1000) - intValue(now/1000) + seconds
+  return intValue(started_at/1000) - intValue(now/1000) + seconds
 }
 
 function isInProgress(){
-  return !!startedAt
+  return !!started_at
 }
 
 function on(event, fn){
@@ -96,5 +96,5 @@ function validateSeconds(seconds){
 }
 
 function isTicking(){
-  return !!startedAt
+  return !!started_at
 }
