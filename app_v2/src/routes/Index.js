@@ -15,7 +15,7 @@ class Index extends Component {
               <TwitterShare/>
               {!user.username ?
                 <p className="tac">
-                  <Link to="login">Login</Link> to track your tasks and pomodoros,<br/> its totally free!
+                  <Link to="login">Login or signup</Link> to track your tasks and pomodoros,<br/> its totally free!
                 </p>
                 : null}
               <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
