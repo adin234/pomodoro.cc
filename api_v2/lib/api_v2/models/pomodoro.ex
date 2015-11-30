@@ -17,7 +17,7 @@ defmodule ApiV2.Models.Pomodoro do
     |> validate_inclusion(:minutes, [5,15,25])
     |> validate_type
     |> validate_minutes
-    # |> validate_cancelled_at
+    |> validate_cancelled_at
   end
 
   defp validate_type(changeset) do
@@ -47,9 +47,8 @@ defmodule ApiV2.Models.Pomodoro do
 
   defp validate_cancelled_at(changeset) do
     validate_change(changeset, :cancelled_at, fn (_, cancelled_at) ->
-      started_at = changeset.model.started_at
-      IO.inspect started_at
-      IO.inspect cancelled_at
+      started_at = Ecto.Changeset.get_field(changeset, :started_at, nil)
+      cancelled_at = Ecto.Changeset.get_field(changeset, :cancelled_at, nil)
       case cancelled_at do
         nil -> []
         _   ->
