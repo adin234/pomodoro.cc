@@ -2,9 +2,9 @@
 import AnalyticsService from '../modules/AnalyticsService'
 import TasksService from '../modules/TasksService'
 
-export const ADD_TODO = 'ADD_TODO'
-export const DELETE_TODO = 'DELETE_TODO'
-export const TOGGLE_COMPLETE_TODO = 'TOGGLE_COMPLETE_TODO'
+export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
+export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
+export const TOGGLE_COMPLETE_TODO_SUCCESS = 'TOGGLE_COMPLETE_TODO_SUCCESS'
 export const GET_TODO = 'GET_TODO'
 export const GET_TODO_REQUEST = 'GET_TODO_REQUEST'
 export const GET_TODO_SUCCESS = 'GET_TODO_SUCCESS'
@@ -30,7 +30,7 @@ export function addTodo(todo:Todo):Action{
     TasksService.create(todo)
     .then((response) => {
       const todo = response.data
-      dispatch({type:ADD_TODO,payload:todo})
+      dispatch({type:ADD_TODO_SUCCESS,payload:todo})
     })
   }
 }
@@ -43,7 +43,7 @@ export function deleteTodo(todo:Todo):Action {
       deleted: true,
     })
     .then(() => {
-      dispatch({type:DELETE_TODO,payload:todo})
+      dispatch({type:DELETE_TODO_SUCCESS,payload:todo})
     })
   }
 }
@@ -56,7 +56,7 @@ export function toggleCompleteTodo(todo:Todo):Action {
       completed: !todo.completed
     })
     .then(() => {
-      dispatch({type:TOGGLE_COMPLETE_TODO,payload:todo})
+      dispatch({type:TOGGLE_COMPLETE_TODO_SUCCESS,payload:todo})
     })
   }
 }
