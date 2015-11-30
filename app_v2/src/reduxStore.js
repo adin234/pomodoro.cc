@@ -2,6 +2,7 @@ import timer from './reducers/timer'
 import todos from './reducers/todos'
 import pomodoro from './reducers/pomodoro'
 import settings from './reducers/settings'
+import loading from './reducers/loading'
 import user from './reducers/user'
 import {applyMiddleware, combineReducers, createStore, compose} from 'redux'
 import thunk from 'redux-thunk'
@@ -20,6 +21,7 @@ const store = (function() {
     todos,
     pomodoro,
     settings,
+    loading,
     user,
   })
 

@@ -1,6 +1,7 @@
 import TopBar from './components/TopBar'
 import WelcomeBar from './components/WelcomeBar'
 import MainFooter from './components/MainFooter'
+import GenericLoader from './components/GenericLoader'
 import NotificationCenter from './modules/NotificationCenter'
 import NotificationService from './modules/NotificationService'
 import * as actions from './actions'
@@ -40,6 +41,7 @@ class Layout extends Component {
   render () {
     const {user, settings, actions} = this.props
     return  <div className="layout">
+              <GenericLoader/>
               <TopBar user={user} actions={actions}/>
               <WelcomeBar user={user} settings={settings} actions={actions}/>
 
