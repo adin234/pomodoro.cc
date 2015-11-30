@@ -33,14 +33,15 @@ defmodule ApiV2.Models.Pomodoro do
 
   defp validate_minutes(changeset) do
     validate_change(changeset, :minutes, fn (_, minutes) ->
-      if Enum.member?([5,15,25], minutes), do: [], else: [:minutes, "invalid minutes"]
-      # case changeset.model.type do
-      #   "break" ->
-      #     if Enum.member?([5,15], minutes), do: [], else: [:minutes, "invalid minutes for type 'break'"]
-      #   "pomodoro" ->
-      #     if minutes == 25, do: [], else: [:minutes, "invalid minutes for type 'pomodoro'"]
-      #   _ -> [:minutes, "invalid type"]
-      # end
+      type = Ecto.Changeset.get_field(changeset, :type, nil)
+      case type do
+        nil -> [:minutes, "minutes cannot be validates without type"]
+        "break" ->
+          if Enum.member?([5,15], minutes), do: [], else: [:minutes, "invalid minutes for type 'break'"]
+        "pomodoro" ->
+          if minutes == 25, do: [], else: [:minutes, "invalid minutes for type 'pomodoro'"]
+        _ -> [:minutes, "invalid type"]
+      end
     end)
   end
 

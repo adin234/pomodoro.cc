@@ -26,6 +26,7 @@ defmodule ApiV2.Router do
     user = conn.assigns[:user]
     user_id = Dict.get(user, "id")
     pomodoro_body = conn.params
+    IO.inspect conn.params
     changeset = Pomodoro.changeset(%Pomodoro{}, pomodoro_body)
     {:ok, pomodoro} = Repo.create_pomodoro_for(user_id, changeset)
     send_resp(conn, 201, Poison.encode!(pomodoro))
