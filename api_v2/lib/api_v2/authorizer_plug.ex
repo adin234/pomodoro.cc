@@ -2,12 +2,14 @@ defmodule ApiV2.Authorizer.Plug do
   require Logger
   import Plug.Conn
   @behaviour Plug
+  @authorizer Application.get_env(:api_v2, :authorizer)
+
   def init(opts) do
     opts
   end
 
   def call(conn, opts) do
-    authorizer = Keyword.get(opts, :authorizer, ApiV2.Authorizer)
+    authorizer = Keyword.get(opts, :authorizer, @authorizer)
     get_req_header(conn, "cookie")
     |> authorizer.authorize
     |> handle_authorization(conn)
@@ -18,6 +20,7 @@ defmodule ApiV2.Authorizer.Plug do
     conn
     |> assign(:user, user_struct)
   end
+
   defp handle_authorization(:unauthorized, conn) do
     conn
     |> send_resp(401, "Unauthorized")

@@ -7,10 +7,10 @@ config :api_v2, ApiV2.Repo,
   password: "postgres",
   hostname: "pomodoro-api_v2-db"
 
-
 config :api_v2,
   http_port: 6000,
-  authorizer_url: "http://pomodoro-auth:6000/auth/info"
+  authorizer_url: "http://pomodoro-auth:6000/auth/info",
+  authorizer:     ApiV2.Authorizer
 
 config :logger, level: :info
 

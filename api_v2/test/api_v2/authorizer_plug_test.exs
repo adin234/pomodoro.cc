@@ -1,12 +1,3 @@
-defmodule FakeAuthorizer do
-  def authorize(cookie) do
-    case "#{cookie}" do
-      "authorized" -> {:authorized, "{\"username\": \"test\"}"}
-      _            -> :unauthorized
-    end
-  end
-end
-
 defmodule ApiV2.Authorizer.Plug.Test do
   use ExUnit.Case, async: false
   use Plug.Test
@@ -16,7 +7,7 @@ defmodule ApiV2.Authorizer.Plug.Test do
   test "responds with 401 when unauthorized" do
     conn = conn(:get, "/")
              |> put_req_header("cookie", "unauthorized")
-             |> AuthorizerPlug.call([authorizer: FakeAuthorizer])
+             |> AuthorizerPlug.call([])
 
     assert conn.status == 401
     assert conn.state == :sent
@@ -25,10 +16,10 @@ defmodule ApiV2.Authorizer.Plug.Test do
   test "authorizes request and passes to next plug" do
     conn = conn(:get, "/")
              |> put_req_header("cookie", "authorized")
-             |> AuthorizerPlug.call([authorizer: FakeAuthorizer])
+             |> AuthorizerPlug.call([])
 
     assert conn.state == :unset
     assert conn.status == nil
-    assert conn.assigns[:user] == %{"username" => "test"}
+    assert conn.assigns[:user] == %{"id" => 1, "username" => "test"}
   end
 end
