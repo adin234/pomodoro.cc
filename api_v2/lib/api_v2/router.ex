@@ -65,4 +65,8 @@ defmodule ApiV2.Router do
     {:ok, pomodoro_task} = Repo.update_pomodoro_task_for(user_id, updated_task)
     send_resp(conn, 201, Poison.encode!(pomodoro_task))
   end
+
+  match _ do
+    send_resp(conn, 404, "404")
+  end
 end
