@@ -17,7 +17,7 @@ defmodule ApiV2.Models.Pomodoro do
     |> validate_inclusion(:minutes, [5,15,25])
     |> validate_type
     |> validate_minutes
-    |> validate_cancelled_at
+    # |> validate_cancelled_at
   end
 
   defp validate_type(changeset) do
