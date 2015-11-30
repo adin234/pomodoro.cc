@@ -2,7 +2,9 @@
 import AnalyticsService from '../modules/AnalyticsService'
 import TasksService from '../modules/TasksService'
 
+export const ADD_TODO_REQUEST = 'ADD_TODO_REQUEST'
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
+export const ADD_TODO_ERROR = 'ADD_TODO_ERROR'
 export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
 export const TOGGLE_COMPLETE_TODO_SUCCESS = 'TOGGLE_COMPLETE_TODO_SUCCESS'
 export const GET_TODO = 'GET_TODO'
@@ -27,10 +29,14 @@ export function getTodo() {
 export function addTodo(todo:Todo):Action{
   AnalyticsService.track('add-todo', todo)
   return (dispatch, getState) => {
+    dispatch({type:ADD_TODO_REQUEST,payload:{}})
     TasksService.create(todo)
     .then((response) => {
       const todo = response.data
       dispatch({type:ADD_TODO_SUCCESS,payload:todo})
+    })
+    .catch(() => {
+      dispatch({type:ADD_TODO_ERROR,payload:{}})
     })
   }
 }
