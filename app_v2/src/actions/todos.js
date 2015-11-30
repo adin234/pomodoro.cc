@@ -5,7 +5,9 @@ import TasksService from '../modules/TasksService'
 export const ADD_TODO_REQUEST = 'ADD_TODO_REQUEST'
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
 export const ADD_TODO_ERROR = 'ADD_TODO_ERROR'
+export const DELETE_TODO_REQUEST = 'DELETE_TODO_REQUEST'
 export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
+export const DELETE_TODO_ERROR = 'DELETE_TODO_ERROR'
 export const TOGGLE_COMPLETE_TODO_SUCCESS = 'TOGGLE_COMPLETE_TODO_SUCCESS'
 export const GET_TODO = 'GET_TODO'
 export const GET_TODO_REQUEST = 'GET_TODO_REQUEST'
@@ -44,12 +46,16 @@ export function addTodo(todo:Todo):Action{
 export function deleteTodo(todo:Todo):Action {
   AnalyticsService.track('delete-todo', todo)
   return (dispatch, getState) => {
+    dispatch({type:DELETE_TODO_REQUEST,payload:{}})
     TasksService.update(todo.id, {
       ...todo,
       deleted: true,
     })
     .then(() => {
       dispatch({type:DELETE_TODO_SUCCESS,payload:todo})
+    })
+    .catch(() => {
+      dispatch({type:DELETE_TODO_ERROR,payload:{}})
     })
   }
 }
