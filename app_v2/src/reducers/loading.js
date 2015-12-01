@@ -1,4 +1,5 @@
 /*@flow*/
+import NProgress from 'nprogress'
 import {
   AUTHENTICATE_USER_REQUEST,
   AUTHENTICATE_USER_SUCCESS,
@@ -17,6 +18,7 @@ import {
   GET_TODO_ERROR,
 } from '../actions'
 
+
 export const defaultState = false
 
 export default function pomodoro(state:LoadingState=defaultState, action:Action):LoadingState {
@@ -26,6 +28,7 @@ export default function pomodoro(state:LoadingState=defaultState, action:Action)
     case DELETE_TODO_REQUEST:
     case TOGGLE_COMPLETE_TODO_REQUEST:
     case GET_TODO_REQUEST:
+      NProgress.start()
       return true
     case AUTHENTICATE_USER_SUCCESS:
     case AUTHENTICATE_USER_FAILURE:
@@ -37,6 +40,7 @@ export default function pomodoro(state:LoadingState=defaultState, action:Action)
     case TOGGLE_COMPLETE_TODO_ERROR:
     case GET_TODO_SUCCESS:
     case GET_TODO_ERROR:
+      NProgress.done()
       return false
   }
   return state
