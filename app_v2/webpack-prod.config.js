@@ -1,4 +1,11 @@
-var commonConfig = require('./webpack-common.config.js')(true);
+var PRO = true
+if( process.env.ENV !== undefined ){
+  PRO = (process.env.ENV === 'PRO')
+}
+
+console.log( '-- building for ', PRO?'PRO':'DEV' )
+
+var commonConfig = require('./webpack-common.config.js')(PRO);
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack = require('webpack');
 
