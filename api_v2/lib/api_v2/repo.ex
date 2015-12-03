@@ -7,19 +7,15 @@ defmodule ApiV2.Repo do
   alias ApiV2.Models.UserPomodoroTask
 
   def tasks_for(user_id) do
-    all(
-      from pt in user_tasks(user_id),
-      where: pt.deleted == false,
-      select: pt
-    )
+    PomodoroTask.in_progress
+    |> UserPomodoroTask.for_user(user_id)
+    |> ApiV2.Repo.all
   end
 
   def task_for(user_id, task_id) do
-    one(
-      from pt in user_tasks(user_id),
-      where: pt.id == ^task_id,
-      select: pt
-    )
+    PomodoroTask.all
+    |> UserPomodoroTask.for_user(user_id)
+    |> ApiV2.Repo.one
   end
 
   def create_pomodoro_task_for(user_id, task) do
@@ -47,33 +43,18 @@ defmodule ApiV2.Repo do
   end
 
   def pomodoros_for(user_id) do
-    Pomodoro
-    |> Pomodoro.all
+    Pomodoro.all
     |> UserPomodoro.for_user(user_id)
     |> ApiV2.Repo.all
   end
 
   def pomodoro_for(user_id, pomodoro_id) do
-    Pomodoro
-    |> Pomodoro.get(pomodoro_id)
+    Pomodoro.get(pomodoro_id)
     |> UserPomodoro.for_user(user_id)
     |> ApiV2.Repo.one
   end
 
   def update_pomodoros_for(user_id, pomodoro) do
     update pomodoro
-  end
-
-
-
-  defp user_tasks(user_id) do
-    from pt in PomodoroTask,
-    join: upt in UserPomodoroTask, on: pt.id == upt.pomodoro_task_id,
-    where: upt.user_id == ^user_id
-  end
-  defp user_pomodoros(user_id) do
-    from p in Pomodoro,
-    join: up in UserPomodoro, on: p.id == up.pomodoro_id,
-    where: up.user_id == ^user_id
   end
 end

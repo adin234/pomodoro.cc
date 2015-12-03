@@ -1,7 +1,6 @@
 defmodule ApiV2.Models.Pomodoro do
   use Ecto.Model
   import Ecto.Query
-
   alias ApiV2.Models.Pomodoro
 
   @derive {Poison.Encoder, only: [:id, :type, :minutes, :started_at, :cancelled_at, :inserted_at, :updated_at]}
@@ -16,13 +15,12 @@ defmodule ApiV2.Models.Pomodoro do
     timestamps
   end
 
-
-  # query
-  def all(query) do
-    from p in query
+  # query api
+  def all do
+    from p in Pomodoro
   end
-  def get(query, pomodoro_id) do
-    from p in query,
+  def get(pomodoro_id) do
+    from p in all,
       where: p.id == ^pomodoro_id
   end
 
