@@ -20,11 +20,9 @@ defmodule ApiV2.Models.Pomodoro.Test do
     refute_minutes_for([5,15], @base_pomodoro)
   end
 
-  test "validates cancelled_at is after started_at timestamp" do
-    valid_pomodoro = Pomodoro.changeset(@base_pomodoro, %{cancelled_at: TimeHelpers.datetime_for("23:59:59Z")})
-    assert valid_pomodoro.valid?
-
-    invalid_pomodoro = Pomodoro.changeset(@base_pomodoro, %{cancelled_at: TimeHelpers.datetime_for("00:00:00Z")})
+  test "validates cancelled_at is between started_at and minutes" do
+    pomodoro = %Pomodoro{type: "pomodoro", minutes: 25, started_at: TimeHelpers.datetime_for("00:00:00Z")}
+    invalid_pomodoro = Pomodoro.changeset(pomodoro, %{cancelled_at: TimeHelpers.datetime_for("00:30:00Z")})
     refute invalid_pomodoro.valid?
   end
 

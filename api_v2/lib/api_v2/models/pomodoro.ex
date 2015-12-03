@@ -1,5 +1,9 @@
 defmodule ApiV2.Models.Pomodoro do
   use Ecto.Model
+  import Ecto.Query
+
+  alias ApiV2.Models.Pomodoro
+
   @derive {Poison.Encoder, only: [:id, :type, :minutes, :started_at, :cancelled_at, :inserted_at, :updated_at]}
   @required_fields ~w(type minutes started_at)
   @optional_fields ~w(cancelled_at)
@@ -12,6 +16,18 @@ defmodule ApiV2.Models.Pomodoro do
     timestamps
   end
 
+
+  # query
+  def all(query) do
+    from p in query
+  end
+  def get(query, pomodoro_id) do
+    from p in query,
+      where: p.id == ^pomodoro_id
+  end
+
+
+  # changeset
   def changeset(model, params \\ :empty) do
     cast(model, params, @required_fields, @optional_fields)
     |> validate_inclusion(:minutes, [5,15,25])
@@ -47,13 +63,28 @@ defmodule ApiV2.Models.Pomodoro do
 
   defp validate_cancelled_at(changeset) do
     validate_change(changeset, :cancelled_at, fn (_, cancelled_at) ->
+      minutes = Ecto.Changeset.get_field(changeset, :minutes, nil)
       started_at = Ecto.Changeset.get_field(changeset, :started_at, nil)
       cancelled_at = Ecto.Changeset.get_field(changeset, :cancelled_at, nil)
       case cancelled_at do
         nil -> []
         _   ->
-          if :lt == Ecto.DateTime.compare(started_at, cancelled_at), do: [], else: [:cancelled_at, "cancelled_at must be a timestamp after started_at"]
+          if valid_cancelled_at?(started_at, cancelled_at, minutes) do
+            []
+          else
+            [:cancelled_at, "cancelled_at must be a timestamp after started_at"]
+          end
       end
     end)
+  end
+
+  defp valid_cancelled_at?(started_at, cancelled_at, minutes) do
+    if :lt == Ecto.DateTime.compare(started_at, cancelled_at) do
+      started_at_tt = Timex.Date.from(Ecto.DateTime.to_erl(started_at))
+      cancelled_at_tt = Timex.Date.from(Ecto.DateTime.to_erl(cancelled_at))
+      Timex.Date.diff(started_at_tt, cancelled_at_tt, :secs)/60 <= minutes
+    else
+      false
+    end
   end
 end

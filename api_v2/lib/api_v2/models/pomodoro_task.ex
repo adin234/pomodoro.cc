@@ -1,5 +1,7 @@
 defmodule ApiV2.Models.PomodoroTask do
   use Ecto.Model
+  import Ecto.Query
+
   @derive {Poison.Encoder, only: [:id, :text, :completed, :deleted, :inserted_at, :updated_at]}
   @required_fields ~w(text)
   @optional_fields ~w(completed deleted)
