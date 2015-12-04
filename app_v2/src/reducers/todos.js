@@ -1,5 +1,11 @@
 /*@flow*/
-import {ADD_TODO_SUCCESS, DELETE_TODO_SUCCESS, TOGGLE_COMPLETE_TODO_SUCCESS, GET_TODO_SUCCESS} from '../actions/todos'
+import {
+  ADD_TODO_SUCCESS,
+  DELETE_TODO_SUCCESS,
+  TOGGLE_COMPLETE_TODO_SUCCESS,
+  GET_TODO_SUCCESS,
+  UPDATE_TODO_SUCCESS
+} from '../actions/todos'
 
 export default function todos(state:TodoState=[], action:Action):TodoState {
   switch(action.type){
@@ -26,6 +32,13 @@ export default function todos(state:TodoState=[], action:Action):TodoState {
         ...todo,
         completed: !todo.completed
       }
+    })
+  }
+  case UPDATE_TODO_SUCCESS: {
+    return state.map((todo) => {
+      return (todo.id !== action.payload.id)
+              ? todo
+              : action.payload
     })
   }
   }

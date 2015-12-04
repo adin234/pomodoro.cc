@@ -11,10 +11,12 @@ export const DELETE_TODO_ERROR = 'DELETE_TODO_ERROR'
 export const TOGGLE_COMPLETE_TODO_REQUEST = 'TOGGLE_COMPLETE_TODO_REQUEST'
 export const TOGGLE_COMPLETE_TODO_SUCCESS = 'TOGGLE_COMPLETE_TODO_SUCCESS'
 export const TOGGLE_COMPLETE_TODO_ERROR = 'TOGGLE_COMPLETE_TODO_ERROR'
-export const GET_TODO = 'GET_TODO'
 export const GET_TODO_REQUEST = 'GET_TODO_REQUEST'
 export const GET_TODO_SUCCESS = 'GET_TODO_SUCCESS'
 export const GET_TODO_ERROR = 'GET_TODO_ERROR'
+export const UPDATE_TODO_REQUEST = 'UPDATE_TODO_REQUEST'
+export const UPDATE_TODO_SUCCESS = 'UPDATE_TODO_SUCCESS'
+export const UPDATE_TODO_ERROR = 'UPDATE_TODO_ERROR'
 
 export function getTodo() {
   return (dispatch, getState) => {
@@ -75,6 +77,20 @@ export function toggleCompleteTodo(todo:Todo):Action {
     })
     .catch(() => {
       dispatch({type:TOGGLE_COMPLETE_TODO_ERROR,payload:{}})
+    })
+  }
+}
+
+export function updateTodo(todo:Todo):Action {
+  AnalyticsService.track('update-todo', todo)
+  return (dispatch, getState) => {
+    dispatch({type:UPDATE_TODO_REQUEST,payload:{}})
+    TasksService.update(todo.id, todo)
+    .then(() => {
+      dispatch({type:UPDATE_TODO_SUCCESS,payload:todo})
+    })
+    .catch(() => {
+      dispatch({type:UPDATE_TODO_ERROR,payload:{}})
     })
   }
 }

@@ -22,9 +22,9 @@ defmodule ApiV2.Models.PomodoroTask do
     from pt in all,
       where: pt.deleted == false
   end
-  def get(pomodoro_id) do
-    from p in all,
-      where: p.id == ^pomodoro_id
+  def get(pomodoro_task_id) do
+    from pt in all,
+      where: pt.id == ^pomodoro_task_id
   end
 
   # changeset

@@ -5,5 +5,5 @@ export default {
 }
 
 function authenticate(){
-  return axios.get('/auth/info')
+  return axios.get('https://pomodoro.dev/auth/info')
 }

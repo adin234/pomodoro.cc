@@ -13,7 +13,7 @@ defmodule ApiV2.Repo do
   end
 
   def task_for(user_id, task_id) do
-    PomodoroTask.all
+    PomodoroTask.get(task_id)
     |> UserPomodoroTask.for_user(user_id)
     |> ApiV2.Repo.one
   end

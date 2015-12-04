@@ -16,6 +16,9 @@ import {
   GET_TODO_REQUEST,
   GET_TODO_SUCCESS,
   GET_TODO_ERROR,
+  UPDATE_TODO_REQUEST,
+  UPDATE_TODO_SUCCESS,
+  UPDATE_TODO_ERROR,
 } from '../actions'
 
 
@@ -28,6 +31,7 @@ export default function pomodoro(state:LoadingState=defaultState, action:Action)
     case DELETE_TODO_REQUEST:
     case TOGGLE_COMPLETE_TODO_REQUEST:
     case GET_TODO_REQUEST:
+    case UPDATE_TODO_REQUEST:
       NProgress.start()
       return true
     case AUTHENTICATE_USER_SUCCESS:
@@ -40,6 +44,8 @@ export default function pomodoro(state:LoadingState=defaultState, action:Action)
     case TOGGLE_COMPLETE_TODO_ERROR:
     case GET_TODO_SUCCESS:
     case GET_TODO_ERROR:
+    case UPDATE_TODO_SUCCESS:
+    case UPDATE_TODO_ERROR:
       NProgress.done()
       return false
   }
