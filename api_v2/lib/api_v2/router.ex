@@ -25,9 +25,7 @@ defmodule ApiV2.Router do
   post "/api/pomodoros" do
     user = conn.assigns[:user]
     user_id = Dict.get(user, "id")
-    pomodoro_body = conn.params
-    IO.inspect conn.params
-    changeset = Pomodoro.changeset(%Pomodoro{}, pomodoro_body)
+    changeset = Pomodoro.changeset(%Pomodoro{}, conn.params)
     {:ok, pomodoro} = Repo.create_pomodoro_for(user_id, changeset)
     send_resp(conn, 201, Poison.encode!(pomodoro))
   end
@@ -51,8 +49,7 @@ defmodule ApiV2.Router do
   post "/api/tasks" do
     user = conn.assigns[:user]
     user_id = Dict.get(user, "id")
-    pomodoro_task_body = conn.params
-    changeset = PomodoroTask.changeset(%PomodoroTask{}, pomodoro_task_body)
+    changeset = PomodoroTask.changeset(%PomodoroTask{}, conn.params)
     {:ok, pomodoro_task} = Repo.create_pomodoro_task_for(user_id, changeset)
     send_resp(conn, 201, Poison.encode!(pomodoro_task))
   end

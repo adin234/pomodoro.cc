@@ -9,13 +9,13 @@ defmodule ApiV2.Repo do
   def tasks_for(user_id) do
     PomodoroTask.in_progress
     |> UserPomodoroTask.for_user(user_id)
-    |> ApiV2.Repo.all
+    |> all
   end
 
   def task_for(user_id, task_id) do
     PomodoroTask.get(task_id)
     |> UserPomodoroTask.for_user(user_id)
-    |> ApiV2.Repo.one
+    |> one
   end
 
   def create_pomodoro_task_for(user_id, task) do
@@ -45,13 +45,13 @@ defmodule ApiV2.Repo do
   def pomodoros_for(user_id) do
     Pomodoro.all
     |> UserPomodoro.for_user(user_id)
-    |> ApiV2.Repo.all
+    |> all
   end
 
   def pomodoro_for(user_id, pomodoro_id) do
     Pomodoro.get(pomodoro_id)
     |> UserPomodoro.for_user(user_id)
-    |> ApiV2.Repo.one
+    |> one
   end
 
   def update_pomodoros_for(user_id, pomodoro) do

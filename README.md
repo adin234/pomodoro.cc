@@ -15,11 +15,9 @@ With the help of insightful statistics, you'll be able to better understand how 
 
 # Todo
 
-- [ ] LoginLogout does not do what it's supposed to -> see TopBar.js
 - [ ] merge timer and pomodoro reducers and actions
-- [ ] thunk for Sound effects to keep state consistent
 - [ ] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
-- [ ] track domain events in db table
+- [ ] track domain events in `events` table
 - [ ] Introduce the concept of "Pinning" a task to a pomodoro
 - [ ] fix flicker at page load for login invite
 
