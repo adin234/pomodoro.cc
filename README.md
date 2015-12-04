@@ -21,6 +21,7 @@ With the help of insightful statistics, you'll be able to better understand how 
 - [ ] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
 - [ ] track domain events in db table
 - [ ] Introduce the concept of "Pinning" a task to a pomodoro
+- [ ] fix flicker at page load for login invite
 
 ---
 

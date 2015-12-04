@@ -2,7 +2,7 @@ require('nprogress/nprogress.css')
 import Timer       from './modules/Timer'
 import Sounds      from './modules/Sounds'
 import reduxStore  from './reduxStore'
-import {tickTimer, resumeTimer, endTimer, authenticateUser, getTodo} from './actions'
+import {tickTimer, resumeTimer, endTimer, authenticateUser} from './actions'
 
 export default function init() {
   const pomodoro = reduxStore.getState().pomodoro
@@ -17,13 +17,13 @@ export default function init() {
     reduxStore.dispatch(tickTimer(remaining))
   })
 
-  Timer.on('forceEnd', cleanupTimer)
+  Timer.on('forceEnd', timerEndSound)
   Timer.on('end', () => {
     reduxStore.dispatch(endTimer())
-    cleanupTimer()
+    timerEndSound()
   })
 
-  function cleanupTimer() {
+  function timerEndSound() {
     Sounds.stopTickingSound()
     Sounds.startRingingSound()
   }
