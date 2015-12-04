@@ -51,17 +51,13 @@ module.exports = function(app){
   function handleUser(done, profile){
     return function(err,user){
       if( err ) {
-        console.log( '-- handleUser err', err )
         return done(err,null)
       }
       if( user ) {
-        console.log( '-- handleUser user', user )
         return done(null, user)
       }
       User.create(new UserInfo(profile),function(err,user){
-        console.log( '-- User.create', err, user )
         if( err ) return done(err,null)
-        console.log( '-- successfully created user', user )
         done(null,user)
       })
     }
