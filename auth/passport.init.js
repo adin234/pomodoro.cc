@@ -7,20 +7,17 @@ var credentials = require('../credentials.json')
   , RedisStore = require('connect-redis')(session)
   , User = require('./models/User')
 
-
 module.exports = function(app){
-  app.use(
-    session({
-      store: new RedisStore({
-        host: 'pomodoro-auth-sessions',
-        port: 6379
-      }),
-      cookie: {
-        maxAge : 1000*60*60*24*5
-      },
-      secret: process.env.POMODORO_AUTH_SESSION_SECRET || 'lolcat'
-    })
-  )
+  app.use(session({
+    store: new RedisStore({
+      host: 'pomodoro-auth-sessions',
+      port: 6379
+    }),
+    cookie: {
+      maxAge : 1000*60*60*24*5
+    },
+    secret: process.env.POMODORO_AUTH_SESSION_SECRET || 'lolcat'
+  }))
   app.use(passport.initialize())
   app.use(passport.session())
 
@@ -32,20 +29,16 @@ module.exports = function(app){
     done(null, user)
   })
 
-  passport.use(
-    new TwitterStrategy({
-      consumerKey: credentials.TWITTER_CONSUMER_KEY,
-      consumerSecret: credentials.TWITTER_CONSUMER_SECRET,
-      callbackURL: credentials.TWITTER_CALLBACK_URL
-    }, authenticatedUser)
-  )
-  passport.use(
-    new GitHubStrategy({
-      clientID: credentials.GITHUB_CLIENT_ID,
-      clientSecret: credentials.GITHUB_CLIENT_SECRET,
-      callbackURL: credentials.GITHUB_CALLBACK_URL
-    }, authenticatedUser)
-  )
+  passport.use(new TwitterStrategy({
+    consumerKey: credentials.TWITTER_CONSUMER_KEY,
+    consumerSecret: credentials.TWITTER_CONSUMER_SECRET,
+    callbackURL: credentials.TWITTER_CALLBACK_URL
+  }, authenticatedUser))
+  passport.use(new GitHubStrategy({
+    clientID: credentials.GITHUB_CLIENT_ID,
+    clientSecret: credentials.GITHUB_CLIENT_SECRET,
+    callbackURL: credentials.GITHUB_CALLBACK_URL
+  }, authenticatedUser))
 
 
   function authenticatedUser(token, tokenSecret, profile, done){
@@ -57,12 +50,19 @@ module.exports = function(app){
 
   function handleUser(done, profile){
     return function(err,user){
-      if( err ) return done(err,null)
-      if( user ) return done(null, user)
-      user = new UserInfo(profile)
-      User.create(user,function(err,user){
+      if( err ) {
+        console.log( '-- handleUser err', err )
+        return done(err,null)
+      }
+      if( user ) {
+        console.log( '-- handleUser user', user )
+        return done(null, user)
+      }
+      User.create(new UserInfo(profile),function(err,user){
+        console.log( '-- User.create', err, user )
         if( err ) return done(err,null)
-        done(null,user[0])
+        console.log( '-- successfully created user', user )
+        done(null,user)
       })
     }
   }
