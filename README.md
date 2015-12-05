@@ -37,7 +37,8 @@ To setup a development machine you'll need:
 
 *Note*: setup works with these versions, previous version might also work.
 
-Run the following to bootstrap the environment (install the needed dependencies, setup docker, build the images)
+Run the following to bootstrap the environment (install the needed dependencies, setup docker, build the images).
+Grab a coffee in the meantime, this takes about 2-5 minutes
 
 ```
 opt/bootstrap
@@ -52,7 +53,7 @@ Add an entry in your `/etc/hosts`:
 192.168.11.2    pomodoro.dev
 ```
 
-Boot up the vagrant with:
+Boot up the vagrant, grab another coffee:
 
 ```
 vagrant up
