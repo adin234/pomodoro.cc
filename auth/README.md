@@ -1,4 +1,8 @@
-`npm install`.
+Install the dependencies with
+
+`npm install`
+
+---
 
 You can run the tests with: (inside vagrant)
 

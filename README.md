@@ -27,8 +27,6 @@ With the help of insightful statistics, you'll be able to better understand how 
 
 Check the readme of the service you would like to contribute to :)
 
-Also, see `TODO.md` for stuff that needs to be done, open a Github issue if you would like to work on a task :)
-
 # Development environment setup (vagrant, docker)
 
 To setup a development machine you'll need:
@@ -83,15 +81,6 @@ openssl rsa -passin pass:x -in pomodoro.cc.pass.key -out pomodoro.cc.key
 openssl req -new -key pomodoro.cc.key -out pomodoro.cc.csr
 openssl x509 -req -days 365 -in pomodoro.cc.csr -signkey pomodoro.cc.key -out bundle.crt
 ```
-
-#### Seed The DB
-
-Inside vagrant, run
-
-```
-opt/docker.seed
-```
-
 
 
 ## docker maintainance scripts and utilities
