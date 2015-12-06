@@ -25,7 +25,6 @@ defmodule ApiV2.Mixfile do
       {:plug, "~> 1.0.2"},
       {:httpoison, "~> 0.8.0"},
       {:poison, "~> 1.5"},
-      {:mock, "~> 0.1.1"},
       {:exrm, "~> 0.19.9"},
       {:timex, "~> 1.0.0-rc3"},
     ]
