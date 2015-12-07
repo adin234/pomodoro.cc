@@ -21,4 +21,4 @@ reports
 pomodoro
 backup
 opt/docker.env
-api_v2/rel
+api/rel

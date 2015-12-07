@@ -34,9 +34,9 @@ if [ -z "$(id_for_container 'pomodoro-auth-db')" ]; then
   $PROJECT_DIR/auth-db/opt/run
 fi
 
-if [ -z "$(id_for_container 'pomodoro-api_v2-db')" ]; then
-  echo "\n----> STARTING 'pomodoro-api_v2-db'"
-  $PROJECT_DIR/api_v2-db/opt/run
+if [ -z "$(id_for_container 'pomodoro-api-db')" ]; then
+  echo "\n----> STARTING 'pomodoro-api-db'"
+  $PROJECT_DIR/api-db/opt/run
 fi
 
 
@@ -64,9 +64,9 @@ if [ -z "$(id_for_container 'pomodoro-auth')" ]; then
   $PROJECT_DIR/auth/opt/run $ENV
 fi
 
-if [ -z "$(id_for_container 'pomodoro-api_v2')" ]; then
-  echo "\n----> STARTING 'pomodoro-api_v2'"
-  $PROJECT_DIR/api_v2/opt/run $MIX_ENV
+if [ -z "$(id_for_container 'pomodoro-api')" ]; then
+  echo "\n----> STARTING 'pomodoro-api'"
+  $PROJECT_DIR/api/opt/run $MIX_ENV
 fi
 
 if [ -z "$(id_for_container 'pomodoro-app_v2')" ]; then

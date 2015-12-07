@@ -5,5 +5,7 @@ export default {
 }
 
 function authenticate(){
-  return axios.get('/auth/info')
+  const base = /localhost/.test(window.location.host) ? 'https://pomodoro.dev' : ''
+  console.log( '-- authorizing @ ', base )
+  return axios.get(`${base}/auth/info`)
 }

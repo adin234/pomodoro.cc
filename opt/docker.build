@@ -12,7 +12,7 @@ build_container(){
   docker build -t christianfei/pomodoro-$NAME $PROJECT_DIR/$NAME
 }
 
-build_container 'api_v2'
+build_container 'api'
 build_container 'auth'
 build_container 'app_v2'
 build_container 'blog'

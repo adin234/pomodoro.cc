@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+docker run --name pomodoro-api-db \
+  --restart=always \
+  --detach=true \
+  --volume /db_v2:/var/lib/postgresql/data \
+  kiasaki/alpine-postgres:latest

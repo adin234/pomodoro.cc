@@ -16,7 +16,7 @@ script:
   - app_v2/opt/test
   - opt/docker.build
   - auth/opt/test
-  - api_v2/opt/test
+  - api/opt/test
   - opt/docker.run DEV
   - opt/docker.seed
   # - app/opt/test.e2e

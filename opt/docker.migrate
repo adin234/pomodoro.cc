@@ -13,6 +13,6 @@ fi
 
 docker run --rm \
   --env MIX_ENV="$MIX_ENV" \
-  --link pomodoro-api_v2-db:pomodoro-api_v2-db \
-  christianfei/pomodoro-api_v2 \
+  --link pomodoro-api-db:pomodoro-api-db \
+  christianfei/pomodoro-api \
   sh -c "mix ecto.create; mix ecto.migrate"
