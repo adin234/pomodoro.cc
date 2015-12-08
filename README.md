@@ -25,7 +25,9 @@ With the help of insightful statistics, you'll be able to better understand how 
 
 # Contributing
 
-Check the readme of the service you would like to contribute to :)
+View the readme of the service you would like to contribute to :)
+
+Also check out [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Development environment setup (vagrant, docker)
 
