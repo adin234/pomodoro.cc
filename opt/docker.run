@@ -6,7 +6,7 @@ ENV="PRO"
 MIX_ENV="prod"
 if [ "$1" = "DEV" ];then
   ENV="DEV"
-  MIX_ENV="dev"
+  MIX_ENV="dev_docker"
 fi
 
 id_for_container(){
