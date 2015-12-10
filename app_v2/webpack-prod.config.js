@@ -34,7 +34,7 @@ module.exports = {
   },
   plugins: [
   new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.UglifyJsPlugin({minimize: true}),
+  new webpack.optimize.UglifyJsPlugin({minimize: true, compress: {drop_debugger: false}}),
   commonConfig.indexPagePlugin
   ],
 };

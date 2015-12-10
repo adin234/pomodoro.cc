@@ -55,6 +55,7 @@ export function forceEndTimer():Action {
     return noop()
   }
   document.title = title
+  NotificationCenter.emit('pomodoroEnded')
   Timer.forceEnd()
   return saveAndDispatch(STOP_TIMER)
 }

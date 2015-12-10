@@ -2,6 +2,7 @@ import Pomodoro from '../components/Pomodoro'
 import TodoList from '../components/TodoList'
 import SoundSettings from '../components/SoundSettings'
 import TwitterShare from '../components/TwitterShare'
+import DailyPulse from '../components/DailyPulse'
 import * as actions from '../actions'
 import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
@@ -12,6 +13,7 @@ class Index extends Component {
   render () {
     const {timer, todos, settings, user, pomodoro, actions} = this.props
     return  <div className="content">
+              <DailyPulse/>
               <TwitterShare/>
               {!user.username ?
                 <p className="tac">
