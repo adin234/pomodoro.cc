@@ -16,7 +16,7 @@ class Index extends Component {
               <DailyPulse/>
               <TwitterShare/>
               {!user.username ?
-                <p className="tac">
+                <p className="login-invite">
                   <Link to="login">Login or signup</Link> to track your tasks and pomodoros,<br/> it's totally free!
                 </p>
                 : null}
