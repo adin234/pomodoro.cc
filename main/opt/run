@@ -15,7 +15,6 @@ docker run --name pomodoro-main \
   --publish 443:443 \
   --link pomodoro-app_v2:pomodoro-app_v2 \
   --link pomodoro-auth:pomodoro-auth \
-  --link pomodoro-blog:pomodoro-blog \
   --link pomodoro-api:pomodoro-api \
   --volume $PROJECT_DIR/main/etc/nginx/nginx.conf:/etc/nginx/nginx.conf \
   --volume $PROJECT_DIR/ssl:/etc/nginx/ssl/pomodoro.cc \
