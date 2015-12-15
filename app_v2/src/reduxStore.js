@@ -13,7 +13,7 @@ const store = (function() {
   const logger = createLogger()
   const storeWithMiddleware = applyMiddleware(thunk, logger)(createStore)
   const storeWithPersistence = compose(
-    persistState(['pomodoro','settings'])
+    persistState(['pomodoro','settings','todos'])
   )(storeWithMiddleware)
 
   const reducer = combineReducers({

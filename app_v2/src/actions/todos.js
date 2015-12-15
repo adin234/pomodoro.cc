@@ -1,6 +1,7 @@
 /*@flow*/
 import AnalyticsService from '../modules/AnalyticsService'
 import TasksService from '../modules/TasksService'
+import {isLoggedIn} from '../modules/Utils'
 
 export const ADD_TODO_REQUEST = 'ADD_TODO_REQUEST'
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
@@ -32,6 +33,9 @@ export function getTodo() {
 export function addTodo(todo:Todo):Action{
   AnalyticsService.track('add-todo', todo)
   return (dispatch, getState) => {
+    if( isLoggedIn(user) ){
+      return dispatch({type:ADD_TODO_SUCCESS,payload:todo})
+    }
     dispatch({type:ADD_TODO_REQUEST,payload:{}})
     TasksService.create(todo)
     .then((response) => {
@@ -47,6 +51,9 @@ export function addTodo(todo:Todo):Action{
 export function deleteTodo(todo:Todo):Action {
   AnalyticsService.track('delete-todo', todo)
   return (dispatch, getState) => {
+    if( isLoggedIn(user) ){
+      return dispatch({type:DELETE_TODO_SUCCESS,payload:todo})
+    }
     dispatch({type:DELETE_TODO_REQUEST,payload:{}})
     TasksService.update(todo.id, {
       ...todo,
@@ -71,6 +78,9 @@ export function toggleCompleteTodo(todo:Todo):Action {
 export function updateTodo(todo:Todo):Action {
   AnalyticsService.track('update-todo', todo)
   return (dispatch, getState) => {
+    if( isLoggedIn(user) ){
+      return dispatch({type:UPDATE_TODO_SUCCESS,payload:todo})
+    }
     dispatch({type:UPDATE_TODO_REQUEST,payload:{}})
     TasksService.update(todo.id, todo)
     .then(() => {

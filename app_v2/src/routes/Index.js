@@ -22,7 +22,7 @@ class Index extends Component {
                 : null}
               <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
               <SoundSettings settings={settings} actions={actions}/>
-              {user.username ? <TodoList todos={todos} actions={actions}/> : null}
+              <TodoList todos={todos} actions={actions}/>
             </div>
   }
 }
