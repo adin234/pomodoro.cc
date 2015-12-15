@@ -15,14 +15,14 @@ class Index extends Component {
     return  <div className="content">
               <DailyPulse/>
               <TwitterShare/>
+              <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
+              <SoundSettings settings={settings} actions={actions}/>
+              <TodoList todos={todos} actions={actions}/>
               {!user.username ?
                 <p className="login-invite">
                   <Link to="login">Login or signup</Link> to track your tasks and pomodoros,<br/> it's totally free!
                 </p>
                 : null}
-              <Pomodoro timer={timer} pomodoro={pomodoro} actions={actions}/>
-              <SoundSettings settings={settings} actions={actions}/>
-              <TodoList todos={todos} actions={actions}/>
             </div>
   }
 }
