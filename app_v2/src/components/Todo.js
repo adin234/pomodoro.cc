@@ -29,16 +29,16 @@ export default class Todo extends Component {
 
   onKeyDown(event) {
     const {todo, actions} = this.props
-    const {keyCode} = event
-    if( ESCAPE_KEY === keyCode ) {
-      this.onBlur()
-    }
-    if( ENTER_KEY === keyCode ) {
-      actions.updateTodo({
-        ...todo,
-        text: this.state.editText
-      })
-      this.onBlur()
+    switch(event.keyCode){
+      case ENTER_KEY: {
+        actions.updateTodo({
+          ...todo,
+          text: this.state.editText
+        })
+      }
+      case ESCAPE_KEY: {
+        this.onBlur()
+      }
     }
   }
 
