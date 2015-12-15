@@ -10,9 +10,6 @@ import {
   DELETE_TODO_REQUEST,
   DELETE_TODO_SUCCESS,
   DELETE_TODO_ERROR,
-  TOGGLE_COMPLETE_TODO_REQUEST,
-  TOGGLE_COMPLETE_TODO_SUCCESS,
-  TOGGLE_COMPLETE_TODO_ERROR,
   GET_TODO_REQUEST,
   GET_TODO_SUCCESS,
   GET_TODO_ERROR,
@@ -39,9 +36,6 @@ describe('loading reducer', () => {
       loading(undefined, dummyAction(DELETE_TODO_REQUEST))
     ).to.deep.eql( true )
     expect(
-      loading(undefined, dummyAction(TOGGLE_COMPLETE_TODO_REQUEST))
-    ).to.deep.eql( true )
-    expect(
       loading(undefined, dummyAction(GET_TODO_REQUEST))
     ).to.deep.eql( true )
   })
@@ -64,12 +58,6 @@ describe('loading reducer', () => {
     ).to.deep.eql( false )
     expect(
       loading(true, dummyAction(DELETE_TODO_ERROR))
-    ).to.deep.eql( false )
-    expect(
-      loading(true, dummyAction(TOGGLE_COMPLETE_TODO_SUCCESS))
-    ).to.deep.eql( false )
-    expect(
-      loading(true, dummyAction(TOGGLE_COMPLETE_TODO_ERROR))
     ).to.deep.eql( false )
     expect(
       loading(true, dummyAction(GET_TODO_SUCCESS))
