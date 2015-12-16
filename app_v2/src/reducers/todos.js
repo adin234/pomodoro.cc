@@ -11,17 +11,17 @@ import _ from 'underscore'
 export default function todos(state:TodoState=[], action:Action):TodoState {
   switch(action.type){
   case GET_TODO_SUCCESS: {
-    return sortCompleted(action.payload.todos)
+    return action.payload.todos
   }
   case ADD_TODO_SUCCESS: {
     let newTodo = action.payload
     if( !newTodo.id ){
       newTodo.id = state.reduce(max, 0)
     }
-    return sortCompleted([
+    return [
       ...state,
       newTodo
-    ])
+    ]
   }
   case DELETE_TODO_SUCCESS: {
     return state.filter((todo) => {
@@ -29,11 +29,11 @@ export default function todos(state:TodoState=[], action:Action):TodoState {
     })
   }
   case UPDATE_TODO_SUCCESS: {
-    return sortCompleted(state.map((todo) => {
+    return state.map((todo) => {
       return (todo.id !== action.payload.id)
               ? todo
               : action.payload
-    }))
+    })
   }
   }
   return state
