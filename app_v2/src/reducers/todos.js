@@ -7,14 +7,19 @@ import {
 } from '../actions/todos'
 
 export default function todos(state:TodoState=[], action:Action):TodoState {
+  // debugger
   switch(action.type){
   case GET_TODO_SUCCESS: {
     return action.payload.todos
   }
   case ADD_TODO_SUCCESS: {
+    let newTodo = action.payload
+    if( !newTodo.id ){
+      newTodo.id = state.reduce((acc, v) => (acc > v ? acc : v), 0)
+    }
     return [
       ...state,
-      action.payload
+      newTodo
     ]
   }
   case DELETE_TODO_SUCCESS: {
@@ -31,4 +36,8 @@ export default function todos(state:TodoState=[], action:Action):TodoState {
   }
   }
   return state
+}
+
+const sortCompleted = (todos) => {
+  return todos.sort((t) => t.completed)
 }

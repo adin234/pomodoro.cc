@@ -34,7 +34,7 @@ export function addTodo(todo:Todo):Action{
   AnalyticsService.track('add-todo', todo)
   return (dispatch, getState) => {
     const {user} = getState()
-    if( isLoggedIn(user) ){
+    if( !isLoggedIn(user) ){
       return dispatch({type:ADD_TODO_SUCCESS,payload:todo})
     }
     dispatch({type:ADD_TODO_REQUEST,payload:{}})
@@ -53,7 +53,7 @@ export function deleteTodo(todo:Todo):Action {
   AnalyticsService.track('delete-todo', todo)
   return (dispatch, getState) => {
     const {user} = getState()
-    if( isLoggedIn(user) ){
+    if( !isLoggedIn(user) ){
       return dispatch({type:DELETE_TODO_SUCCESS,payload:todo})
     }
     dispatch({type:DELETE_TODO_REQUEST,payload:{}})
@@ -81,7 +81,7 @@ export function updateTodo(todo:Todo):Action {
   AnalyticsService.track('update-todo', todo)
   return (dispatch, getState) => {
     const {user} = getState()
-    if( isLoggedIn(user) ){
+    if( !isLoggedIn(user) ){
       return dispatch({type:UPDATE_TODO_SUCCESS,payload:todo})
     }
     dispatch({type:UPDATE_TODO_REQUEST,payload:{}})
