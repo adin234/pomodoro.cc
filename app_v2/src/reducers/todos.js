@@ -18,22 +18,22 @@ export default function todos(state:TodoState=[], action:Action):TodoState {
     if( !newTodo.id ){
       newTodo.id = state.reduce(max, 0)
     }
-    return [
+    return sortCompleted([
       ...state,
       newTodo
-    ]
+    ])
   }
   case DELETE_TODO_SUCCESS: {
-    return state.filter((todo) => {
+    return sortCompleted(state.filter((todo) => {
       return todo.text !== action.payload.text
-    })
+    }))
   }
   case UPDATE_TODO_SUCCESS: {
-    return state.map((todo) => {
+    return sortCompleted(state.map((todo) => {
       return (todo.id !== action.payload.id)
               ? todo
               : action.payload
-    })
+    }))
   }
   }
   return state
@@ -42,16 +42,15 @@ export default function todos(state:TodoState=[], action:Action):TodoState {
 const max = (acc, curr) => (acc > curr.id ? acc : curr.id+1)
 
 const sortCompleted = (todos) => {
-  return _.sortBy(todos, 'completed')
-  return todos.sort((t1, t2) => {
-    let sorting = (t1.completed===t2.completed) ? 1 : -1
-    sorting -= (t2.id - t2.id)
-
-    return sorting
-    if( t1.completed === t2.completed ) {
-      return t1.id - t2.id
+  return todos
+  .sort((t1, t2) => {
+    return t1.completed >= t2.completed
+  })
+  .sort((t1,t2) => {
+    if( t1.completed !== t2.completed ) {
+      return 0
     }
-    return t1.id - t2.id
+    return t1.id > t2.id
   })
 }
 
