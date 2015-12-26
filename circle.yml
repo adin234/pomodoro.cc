@@ -1,14 +1,14 @@
 machine:
-  pre:
-    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
-    - sudo chmod 0755 /usr/bin/docker
   services:
     - docker
   hosts:
     pomodoro.dev: 127.0.0.1
 dependencies:
   cache_directories:
+    - node_modules
+    - app/node_modules
     - auth/node_modules
+    - api/deps
   override:
     - opt/bootstrap
 test:
@@ -19,8 +19,8 @@ test:
     - api/opt/test
     - opt/docker.run DEV
     - opt/docker.seed
-deployment:
-  production:
-    branch: master
-    commands:
-      - opt/deploy
+# deployment:
+#   production:
+#     branch: master
+#     commands:
+#       - opt/deploy
