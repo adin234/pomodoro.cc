@@ -11,6 +11,9 @@ export default class NavigationBar extends Component {
               <a href="https://medium.com/@pomodoro_cc" target="_blank">
                 Blog
               </a>
+              <Link to="/support">
+                Support us!
+              </Link>
             </div>
   }
 }
