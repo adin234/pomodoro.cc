@@ -46,6 +46,7 @@ export default class DailyPulse extends Component {
                 height={70}
                 width={768}
                 size={2}
+                animate={{velocity: 0.5}}
                 data={data}/>
             </div>
   }
