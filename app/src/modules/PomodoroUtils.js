@@ -8,16 +8,16 @@ module.exports = {
 }
 
 function calculateDuration(pomodoro){
-  if( !pomodoro || pomodoro.startedAt === undefined || pomodoro.minutes === undefined ) {
+  if( !pomodoro || pomodoro.started_at === undefined || pomodoro.minutes === undefined ) {
     return 0
   }
-  if( !pomodoro.cancelledAt ){
+  if( !pomodoro.cancelled_at ){
     return pomodoro.minutes * 60
   }
-  if( pomodoro.cancelledAt ) {
-    var cancelledAt = moment(pomodoro.cancelledAt).unix()
-    var startedAt = moment(pomodoro.startedAt).unix()
-    return parseInt(cancelledAt - startedAt, 10)
+  if( pomodoro.cancelled_at ) {
+    var cancelled_at = moment(pomodoro.cancelled_at).unix()
+    var started_at = moment(pomodoro.started_at).unix()
+    return parseInt(cancelled_at - started_at, 10)
   }
   return 0
 }

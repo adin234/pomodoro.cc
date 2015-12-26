@@ -1,42 +1,40 @@
-var expect = require('chai').expect
-
 describe('PomodoroUtils', function () {
   var PomodoroUtils = require('./PomodoroUtils')
 
   it('calculates the duration of a pomodoro', function () {
     var pomodoro = {
       minutes: 25,
-      startedAt: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)"
+      started_at: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)"
     }
     expect( PomodoroUtils.calculateDuration(pomodoro) ).to.equal(25*60)
   })
   it('calculates the duration of a cancelled pomodoro', function () {
     var pomodoro = {
       minutes: 25,
-      startedAt: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)",
-      cancelledAt: "Sat Jul 04 2015 18:05:00 GMT+0200 (CEST)"
+      started_at: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)",
+      cancelled_at: "Sat Jul 04 2015 18:05:00 GMT+0200 (CEST)"
     }
     expect( PomodoroUtils.calculateDuration(pomodoro) ).to.equal(5*60)
   })
   it('calculates the duration in minutes', function () {
     var pomodoro = {
       minutes: 25,
-      startedAt: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)"
+      started_at: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)"
     }
     expect( PomodoroUtils.calculateDurationInMinutes(pomodoro) ).to.equal(25)
   })
   it('calculates the duration in hours', function () {
     var pomodoro = {
       minutes: 25,
-      startedAt: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)"
+      started_at: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)"
     }
     expect( PomodoroUtils.calculateDurationInHours(pomodoro) ).to.equal( 0.41 )
   })
   it('calculates the duration in hours for a cancelled pomodoro', function () {
     var pomodoro = {
       minutes: 25,
-      startedAt: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)",
-      cancelledAt: "Sat Jul 04 2015 18:05:00 GMT+0200 (CEST)"
+      started_at: "Sat Jul 04 2015 18:00:00 GMT+0200 (CEST)",
+      cancelled_at: "Sat Jul 04 2015 18:05:00 GMT+0200 (CEST)"
     }
     expect( PomodoroUtils.calculateDurationInHours(pomodoro) ).to.equal( 0.08 )
   })
