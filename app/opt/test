@@ -6,7 +6,7 @@ if [ "$PROJECT_DIR" = "/" ]; then
   PROJECT_DIR="/pomodoro.cc"
 fi
 
-cd $PROJECT_DIR/app_v2
+cd $PROJECT_DIR/app
 
 npm test
 

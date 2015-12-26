@@ -12,10 +12,10 @@ ENV="$1"
 
 VOLUME=""
 if [ "$ENV" = "DEV" ]; then
-  VOLUME="--volume $PROJECT_DIR/app_v2/build:/var/www/pomodoro.cc/"
+  VOLUME="--volume $PROJECT_DIR/app/build:/var/www/pomodoro.cc/"
 fi
-docker run --name pomodoro-app_v2 \
+docker run --name pomodoro-app \
   --restart=always \
   --detach=true \
   $VOLUME \
-  christianfei/pomodoro-app_v2
+  christianfei/pomodoro-app

@@ -5,8 +5,8 @@ ROOT=$(pwd)
 echo $ROOT
 echo "<== DEPLOY"
 
-echo "--> building app_v2"
-PRODUCTION=true app_v2/opt/build
+echo "--> building app"
+PRODUCTION=true app/opt/build
 
 echo "--> building containers"
 opt/docker.build
@@ -16,8 +16,8 @@ docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
 echo "--> pushing main to docker hub"
 docker push christianfei/pomodoro-main
-echo "--> pushing app_v2 to docker hub"
-docker push christianfei/pomodoro-app_v2
+echo "--> pushing app to docker hub"
+docker push christianfei/pomodoro-app
 echo "--> pushing auth to docker hub"
 docker push christianfei/pomodoro-auth
 echo "--> pushing api to docker hub"

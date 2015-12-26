@@ -13,7 +13,7 @@ dependencies:
     - opt/bootstrap
 test:
   override:
-    - app_v2/opt/test
+    - app/opt/test
     - opt/docker.build
     - auth/opt/test
     - api/opt/test
