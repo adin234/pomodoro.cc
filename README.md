@@ -11,23 +11,20 @@ It takes advantage of the guidelines described in the [Pomodoro Technique](http:
 With the help of insightful statistics, you'll be able to better understand how much time you spent on each task and how focused you were.
 
 
-----
 
 # Todo
 
-- [ ] Introduce the concept of "Pinning" a task to a pomodoro
-- [ ] fix flicker at page load for login invite
-- [ ] track domain events in `events` table
-- [-] merge timer and pomodoro reducers and actions
-- [-] add store for userState to get rid of stupid checks on avatar to determine if user is logged in or not
+see open [issues](/issues)
 
----
+
 
 # Contributing
 
 View the readme of the service you would like to contribute to :)
 
 Also check out [CONTRIBUTING.md](CONTRIBUTING.md)
+
+
 
 # Development environment setup (vagrant, docker)
 
