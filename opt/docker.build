@@ -9,7 +9,7 @@ build_container(){
   NAME=$1
   echo ""
   echo "----> BUILDING pomodoro-$NAME"
-  docker build -t christianfei/pomodoro-$NAME $PROJECT_DIR/$NAME
+  docker build --rm=false -t christianfei/pomodoro-$NAME $PROJECT_DIR/$NAME
 }
 
 build_container 'api'
