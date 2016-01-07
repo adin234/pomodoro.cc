@@ -36,6 +36,9 @@ To setup a development machine you'll need:
 
 *Note*: setup works with these versions, previous version might also work.
 
+
+### bootstrap
+
 Run the following to bootstrap the environment (install the needed dependencies, setup docker, build the images).
 Grab a coffee in the meantime, this takes about 2-5 minutes
 
@@ -43,14 +46,18 @@ Grab a coffee in the meantime, this takes about 2-5 minutes
 opt/bootstrap
 ```
 
-Fill in your information in the `credentials.json` if you want to be able to login in `http://pomodoro.dev`.
-You'll need to create an app for Github and Twitter. (If you don't want to provide them, that's fine. Whilst the authentication won't work, you will still need to create this file.)
-
 Add an entry in your `/etc/hosts`:
 
 ```
 192.168.11.2    pomodoro.dev
 ```
+
+
+### authentication (optional)
+
+If you want authentication on `http://pomodoro.dev` to work, you'll need to provide the necessary tokens (from the github and twitter developer panel) in the `credentials.json`.
+
+### boot development environment
 
 Boot up the vagrant, grab another coffee:
 
@@ -58,11 +65,14 @@ Boot up the vagrant, grab another coffee:
 vagrant up
 ```
 
------
 
-To rebuild the infrastructure, run (from `/pomodoro.cc` inside vagrant)
+# Helpful information during local development
 
-- `opt/docker.restart`
+Run these script from inside vagrant. (Located under `/pomodoro.cc`)
+
+### To rebuild the infrastructure
+
+`opt/docker.restart DEV`
 
 or
 
@@ -71,7 +81,27 @@ or
 - `opt/docker.run`
 
 
+The `DEV` flag is used in the container that holds the web application's front-end,
+so that you can see the changes reflected in a couple of seconds, without relaunching the script.
+
+Also it opens a fake authentication route `/auth/fake` used for E2E testing.
+
+### List running containers
+
+with `docker ps`
+
+
+### Logs
+
+run `docker ps` to get a list of the running processes and `docker logs -f [container id]` for a live output.
+
+
+
+
+
 #### [SSL certificate](https://devcenter.heroku.com/articles/ssl-certificate-self) and credentials
+
+*This is handled by `opt/bootstrap` automatically, there should be no need to run this.*
 
 You can override the self-signed certificate with (put the files in the `ssl` directory) :
 
@@ -80,25 +110,4 @@ openssl genrsa -des3 -passout pass:x -out pomodoro.cc.pass.key 2048
 openssl rsa -passin pass:x -in pomodoro.cc.pass.key -out pomodoro.cc.key
 openssl req -new -key pomodoro.cc.key -out pomodoro.cc.csr
 openssl x509 -req -days 365 -in pomodoro.cc.csr -signkey pomodoro.cc.key -out bundle.crt
-```
-
-
-## docker maintainance scripts and utilities
-
-#### dump mongo
-
-```
-opt/mongo.dump /path/to/dump
-```
-
-#### restore mongo from dump
-
-```
-opt/mongo.restore /path/to/restore
-```
-
-### enter mongo
-
-```
-opt/mongo.enter
 ```
