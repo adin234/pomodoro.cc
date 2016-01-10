@@ -24,13 +24,13 @@ echo "--> pushing api to docker hub"
 docker push christianfei/pomodoro-api
 
 
-if [[ "$TRAVIS" == "true" ]]; then
+if [[ "$TRAVIS_BRANCH" != "master" ]]; then
+  echo "--> building for branch: $TRAVIS_BRANCH"
   echo "--> exiting"
   exit 0
 fi
 
-
-echo "--> server"
+echo "--> starting deploy"
 echo "--> getting latest changes"
 ssh pigeon@pomodoro.cc '/pomodoro.cc/opt/git.fetchclean'
 
