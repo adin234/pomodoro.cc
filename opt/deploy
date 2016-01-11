@@ -24,6 +24,11 @@ echo "--> pushing api to docker hub"
 docker push christianfei/pomodoro-api
 
 
+if [[ "$TRAVIS" != "1" ]]; then
+  echo "--> skipping deploy.."
+  exit 0
+fi
+
 if [[ "$TRAVIS_BRANCH" != "master" ]]; then
   echo "--> building for branch: $TRAVIS_BRANCH"
   echo "--> exiting"
