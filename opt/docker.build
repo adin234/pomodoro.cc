@@ -4,6 +4,14 @@ set -e
 
 SCRIPT_DIR=$(dirname `readlink -f $0`)
 PROJECT_DIR=$(dirname $SCRIPT_DIR)
+ENV="PRO"
+MIX_ENV="prod"
+if [ "$1" = "DEV" ];then
+  ENV="DEV"
+  MIX_ENV="test"
+fi
+
+# export MIX_ENV="$MIX_ENV"
 
 build_container(){
   NAME=$1
