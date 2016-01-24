@@ -11,6 +11,9 @@ PRODUCTION=true app/opt/build
 echo "--> building containers"
 opt/docker.build
 
+echo "--> tagging containers"
+opt/docker.tag "$TRAVIS_COMMIT"
+
 echo "--> logging in to docker hub"
 docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
