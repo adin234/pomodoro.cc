@@ -11,6 +11,9 @@ echo "--> installing app dependencies"
 echo "--> installing auth dependencies"
 (cd auth; npm install)
 
+echo "--> installing acceptance-tests dependencies"
+(cd acceptance-tests; npm install)
+
 echo "--> building app"
 (cd app; npm run build)
 
