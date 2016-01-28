@@ -18,7 +18,6 @@ selenium-debug.log
 selenium.jar
 reports
 *.sublime-workspace
-pomodoro
 backup
 opt/docker.env
 api/rel
