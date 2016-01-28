@@ -4,7 +4,7 @@
   "description": "Demonstartion project for Cucumber.js and Nightwatch.js integration",
   "main": "nightwatch.js",
   "scripts": {
-    "start": "node nightwatch.js"
+    "test": "node nightwatch.js"
   },
   "author": {
     "name": "Igor Muchychka",
