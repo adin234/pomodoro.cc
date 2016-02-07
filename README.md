@@ -14,7 +14,7 @@ With the help of insightful statistics, you'll be able to better understand how 
 
 # Todo
 
-see open [issues](/issues)
+see open [issues](https://github.com/christian-fei/pomodoro.cc/issues)
 
 
 
