@@ -2,9 +2,6 @@
 
 set -e
 
-echo "--> installing global dependencies"
-npm install
-
 echo "--> installing app dependencies"
 (cd app; npm install)
 
