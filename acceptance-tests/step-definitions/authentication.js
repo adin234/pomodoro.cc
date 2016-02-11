@@ -1,5 +1,5 @@
 module.exports = function() {
-  this.Then(/^I login$/, function() {
+  this.When(/^I login$/, function() {
     this
     .waitForElementVisible('body', 5000)
     .click('a[href="/login"]')
