@@ -2,8 +2,16 @@
 node_modules
 bower_components
 credentials.json
+
+libpeerconnection.log
+npm-debug.log
+
 db
-deps
+
+app/www
+app/src/lib
+app/test/lib
+app/bin
 .DS_Store
 pomodoro.cc.sublime-workspace
 selenium-debug.log
@@ -12,6 +20,4 @@ reports
 *.sublime-workspace
 backup
 opt/docker.env
-rel
-
-_build
+api/rel
