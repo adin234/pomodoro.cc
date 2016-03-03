@@ -26,7 +26,7 @@ fi
 
 docker run --name pomodoro-auth-db-test -d mongo:latest
 
-docker run --name pomodoro-auth-sessions-test -d redis:latest redis-server
+docker run --name pomodoro-auth-sessions-test -d smebberson/alpine-redis redis-server
 
 docker run -it \
   --name pomodoro-auth-test \
