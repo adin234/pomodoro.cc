@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf build; apidoc -i ../api/ -i ../auth -o build/docs -f \".*\\.exs?$\" -f \"routes/.*\\.js$\"",
+    "build": "apidoc -i ../api/ -i ../auth -o build/docs -f \".*\\.exs?$\" -f \"routes/.*\\.js$\"",
     "test": "echo \"> who needs tests if you write everything perfectly without even trying?\""
   },
   "author": "",
