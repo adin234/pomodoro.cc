@@ -1,9 +1,9 @@
 {
-  "name": "Pomodoro.cc REST API documentation",
+  "name": "Pomodoro.cc HTTP API documentation",
   "version": "0.0.0",
-  "description": "Pomodoro.cc REST API documentation",
+  "description": "Pomodoro.cc HTTP API documentation",
   "apidoc": {
-    "title": "Pomodoro.cc REST API documentation",
+    "title": "Pomodoro.cc HTTP API documentation",
     "url" : "https://pomodoro.cc/api-documentation"
   }
 }

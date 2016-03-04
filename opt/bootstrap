@@ -17,6 +17,9 @@ echo "--> installing docs dependencies"
 echo "--> building app"
 (cd app; npm run build)
 
+echo "--> building docs"
+(cd docs; npm run build)
+
 echo "--> creating credentials.json"
 cp credentials.template.json credentials.json
 
