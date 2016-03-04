@@ -35,4 +35,5 @@ tag_container(){
 tag_container 'pomodoro-api'
 tag_container 'pomodoro-auth'
 tag_container 'pomodoro-app'
+tag_container 'pomodoro-docs'
 tag_container 'pomodoro-main'
