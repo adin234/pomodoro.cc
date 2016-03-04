@@ -25,6 +25,8 @@ echo "--> pushing auth to docker hub"
 docker push christianfei/pomodoro-auth
 echo "--> pushing api to docker hub"
 docker push christianfei/pomodoro-api
+echo "--> pushing docs to docker hub"
+docker push christianfei/pomodoro-docs
 
 
 if [[ "$TRAVIS" != "1" ]]; then
