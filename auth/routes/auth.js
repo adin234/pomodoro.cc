@@ -11,6 +11,19 @@ router.get('/twitter/callback',
 router.get('/github/callback',
   passport.authenticate('github', defaultRedirectRoutes))
 
+/**
+@api {get} /auth/info user information
+@apiGroup Auth
+@apiDescription Get informations about the user
+
+@apiHeader {String} Authorization Users unique api-key.
+@apiHeader {String} Cookie Users browser cookie.
+
+@apiSuccess {String} apikey users unique apikey
+@apiSuccess {Int} id users id
+@apiSuccess {String} avatar users avatar
+@apiSuccess {String} username users username
+*/
 router.get('/info', function(req,res){
   if( req.user ){
     res.json(req.user)

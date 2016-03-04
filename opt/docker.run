@@ -69,6 +69,11 @@ if [ -z "$(id_for_container 'pomodoro-app')" ]; then
   $PROJECT_DIR/app/opt/run $ENV
 fi
 
+if [ -z "$(id_for_container 'pomodoro-docs')" ]; then
+  echo "\n----> STARTING 'pomodoro-docs'"
+  $PROJECT_DIR/docs/opt/run $ENV
+fi
+
 if [ -z "$(id_for_container 'pomodoro-main')" ]; then
   echo "\n----> STARTING 'pomodoro-main'"
   $PROJECT_DIR/main/opt/run $ENV

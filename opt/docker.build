@@ -23,4 +23,5 @@ build_container(){
 build_container 'api'
 build_container 'auth'
 build_container 'app'
+build_container 'docs'
 build_container 'main'

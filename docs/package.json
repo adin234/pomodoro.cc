@@ -1,0 +1,15 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf build; apidoc -i ../api/ -i ../auth -o build/docs -f \".*\\.exs?$\" -f \"routes/.*\\.js$\"",
+    "test": "echo \"> who needs tests if you write everything perfectly without even trying?\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apidoc": "^0.15.1"
+  }
+}
