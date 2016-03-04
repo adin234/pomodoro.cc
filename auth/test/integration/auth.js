@@ -9,4 +9,11 @@ describe('auth', function(){
       .expect('Location', '/')
       .expect(302,done)
   })
+
+  it('authorizes request with token', function (done) {
+    request(app)
+      .get('/auth/info')
+      .set('Authorization', 'token 123fake')
+      .expect(200, done)
+  })
 })
