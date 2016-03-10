@@ -4,6 +4,7 @@ defmodule Api.Models.Pomodoro.Test do
   alias Api.Models.Pomodoro
   @base_break %Pomodoro{type: "break", minutes: 5, started_at: Ecto.DateTime.utc}
   @base_pomodoro %Pomodoro{type: "pomodoro", minutes: 25, started_at: Ecto.DateTime.utc}
+  @custom_pomodoro %Pomodoro{type: "custom", minutes: 25, started_at: Ecto.DateTime.utc}
 
   test "validates type" do
     pomodoro = Pomodoro.changeset(%Pomodoro{}, %{type: "invalid_type", minutes: 5, started_at: Ecto.DateTime.utc})
@@ -18,6 +19,11 @@ defmodule Api.Models.Pomodoro.Test do
   test "validates minutes for pomodoro" do
     assert_minutes_for([25], @base_pomodoro)
     refute_minutes_for([5,15], @base_pomodoro)
+  end
+
+  test "validates minutes for custom" do
+    assert_minutes_for([7], @custom_pomodoro)
+    refute_minutes_for([-1,61], @custom_pomodoro)
   end
 
   test "validates cancelled_at is between started_at and minutes" do
@@ -37,7 +43,8 @@ defmodule Api.Models.Pomodoro.Test do
 
   defp create_changeset_for(minutes, pomodoro, cb) do
     Enum.each(minutes, fn(minutes) ->
-      cb.(Pomodoro.changeset(pomodoro, %{minutes: minutes}))
+      changeset = Pomodoro.changeset(pomodoro, %{minutes: minutes})
+      cb.(changeset)
     end)
   end
   defp assert_minutes_for(minutes, pomodoro) do

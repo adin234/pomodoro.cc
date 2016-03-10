@@ -56,7 +56,7 @@ defmodule Api.Router.Test do
   end
 
   test "paginates pomodoros" do
-    for i <- 1..11, do: create_pomodoro
+    for _ <- 1..11, do: create_pomodoro
     conn = authorized_request(:get, "/api/pomodoros")
            |> Api.Router.call([])
 

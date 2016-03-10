@@ -24,7 +24,6 @@ defmodule Api.Models.Pomodoro do
   # changeset
   def changeset(model, params \\ :empty) do
     cast(model, params, @required_fields, @optional_fields)
-    |> validate_inclusion(:minutes, [5,15,25])
     |> validate_type
     |> validate_minutes
     |> validate_cancelled_at
@@ -35,6 +34,7 @@ defmodule Api.Models.Pomodoro do
       case type do
         "break" -> []
         "pomodoro" -> []
+        "custom" -> []
         _ -> [:type, "invalid type"]
       end
     end)
@@ -45,6 +45,8 @@ defmodule Api.Models.Pomodoro do
       type = Ecto.Changeset.get_field(changeset, :type, nil)
       case type do
         nil -> [:minutes, "minutes cannot be validates without type"]
+        "custom" ->
+          if minutes > 0 && minutes < 60, do: [], else: [:minutes, "invalid minutes for type 'custom'"]
         "break" ->
           if Enum.member?([5,15], minutes), do: [], else: [:minutes, "invalid minutes for type 'break'"]
         "pomodoro" ->
