@@ -30,3 +30,7 @@ deploy:
   script: opt/deploy
   on:
     branch: master
+
+notifications:
+  webhooks:
+    - https://xcdfvwjvr8.execute-api.eu-west-1.amazonaws.com/pro/travis/notification
