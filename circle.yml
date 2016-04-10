@@ -1,4 +1,6 @@
 machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   services:
     - docker
   hosts:
@@ -18,8 +20,10 @@ test:
     - auth/opt/test
     - api/opt/test
     - opt/docker.run DEV
-# deployment:
-#   production:
-#     branch: master
-#     commands:
-#       - opt/deploy
+    - opt/docker.seed
+    - acceptance-tests/opt/test
+deployment:
+  production:
+    branch: master
+    commands:
+      - opt/deploy
