@@ -111,3 +111,8 @@ openssl rsa -passin pass:x -in pomodoro.cc.pass.key -out pomodoro.cc.key
 openssl req -new -key pomodoro.cc.key -out pomodoro.cc.csr
 openssl x509 -req -days 365 -in pomodoro.cc.csr -signkey pomodoro.cc.key -out bundle.crt
 ```
+
+# Development metrics
+
+[![Throughput Graph](https://graphs.waffle.io/christian-fei/pomodoro.cc/throughput.svg)](https://waffle.io/christian-fei/pomodoro.cc/metrics)
+
