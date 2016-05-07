@@ -5,6 +5,8 @@ machine:
     - docker
   node:
     version: 5.5.0
+  npm:
+    version: 3.8.9
   hosts:
     pomodoro.dev: 127.0.0.1
 dependencies:
@@ -17,7 +19,6 @@ dependencies:
     - opt/bootstrap
 test:
   override:
-    - npm install -g npm@3.x
     - node --version
     - npm --version
     - app/opt/test
