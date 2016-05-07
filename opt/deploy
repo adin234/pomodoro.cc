@@ -5,9 +5,6 @@ ROOT=$(pwd)
 echo $ROOT
 echo "<== DEPLOY"
 
-echo "--> building app"
-PRODUCTION=true app/opt/build
-
 echo "--> building containers"
 opt/docker.build
 

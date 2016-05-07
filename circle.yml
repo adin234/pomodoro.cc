@@ -17,6 +17,7 @@ dependencies:
     - opt/bootstrap
 test:
   override:
+    - npm install -g npm@3.x
     - node --version
     - npm --version
     - app/opt/test
