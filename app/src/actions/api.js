@@ -5,6 +5,9 @@ import {resumeTimer} from './'
 export const GET_TODAYS_POMODORI_REQUEST = 'GET_TODAYS_POMODORI_REQUEST'
 export const GET_TODAYS_POMODORI_SUCCESS = 'GET_TODAYS_POMODORI_SUCCESS'
 export const GET_TODAYS_POMODORI_ERROR = 'GET_TODAYS_POMODORI_ERROR'
+export const GET_POMODORI_REQUEST = 'GET_POMODORI_REQUEST'
+export const GET_POMODORI_SUCCESS = 'GET_POMODORI_SUCCESS'
+export const GET_POMODORI_ERROR = 'GET_POMODORI_ERROR'
 export const GET_UNFINISHED_POMODORO_REQUEST = 'GET_UNFINISHED_POMODORO_REQUEST'
 export const GET_UNFINISHED_POMODORO_SUCCESS = 'GET_UNFINISHED_POMODORO_SUCCESS'
 export const GET_UNFINISHED_POMODORO_ERROR = 'GET_UNFINISHED_POMODORO_ERROR'
@@ -37,6 +40,20 @@ export function getTodaysPomodori():Action {
     })
     .catch((error) => {
       dispatch({type:GET_TODAYS_POMODORI_ERROR, payload:{error}})
+    })
+  }
+}
+
+export function getPomodoriFor(day):Action {
+  return (dispatch, getState) => {
+    dispatch({type:GET_POMODORI_REQUEST, payload:{}})
+    PomodoroService.daily(day)
+    .then((response) => {
+      const pomodori = response.data
+      dispatch({type:GET_POMODORI_SUCCESS, payload:pomodori})
+    })
+    .catch((error) => {
+      dispatch({type:GET_POMODORI_ERROR, payload:{error}})
     })
   }
 }

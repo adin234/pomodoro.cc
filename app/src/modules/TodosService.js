@@ -8,6 +8,7 @@ export default {
   get,
   update,
   today,
+  daily,
 }
 
 function create(todo){
@@ -24,5 +25,16 @@ function update(todoId, todo){
 }
 function today(){
   const todayDate = DateUtils.today()
-  return axios.get(`${RESOURCE_URL}?day=${todayDate}&completed=true`)
+  return daily(todayDate)
+}
+function daily(day, page = 1, acc = []){
+  return axios.get(`${RESOURCE_URL}?day=${day}&completed=true&page=${page}`)
+  .then((response) => {
+    const data = response.data || []
+    if( page < response.headers['x-pages'] ) {
+      return daily(day, page + 1, acc.concat(data))
+    }
+    response.data = acc.concat(data)
+    return response
+  })
 }

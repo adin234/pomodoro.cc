@@ -16,6 +16,9 @@ export const DELETE_TODO_ERROR = 'DELETE_TODO_ERROR'
 export const GET_TODO_REQUEST = 'GET_TODO_REQUEST'
 export const GET_TODO_SUCCESS = 'GET_TODO_SUCCESS'
 export const GET_TODO_ERROR = 'GET_TODO_ERROR'
+export const GET_DAILY_TODO_REQUEST = 'GET_DAILY_TODO_REQUEST'
+export const GET_DAILY_TODO_SUCCESS = 'GET_DAILY_TODO_SUCCESS'
+export const GET_DAILY_TODO_ERROR = 'GET_DAILY_TODO_ERROR'
 export const UPDATE_TODO_REQUEST = 'UPDATE_TODO_REQUEST'
 export const UPDATE_TODO_SUCCESS = 'UPDATE_TODO_SUCCESS'
 export const UPDATE_TODO_ERROR = 'UPDATE_TODO_ERROR'
@@ -34,6 +37,20 @@ export function getTodo() {
     })
     .catch((error) => {
       dispatch({type:GET_TODO_ERROR, payload:{error}})
+    })
+  }
+}
+
+export function getDailyTodo(day) {
+  return (dispatch, getState) => {
+    dispatch({type:GET_DAILY_TODO_REQUEST, payload:{}})
+    TodosService.daily(day)
+    .then((response) => {
+      const todos = response.data
+      dispatch({type:GET_DAILY_TODO_SUCCESS, payload:{todos}})
+    })
+    .catch((error) => {
+      dispatch({type:GET_DAILY_TODO_ERROR, payload:{error}})
     })
   }
 }

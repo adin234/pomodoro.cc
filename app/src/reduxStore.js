@@ -13,7 +13,7 @@ import persistState from 'redux-localstorage'
 
 const middleware = [thunk]
 if( window.development ){
-  middleware.push(createLogger())
+  // middleware.push(createLogger())
 }
 const storeWithMiddleware = applyMiddleware(...middleware)(createStore)
 const storeWithPersistence = compose(
