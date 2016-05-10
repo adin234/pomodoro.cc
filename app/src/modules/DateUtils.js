@@ -4,22 +4,29 @@ export default {
 }
 
 function before(date) {
-  date = ( typeof date === 'string' ) ? new Date(date) : date
+  date = normalize(date)
   const dateClone = new Date(date.getTime())
   dateClone.setDate(dateClone.getDate() - 1)
-  const year = dateClone.getFullYear()
-  const month = pad(dateClone.getMonth()+1)
-  const day = pad(dateClone.getDate())
-  return year + '/' + month + '/' + day
+  return dateFrom(dateClone)
 }
 
 function today() {
-  const todayDate = new Date
-  const year = todayDate.getFullYear()
-  const month = pad(todayDate.getMonth()+1)
-  const day = pad(todayDate.getDate())
+  return dateFrom(new Date)
+}
+
+
+function dateFrom(date) {
+  date = normalize(date)
+  const dateClone = new Date(date.getTime())
+  const year = dateClone.getFullYear()
+  const month = pad(dateClone.getMonth()+1)
+  const day = pad(dateClone.getDate())
 
   return year + '/' + month + '/' + day
+}
+
+function normalize(date){
+  return ( typeof date === 'string' ) ? new Date(date) : date
 }
 
 function pad(number) {
