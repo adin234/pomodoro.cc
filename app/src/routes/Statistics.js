@@ -22,13 +22,26 @@ class Statistics extends Component {
     actions.getDailyTodo(day)
   }
 
+  before() {
+    let {day} = parseQuery(window.location.search)
+    day = day || DateUtils.today()
+    const before = DateUtils.before(day)
+    window.location.search = `?day=${before}`
+  }
+
+  after() {
+    let {day} = parseQuery(window.location.search)
+    day = day || DateUtils.today()
+    const after = DateUtils.after(day)
+    window.location.search = `?day=${after}`
+  }
+
   render() {
     const {user} = this.props
 
     if( window.development ){
       return this.renderAuthorizedContent()
     }
-
 
     return user.username ? this.renderAuthorizedContent() : this.renderUnauthorizedContent()
   }
@@ -45,6 +58,11 @@ class Statistics extends Component {
                   <span>&nbsp;:)</span>
                 </h1>
                 <br/>
+                <div>
+                  <div onClick={this.before.bind(this)}>before</div>
+                  <div onClick={this.after.bind(this)}>after</div>
+                </div>
+                <br/>
                 <br/>
                 <img src={logo} alt="pomodoro.cc" width="100"></img>
               </div>
@@ -53,6 +71,10 @@ class Statistics extends Component {
     return  <div className="tac">
               <div className="ovs-extended">
                 <GenericChart data={api.pomodori}/>
+              </div>
+              <div>
+                <div onClick={this.before.bind(this)}>before</div>
+                <div onClick={this.after.bind(this)}>after</div>
               </div>
               <StatisticsStrip data={api.pomodori}/>
               <TodosStrip data={api.todaysCompletedTodos}/>

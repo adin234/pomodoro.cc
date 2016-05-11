@@ -17,10 +17,6 @@ const {getState, dispatch} = reduxStore
 
 export default function init() {
   dispatch(authenticateUser())
-  dispatch(getTodo())
-  dispatch(getTodaysPomodori())
-  dispatch(getTodaysCompletedTodos())
-  dispatch(getUnfinishedPomodoro())
 
   Timer.on('tick', (remaining, total) => {
     const state = getState()

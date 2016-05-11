@@ -1,12 +1,20 @@
 export default {
   today,
   before,
+  after,
 }
 
 function before(date) {
   date = normalize(date)
   const dateClone = new Date(date.getTime())
   dateClone.setDate(dateClone.getDate() - 1)
+  return dateFrom(dateClone)
+}
+
+function after(date) {
+  date = normalize(date)
+  const dateClone = new Date(date.getTime())
+  dateClone.setDate(dateClone.getDate() + 1)
   return dateFrom(dateClone)
 }
 
