@@ -43,7 +43,9 @@ Run the following to bootstrap the environment (install the needed dependencies,
 Grab a coffee in the meantime, this takes about 2-5 minutes
 
 ```
+vagrant plugin install vagrant-vbguest
 opt/bootstrap
+vagrant up
 ```
 
 Add an entry in your `/etc/hosts`:

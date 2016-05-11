@@ -1,5 +1,6 @@
 Vagrant.configure('2') do |config|
-  config.vm.box = 'ubuntu/trusty64'
+  # config.vm.box = 'ubuntu/trusty64'
+  config.vm.box = 'ubuntu/wily64'
   config.vm.hostname = 'pomodoro.dev'
   config.ssh.shell = 'bash -c \'BASH_ENV=/etc/profile exec bash\''
 
@@ -12,7 +13,9 @@ Vagrant.configure('2') do |config|
   config.vm.network :private_network, ip: "192.168.11.2"
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
-  config.vm.synced_folder "./", "/pomodoro.cc", type: "nfs", :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
+  # config.vm.synced_folder "./", "/pomodoro.cc", type: "nfs", :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
+  config.vm.synced_folder "./", "/pomodoro.cc", type: "nfs", nfs_export: true, mount_options: ['nolock,vers=3,udp,noatime,actimeo=1']
+
 
   config.vm.provision "shell",
     inline: "echo 'cd /pomodoro.cc' >> /home/vagrant/.bashrc"
