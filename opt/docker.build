@@ -11,6 +11,8 @@ if [ "$1" = "DEV" ];then
   MIX_ENV="test"
 fi
 
+echo "env $ENV"
+
 # export MIX_ENV="$MIX_ENV"
 
 build_container(){
