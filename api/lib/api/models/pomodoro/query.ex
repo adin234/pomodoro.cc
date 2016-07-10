@@ -48,8 +48,7 @@ defmodule Api.Models.Pomodoro.Query do
   end
 
   defp obsolete_started_at_for_minutes(minutes) do
-    {:ok, obsolete_started_at} = Timex.Date.subtract(Timex.Date.universal, {minutes*60/1000000, 0, 0})
-                                 |> Timex.Ecto.DateTime.dump
+    {:ok, obsolete_started_at} = Timex.subtract(Timex.DateTime.universal, {minutes*60/1000000, 0, 0})
     obsolete_started_at
   end
 

@@ -19,14 +19,14 @@ defmodule Api.Mixfile do
 
   defp deps do
     [
-      {:postgrex, "~> 0.11.0"},
-      {:ecto, "~> 1.1.1"},
+      {:postgrex, "~> 0.11.2"},
+      {:ecto, "~> 2.0"},
       {:cowboy, "~> 1.0.4"},
-      {:plug, "~> 1.1.0"},
-      {:httpoison, "~> 0.8.1"},
-      {:poison, "~> 1.5.2"},
-      {:timex, "~> 0.19.2"},
-      {:timex_ecto, "~> 0.7.0"},
+      {:plug, "~> 1.1.6"},
+      {:httpoison, "~> 0.9.0"},
+      {:poison, "~> 2.2.0"},
+      {:timex, "~> 2.2.1"},
+      {:timex_ecto, "~> 1.1.3"},
     ]
   end
 end

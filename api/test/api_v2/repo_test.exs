@@ -178,7 +178,7 @@ defmodule Api.Repo.Test do
 
   def create_obsolete_pomodoro do
     pomodoro_minutes = @pomodoro.minutes
-    {:ok, obsolete_started_at} = Timex.Date.subtract(Timex.Date.universal, {pomodoro_minutes*2*60/1000000, 0, 0})
+    {:ok, obsolete_started_at} = Timex.subtract(Timex.DateTime.universal, {pomodoro_minutes*2*60/1000000, 0, 0})
                           |> Timex.Ecto.DateTime.dump
     {:ok, obsolete_started_at} = obsolete_started_at
                           |> Ecto.DateTime.cast
@@ -188,7 +188,7 @@ defmodule Api.Repo.Test do
   end
 
   defp get_today_and_tomorrow do
-    today_dt = Timex.Date.universal
+    today_dt = Timex.DateTime.universal
     tomorrow_dt = Timex.Date.add(today_dt, {60*60*24/1000000, 0, 0})
     today = today_dt |> Timex.DateFormat.format!("{YYYY}/{0M}/{0D}")
     tomorrow = tomorrow_dt |> Timex.DateFormat.format!("{YYYY}/{0M}/{0D}")
