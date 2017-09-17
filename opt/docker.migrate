@@ -11,6 +11,9 @@ if [[ -z "$MIX_ENV" ]]; then
   MIX_ENV="prod"
 fi
 
+docker ps
+docker logs pomodoro-api-db
+
 docker run --rm \
   --env MIX_ENV="$MIX_ENV" \
   --link pomodoro-api-db:pomodoro-api-db \

@@ -2,8 +2,13 @@
 
 set -e
 
+env
+
+echo "RUN pomodoro-api-db"
+
 docker run --name pomodoro-api-db \
   --restart=always \
-  --detach=true \
   --volume /db_v2:/var/lib/postgresql/data \
-  kiasaki/alpine-postgres:latest
+  -d postgres
+
+  # -e POSTGRES_PASSWORD=postgres \

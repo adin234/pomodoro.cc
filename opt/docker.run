@@ -41,7 +41,7 @@ fi
 
 
 sleep 1
-MAX_RETRIES=10
+MAX_RETRIES=3
 RETRIES_COUNT=1
 LAST_EXIT_CODE=1
 while [[ $RETRIES_COUNT -le $MAX_RETRIES && $LAST_EXIT_CODE -eq 1 ]]
@@ -53,6 +53,11 @@ do
   LAST_EXIT_CODE=$?
   ((RETRIES_COUNT++))
 done
+
+if [ -z "$(id_for_container 'pomodoro-api-db')" ]; then
+  echo "\n----> STARTING 'pomodoro-api-db'"
+  $PROJECT_DIR/auth/opt/run $ENV
+fi
 
 if [ -z "$(id_for_container 'pomodoro-auth')" ]; then
   echo "\n----> STARTING 'pomodoro-auth'"
