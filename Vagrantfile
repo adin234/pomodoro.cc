@@ -10,7 +10,7 @@ Vagrant.configure('2') do |config|
 
   config.vm.hostname = "pomodoro.dev"
   config.vm.network :private_network, ip: "192.168.11.2"
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8888
 
   config.vm.synced_folder "./", "/pomodoro.cc", type: "nfs", :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
 
@@ -18,9 +18,8 @@ Vagrant.configure('2') do |config|
     inline: "echo 'cd /pomodoro.cc' >> /home/vagrant/.bashrc"
 
   config.vm.provision "shell", run: "always", path: "opt/docker.fix"
-  config.vm.provision "docker" do |d|
-    d.pull_images "mongo"
-  end
-  config.vm.provision "shell", run: "always",
-    inline: "cd /pomodoro.cc; opt/docker.restart DEV"
+  # config.vm.provision "docker" do |d|
+  #   d.pull_images "mongo"
+  # end
+  config.vm.provision "shell", run: "always", inline: "cd /pomodoro.cc; opt/docker.restart DEV"
 end
