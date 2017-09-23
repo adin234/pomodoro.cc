@@ -12,7 +12,7 @@ echo "--> tagging containers"
 opt/docker.tag "$TRAVIS_COMMIT"
 
 echo "--> logging in to docker hub"
-docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
 
 echo "--> pushing main to docker hub"
 docker push christianfei/pomodoro-main
