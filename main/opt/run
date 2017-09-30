@@ -18,5 +18,4 @@ docker run --name pomodoro-main \
   --link pomodoro-api:pomodoro-api \
   --link pomodoro-docs:pomodoro-docs \
   --volume $PROJECT_DIR/main/etc/nginx/nginx.conf:/etc/nginx/nginx.conf \
-  --volume $PROJECT_DIR/ssl:/etc/nginx/ssl/pomodoro.cc \
   christianfei/pomodoro-main

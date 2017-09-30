@@ -2,11 +2,10 @@
 
 set -e
 
-
-# echo "--> installing system dependencies"
-# curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-# sudo apt-get install -y nodejs
-# sudo apt-get install -y npm
+echo "--> installing system dependencies"
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm
 
 echo "--> installing app dependencies"
 (cd app; npm install)
@@ -31,6 +30,3 @@ cp credentials.template.json credentials.json
 
 echo "--> creating opt/docker.env"
 cp opt/docker.template.env opt/docker.env
-
-echo "--> setting up self-signed certificate"
-unzip ssl.zip -d . || true

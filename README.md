@@ -99,19 +99,6 @@ run `docker ps` to get a list of the running processes and `docker logs -f [cont
 
 
 
-#### [SSL certificate](https://devcenter.heroku.com/articles/ssl-certificate-self) and credentials
-
-*This is handled by `opt/bootstrap` automatically, there should be no need to run this.*
-
-You can override the self-signed certificate with (put the files in the `ssl` directory) :
-
-```
-openssl genrsa -des3 -passout pass:x -out pomodoro.cc.pass.key 2048
-openssl rsa -passin pass:x -in pomodoro.cc.pass.key -out pomodoro.cc.key
-openssl req -new -key pomodoro.cc.key -out pomodoro.cc.csr
-openssl x509 -req -days 365 -in pomodoro.cc.csr -signkey pomodoro.cc.key -out bundle.crt
-```
-
 # Development metrics
 
 [![Throughput Graph](https://graphs.waffle.io/christian-fei/pomodoro.cc/throughput.svg)](https://waffle.io/christian-fei/pomodoro.cc/metrics)
