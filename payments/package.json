@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "start": "up start",
+    "deploy:development": "up deploy development",
+    "deploy:production": "up deploy production"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +15,8 @@
   "dependencies": {
     "ava": "^0.22.0",
     "dotenv": "^4.0.0",
-    "stripe": "^5.1.1"
+    "express": "^4.16.2",
+    "stripe": "^5.1.1",
+    "up": "^1.0.1"
   }
 }
