@@ -13,12 +13,29 @@ server.post('/subscription', (req, res) => {
     email: req.body.stripeEmail,
     source: req.body.stripeToken
   }, (err, customer) => {
+    console.log('customer.create', err, JSON.stringify(customer))
     if (err) {
+      res.send(500, err)
       console.error(err)
     } else {
-      console.log(JSON.stringify(customer))
+      stripe.plans.list({limit: 5}, (err, plans) => {
+        console.log('-- plans', err, plans)
+      })
+      stripe.subscriptions.create({
+        customer: customer.id,
+        items: [{
+          plan: 'pomodoro.cc monthly'
+        }]
+      }, (err, subscription) => {
+        console.log('-- subscriptions.create', err, subscription)
+        if (err) {
+          console.error(err)
+          res.send(500, err)
+        } else {
+          res.send(JSON.stringify({customer, subscription}))
+        }
+      })
     }
-    res.send(JSON.stringify({customer}))
   })
 })
 
