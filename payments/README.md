@@ -1,3 +1,5 @@
+# REMEMBER TO CHANGE THE PRODUCT STRIPE PUBLISHABLE KEY
+
 lambda for stripe charges.
 
 # requirements
