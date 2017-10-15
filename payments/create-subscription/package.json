@@ -32,6 +32,7 @@
     "node": "app.js",
     "transform": [
       [
+        "envify",
         "babelify",
         {
           "presets": [
@@ -44,8 +45,7 @@
             "transform-async-to-generator"
           ]
         }
-      ],
-      "envify"
+      ]
     ]
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
 require('dotenv').load()
 
+const config = require('dotenv').config()
+console.log('config', config)
 console.log('NODE_ENV', process.env.NODE_ENV)
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const express = require('express')
