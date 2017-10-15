@@ -1,21 +1,6 @@
-# REMEMBER TO CHANGE THE PRODUCT STRIPE PUBLISHABLE KEY
+# pomodoro.cc payments
 
-lambda for stripe charges.
+## create-subscription service
 
-# requirements
+used as a POST endpoint to handle customer and subscription creation.
 
-- up
-- aws account configured (~/.aws or env)
-- node 8+
-
-# installation
-
-```
-npm i
-```
-
-# test
-
-```
-npm t
-```

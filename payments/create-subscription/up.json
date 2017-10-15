@@ -1,0 +1,10 @@
+{
+  "name": "pomodoro-payments-create-subscription",
+  "hooks": {
+    "build": "browserify > server.js",
+    "clean": "rm server.js"
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
