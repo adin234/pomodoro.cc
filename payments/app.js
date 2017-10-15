@@ -1,17 +1,14 @@
 require('dotenv').load()
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-app.use(bodyParser())
+const createServer = require('./create-server')
 
 const { PORT = 3000 } = process.env
 
-app.post('/subscription', (req, res) => {
+const server = createServer(PORT)
+server.post('/subscription', (req, res) => {
   console.log('POST /subscription')
-  console.log('  body', req)
+  console.log('  body', req.body)
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken
@@ -25,5 +22,5 @@ app.post('/subscription', (req, res) => {
   })
 })
 
+server.listen(PORT)
 console.log('listening on %s', PORT)
-app.listen(PORT)

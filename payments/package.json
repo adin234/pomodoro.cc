@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ava",
-    "start": "up start",
+    "start": "nodemon app.js",
     "deploy:development": "up deploy development",
     "deploy:production": "up deploy production"
   },
@@ -18,6 +18,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "nodemon": "^1.12.1",
     "r2": "git+https://github.com/mikeal/r2.git",
     "stripe": "^5.1.1",
     "up": "^1.0.1"
