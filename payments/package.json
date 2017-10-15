@@ -15,8 +15,10 @@
   "license": "MIT",
   "dependencies": {
     "ava": "^0.22.0",
+    "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "r2": "git+https://github.com/mikeal/r2.git",
     "stripe": "^5.1.1",
     "up": "^1.0.1"
   }
