@@ -1,0 +1,6 @@
+{
+  "name": "pomodoro-auth",
+  "cors": {
+    "enable": true
+  }
+}
