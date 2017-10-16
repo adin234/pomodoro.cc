@@ -1,9 +1,5 @@
 {
   "name": "pomodoro-payments-create-subscription",
-  "hooks": {
-    "build": "browserify > server.js",
-    "clean": "rm server.js"
-  },
   "cors": {
     "enable": true
   }
