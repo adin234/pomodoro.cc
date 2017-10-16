@@ -1,8 +1,5 @@
 require('dotenv').load()
 
-const config = require('dotenv').config()
-console.log('config', config)
-console.log('NODE_ENV', process.env.NODE_ENV)
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -11,17 +8,17 @@ const { PORT = 3000 } = process.env
 
 const server = createServer(PORT)
 server.post('/', (req, res) => {
-  console.log('POST /subscription')
+  console.log('POST /')
   console.log('  req.body', req.body)
   let customer
   createCustomer(req.body)
     .then(_customer => {
       customer = _customer
-      console.log('-- customer.create', customer)
+      console.log('  customer.create', customer)
       return createSubscription(customer.id)
     })
     .then(subscription => {
-      console.log('-- subscriptions.create', subscription)
+      console.log('  subscriptions.create', subscription)
       res.send(JSON.stringify({customer, subscription}))
     })
 })
@@ -41,7 +38,7 @@ function createServer (port) {
 //   console.log('-- plans.list', plans)
 // }
 
-function createCustomer ({ stripeEmail: email, stripeToken: source }) {
+function createCustomer ({ stripeEmail: email, stripeToken: {id: source} }) {
   return stripe.customers.create({ email, source })
 }
 

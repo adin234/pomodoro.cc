@@ -4,7 +4,7 @@
     "build": "browserify > server.js",
     "clean": "rm server.js"
   },
-  "env": {
-    "NODE_ENV": "production"
+  "cors": {
+    "enable": true
   }
 }
