@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const passport = require('passport')
-const defaultRedirectRoutes = {failureRedirect: '/', successRedirect: '/'}
+const defaultRedirectRoutes = {failureRedirect: '/development/auth/info', successRedirect: '/development/auth/info'}
 const User = require('../models/User')
 
 router.get('/twitter', passport.authenticate('twitter'))
