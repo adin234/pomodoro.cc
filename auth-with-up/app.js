@@ -5,7 +5,10 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 
-server.listen(process.env.HTTP_PORT || 3000)
+const PORT = process.env.HTTP_PORT || 3000
+server.listen(PORT)
+console.log('listening on port', PORT)
+console.log('env', process.env)
 
 require('./init/mongo')()
 require('./passport.init')(server)

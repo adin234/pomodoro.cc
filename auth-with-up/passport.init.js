@@ -9,6 +9,8 @@ const User = require('./models/User')
 
 module.exports = function (app) {
   app.use(session({
+    resave: true,
+    saveUninitialized: true,
     secret: 'foo',
     store: new MongoStore({
       // autoReconnect: true,
