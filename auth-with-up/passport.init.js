@@ -13,7 +13,6 @@ module.exports = function (app) {
     saveUninitialized: true,
     secret: 'foo',
     store: new MongoStore({
-      // autoReconnect: true,
       collection: 'sessions',
       url: process.env.MONGO_URL
     })
