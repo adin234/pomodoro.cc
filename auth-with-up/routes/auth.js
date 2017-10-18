@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const passport = require('passport')
-const defaultRedirectRoutes = {failureRedirect: '/auth/info', successRedirect: '/auth/info'}
+const defaultRedirectRoutes = {failureRedirect: '/info', successRedirect: '/info'}
 const User = require('../models/User')
 
 router.get('/twitter', passport.authenticate('twitter'))
@@ -12,7 +12,7 @@ router.get('/github/callback',
   passport.authenticate('github', defaultRedirectRoutes))
 
 /**
-@api {get} /auth/info user information
+@api {get} /info user information
 @apiGroup Auth
 @apiDescription Get informations about the user
 
