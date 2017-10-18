@@ -17,5 +17,14 @@
     "development": {
       "domain": "dev-login.pomodoro.cc"
     }
+  },
+  "dns": {
+    "gh-polls.com": [
+      {
+        "name": "login.pomodoro.cc",
+        "type": "CNAME",
+        "value": ["d1sj271h1uwejv.cloudfront.net"]
+      }
+    ]
   }
 }
