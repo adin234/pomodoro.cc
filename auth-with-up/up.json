@@ -9,7 +9,7 @@
   },
   "stages": {
     "production": {
-      "domain": "login.pomodoro.cc"
+      "domain": "auth.pomodoro.cc"
     }
   }
 }
