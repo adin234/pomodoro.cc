@@ -10,6 +10,9 @@
   "stages": {
     "production": {
       "domain": "auth.pomodoro.cc"
+    },
+    "development": {
+      "domain": "auth-development.pomodoro.cc"
     }
   }
 }
