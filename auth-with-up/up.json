@@ -10,21 +10,6 @@
   "stages": {
     "production": {
       "domain": "login.pomodoro.cc"
-    },
-    "staging": {
-      "domain": "staging-login.pomodoro.cc"
-    },
-    "development": {
-      "domain": "dev-login.pomodoro.cc"
     }
-  },
-  "dns": {
-    "gh-polls.com": [
-      {
-        "name": "login.pomodoro.cc",
-        "type": "CNAME",
-        "value": ["d1sj271h1uwejv.cloudfront.net"]
-      }
-    ]
   }
 }
