@@ -2,5 +2,20 @@
   "name": "pomodoro-auth",
   "cors": {
     "enable": true
+  },
+  "regions": ["eu-central-1"],
+  "lambda": {
+    "memory": 128
+  },
+  "stages": {
+    "production": {
+      "domain": "login.pomodoro.cc"
+    },
+    "staging": {
+      "domain": "staging-login.pomodoro.cc"
+    },
+    "development": {
+      "domain": "dev-login.pomodoro.cc"
+    }
   }
 }
