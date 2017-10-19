@@ -8,7 +8,8 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "deploy:development": "up deploy development",
-    "deploy:production": "up deploy production"
+    "deploy:production": "up deploy production",
+    "stack:apply": "up stack plan -v && up stack apply -v"
   },
   "keywords": [],
   "author": "",
