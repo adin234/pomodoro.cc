@@ -1,0 +1,19 @@
+{
+  "name": "pomodoro-auth",
+  "cors": {
+    "enable": true
+  },
+  "regions": ["eu-central-1"],
+  "lambda": {
+    "memory": 128
+  },
+  "dns": {
+    "gh-polls.com": [
+      {
+        "name": "login.pomodoro.cc",
+        "type": "CNAME",
+        "value": ["https://mjav90as88.execute-api.eu-central-1.amazonaws.com/production"]
+      }
+    ]
+  }
+}
